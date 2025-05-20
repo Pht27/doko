@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
+    {% for player in players %}
+        <a href="#">
+            <h2>{{ player['name'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ player['start_points'] }}</span>
+        <hr>
+    {% endfor %}
+{% endblock %}
