@@ -22,7 +22,7 @@ if [ ! -f "$SQL_FILE" ]; then
 fi
 
 # ---------- SQL AUSFÜHREN ----------
-mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$SQL_FILE"
+mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$SQL_FILE"
 
 if [ $? -eq 0 ]; then
     echo "✅ Tabellen erfolgreich in '$DB_NAME' erstellt."

@@ -33,5 +33,5 @@ echo "🔧 Activating Python venv and running Python scripts..."
 echo "🗃️  Running SQL files from $SQL_DIR..."
 for sql_file in "$SQL_DIR"/*.sql; do
     echo "🚀 Running $sql_file..."
-    mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
+    mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
 done
