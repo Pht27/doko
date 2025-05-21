@@ -14,4 +14,6 @@ def players():
     players = execute_query_with_placeholder_params(
         'database/players/queries/get_all_players.sql'
     )
-    return render_template('players/players.html', players=players)
+    sorted_players = sorted(
+        players, key=lambda p: p['start_points'], reverse=True)
+    return render_template('sites/players/players.html', players=sorted_players)

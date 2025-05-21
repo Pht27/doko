@@ -9,6 +9,9 @@
     />
 
     <!-- Style -->
+    <!-- extra styles from sites -->
+    {% block extra_styles %}{% endblock %}
+
     <!-- Style for base.html -->
     <link
       rel="stylesheet"
@@ -44,5 +47,8 @@
     <script src="{{ url_for('static', filename='js/base/navbar.js') }}"></script>
     <!-- Titlecard js -->
     <script src="{{ url_for('static', filename='js/base/titlecard.js') }}"></script>
+
+    <!-- extra scripts from sites -->
+    {% block extra_scripts %}{% endblock %}
   </body>
 </html>

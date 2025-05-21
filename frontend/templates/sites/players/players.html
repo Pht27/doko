@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+<!--  -->
+{% block extra_styles %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/components/leaderboard.css') }}"
+/>
+
+{% endblock %}
+<!--  -->
+
+<h1>{% block title %} Players {% endblock %}</h1>
+
+{% block titlecard %} Spieler {% endblock %}
+
+<!--  -->
+{% block content %}
+<!--  -->
+{% include 'components/leaderboard.html' %}
+<!--  -->
+{% endblock %}
+
+<!--  -->
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/components/leaderboard.js') }}"></script>
+{% endblock %}
+<!--  -->

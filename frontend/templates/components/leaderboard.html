@@ -1,0 +1,26 @@
+<div class="leaderboard__container">
+  <table id="leaderboard__table" class="leaderboard__table">
+    <thead>
+      <tr>
+        <th onclick="sortColumn(this)" data-sort="name" data-label="Name">
+          Name
+        </th>
+        <th onclick="sortColumn(this)" data-sort="points" data-label="Punkte">
+          Punkte
+        </th class="arrow-col">
+
+        <th></th>
+        <!-- Für den Pfeil -->
+      </tr>
+    </thead>
+    <tbody>
+      {% for player in players %}
+      <tr class="leaderboard__row" onclick=>
+        <td>{{ player.name }}</td>
+        <td>{{ player.start_points }}</td>
+        <td class="arrow">&gt;</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
