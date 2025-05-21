@@ -15,6 +15,11 @@ VENV_PATH="$SCRIPT_DIR/../../venv"
 PYTHON="$VENV_PATH/bin/python"
 SQL_DIR="$SCRIPT_DIR/sql_queries"
 
+# ---------- CLEARING DIRECTORIES ----------
+echo "🧹 Clearing old SQL and CSV files..."
+rm -f "$SCRIPT_DIR/sql_queries/"*.sql
+rm -f "$SCRIPT_DIR/new_csvs/"*.csv
+
 # ---------- RUN PYTHON SCRIPTS ----------
 echo "🔧 Activating Python venv and running Python scripts..."
 "$PYTHON" "$SCRIPT_DIR/refactor_csvs.py"

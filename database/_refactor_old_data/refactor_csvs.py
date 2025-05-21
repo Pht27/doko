@@ -9,6 +9,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OLD_DATA_DIR = os.path.join(BASE_DIR, 'old_data')
 tables_path = OLD_DATA_DIR + '/'
 
+output_dir = BASE_DIR + '/new_csvs/'
+
 #######################
 ####### TEAMS #########
 #######################
@@ -41,7 +43,7 @@ unique_teams['new_team_id'] = range(1, len(unique_teams) + 1)
 
 # 5. Erzeuge team.csv
 team_csv = unique_teams[['new_team_id']].rename(columns={'new_team_id': 'id'})
-team_csv.to_csv('new_csvs/team.csv', index=False)
+team_csv.to_csv(output_dir + '/team.csv', index=False)
 
 # 6. Erzeuge team_has_member.csv aus player_list und new_team_id
 # Für jede Zeile player_list in unique_teams → viele rows mit player_id, new_team_id
@@ -51,7 +53,7 @@ for _, row in unique_teams.iterrows():
         rows.append({'team_id': row['new_team_id'], 'player_id': player_id})
 
 team_has_member_df = pd.DataFrame(rows)
-team_has_member_df.to_csv('new_csvs/team_has_member.csv', index=False)
+team_has_member_df.to_csv(output_dir + 'team_has_member.csv', index=False)
 
 
 ##############################
@@ -114,7 +116,7 @@ round_has_team = merged[['round_id', 'new_team_id', 'position', 'party']].rename
 )
 
 # Speichern
-round_has_team.to_csv('new_csvs/round_has_team.csv', index=False)
+round_has_team.to_csv(output_dir + 'round_has_team.csv', index=False)
 
 
 ############################
@@ -158,7 +160,8 @@ assert round_mode_df['game_mode_id'].isnull(
 
 # Ergebnisstruktur anpassen
 round_is_game_mode_df = round_mode_df[['round_id', 'game_mode_id']]
-round_is_game_mode_df.to_csv('new_csvs/round_is_game_mode.csv', index=False)
+round_is_game_mode_df.to_csv(
+    output_dir + 'round_is_game_mode.csv', index=False)
 
 # noch game_mode.csv erzeugen für konsistenz in der DB
 game_modes = [
@@ -173,7 +176,7 @@ game_modes_df = pd.DataFrame({
     'name': sorted(game_modes)
 })
 
-game_modes_df.to_csv('new_csvs/game_mode.csv', index=False)
+game_modes_df.to_csv(output_dir + 'game_mode.csv', index=False)
 
 #############################
 ######### SPECIALS ##########
@@ -249,9 +252,9 @@ extra_points_final.columns = ['round_id', 'team_id', 'extra_point_id', 'count']
 
 # ===== EXPORT =====
 special_cards_final.to_csv(
-    'new_csvs/team_in_round_has_special_card.csv', index=False)
+    output_dir + 'team_in_round_has_special_card.csv', index=False)
 extra_points_final.to_csv(
-    'new_csvs/team_in_round_has_extra_point.csv', index=False)
+    output_dir + 'team_in_round_has_extra_point.csv', index=False)
 
 # noch special_cards.csv und extra_point.csv erzeugen für konsistenz in der DB
 special_cards = [
@@ -266,7 +269,7 @@ special_card_df = pd.DataFrame({
     'name': sorted(special_cards)
 })
 
-special_card_df.to_csv('new_csvs/special_card.csv', index=False)
+special_card_df.to_csv(output_dir + 'special_card.csv', index=False)
 
 extra_points = [
     'Doppelkopf', 'Fuchs gefangen', 'Fischauge', 'Gans gefangen',
@@ -278,7 +281,7 @@ extra_point_df = pd.DataFrame({
     'name': sorted(extra_points)
 })
 
-extra_point_df.to_csv('new_csvs/extra_point.csv', index=False)
+extra_point_df.to_csv(output_dir + 'extra_point.csv', index=False)
 
 
 ##################
@@ -289,14 +292,18 @@ extra_point_df.to_csv('new_csvs/extra_point.csv', index=False)
 players_df = pd.read_csv(tables_path + 'players.csv')
 
 # Neue IDs vergeben (beginnend bei 1)
-players_df = players_df.sort_values('player_id').reset_index(drop=True)
-players_df['id'] = range(1, len(players_df) + 1)
+players_df = players_df.rename(columns={
+    'player_id': 'id'
+})
 
 # Spalten auswählen und umbenennen
 player_df = players_df[['id', 'name', 'active', 'start_points']]
 
+# Konvertiere active zu int (1/0)
+player_df['active'] = players_df['active'].astype(int)
+
 # Speichern
-player_df.to_csv('new_csvs/player.csv', index=False)
+player_df.to_csv(output_dir + 'player.csv', index=False)
 
 ##################
 #### ROUNDS ######
@@ -315,4 +322,25 @@ round_df = rounds_df.rename(columns={
 round_df = round_df.drop(columns=['game_type'])
 
 # Speichern
-round_df.to_csv('new_csvs/round.csv', index=False)
+round_df.to_csv(output_dir + 'round.csv', index=False)
+
+####################
+#### ORDERING ######
+####################
+
+os.rename(output_dir + 'player.csv', output_dir + '01_player.csv')
+os.rename(output_dir + 'round.csv', output_dir + '02_round.csv')
+os.rename(output_dir + 'team.csv', output_dir + '03_team.csv')
+os.rename(output_dir + 'game_mode.csv', output_dir + '04_game_mode.csv')
+os.rename(output_dir + 'extra_point.csv', output_dir + '05_extra_point.csv')
+os.rename(output_dir + 'special_card.csv', output_dir + '06_special_card.csv')
+os.rename(output_dir + 'round_has_team.csv',
+          output_dir + '07_round_has_team.csv')
+os.rename(output_dir + 'round_is_game_mode.csv',
+          output_dir + '08_round_is_game_mode.csv')
+os.rename(output_dir + 'team_has_member.csv',
+          output_dir + '09_team_has_member.csv')
+os.rename(output_dir + 'team_in_round_has_extra_point.csv',
+          output_dir + '10_team_in_round_has_extra_point.csv')
+os.rename(output_dir + 'team_in_round_has_special_card.csv',
+          output_dir + '11_team_in_round_has_special_card.csv')

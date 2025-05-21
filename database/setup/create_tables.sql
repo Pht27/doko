@@ -15,7 +15,7 @@ CREATE TABLE player (
     id              INT AUTO_INCREMENT,
     name            VARCHAR(50) NOT NULL,
     active          BOOLEAN DEFAULT TRUE,
-    start_points    INT DEFAULT 0,
+    start_points    DECIMAL(10, 1) DEFAULT 0,
 
     PRIMARY KEY(id)
 );

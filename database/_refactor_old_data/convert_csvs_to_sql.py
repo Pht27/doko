@@ -11,11 +11,13 @@ output_dir = BASE_DIR + '/sql_queries'
 os.makedirs(output_dir, exist_ok=True)
 
 # Process each CSV file
-for filename in os.listdir(input_dir):
+for filename in sorted(os.listdir(input_dir)):
     if filename.endswith('.csv'):
-        table_name = os.path.splitext(filename)[0]
+        filename_no_ext = os.path.splitext(filename)[0]  # e.g., "01_players"
+        prefix, table_name = filename_no_ext.split('_', 1)  # "01", "players"
+
         csv_path = os.path.join(input_dir, filename)
-        sql_path = os.path.join(output_dir, f'fill_{table_name}.sql')
+        sql_path = os.path.join(output_dir, f'{prefix}_fill_{table_name}.sql')
 
         with open(csv_path, 'r', newline='', encoding='utf-8') as f_csv:
             reader = csv.reader(f_csv)
