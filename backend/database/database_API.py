@@ -3,6 +3,11 @@ import pymysql
 from backend.config.database.db_config import get_db_host_address, get_db_name, get_db_user_and_password
 
 
+def load_sql(path):
+    with open(path, 'r') as f:
+        return f.read()
+
+
 def get_db_connection():
     db_host_address = get_db_host_address()
     db_user, db_password = get_db_user_and_password()

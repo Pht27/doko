@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+<h1>{% block title %} Players {% endblock %}</h1>
+
+{% block titlecard %} Players {% endblock %} {% block content %} {% for player
+in players %}
+<a href="#">
+  <h2>{{ player['name'] }}</h2>
+</a>
+<span class="badge badge-primary">{{ player['start_points'] }}</span>
+<hr />
+{% endfor %} {% endblock %}

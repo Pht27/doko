@@ -2,16 +2,15 @@ from flask import Flask, render_template
 
 from backend.config.database.db_config import get_db_url
 
+from backend.database.database_API import execute_query_with_placeholder_params
+
 app = Flask(__name__)
 
 
 @app.route('/')
+@app.route('/players')
 def index():
-    db_session = scoped_session(sessionmaker(bind=engine))
-    players = db_session.query(
-        Players.id, Players.name,  Players.start_points)[0]
-    for item in db_session.query(Players.id, Players.name, Players.start_points):
-        print(item)
+    players = execute_query_with_placeholder_params(
+        'backend/database/players/queries/get_all_players.sql')
     print(players)
-    players = Players.query.all()
-    return render_template('index.html', players=players)
+    return render_template('players/players.html', players=players)
