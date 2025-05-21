@@ -3,6 +3,7 @@ config/database/db_config.ini
 
 database/_refactor_old_data/old_data/*
 database/_refactor_old_data/new_csvs/*
+database/_refactor_old_data/sql_queries/*
 
 # Log-Dateien
 *.log

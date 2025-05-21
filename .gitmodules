@@ -1,0 +1,3 @@
+[submodule "database/_refactor_old_data/old_data"]
+	path = database/_refactor_old_data/old_data
+	url = https://github.com/Pht27/doko_tables_bk
