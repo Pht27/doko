@@ -1,16 +1,17 @@
-from flask import Flask, render_template
+import os
+from flask import Flask, redirect, url_for
 
-from backend.config.database.db_config import get_db_url
+from backend.sites.players.routes import players_bp
 
-from backend.database.database_API import execute_query_with_placeholder_params
+app = Flask(
+    __name__,
+    template_folder=os.path.join("frontend", "templates"),
+    static_folder=os.path.join("frontend", "static"),
+)
 
-app = Flask(__name__)
+app.register_blueprint(players_bp)
 
 
 @app.route('/')
-@app.route('/players')
 def index():
-    players = execute_query_with_placeholder_params(
-        'backend/database/players/queries/get_all_players.sql')
-    print(players)
-    return render_template('players/players.html', players=players)
+    return redirect(url_for('players.players'))

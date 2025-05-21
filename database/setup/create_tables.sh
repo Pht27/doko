@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ---------- KONFIG ----------
-CONFIG_FILE="../../../config/database/db_config.ini"
+CONFIG_FILE="../../config/database/db_config.ini"
 SQL_FILE="create_tables.sql"
 
 # ---------- INI-WERTE LADEN ----------

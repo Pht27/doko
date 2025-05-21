@@ -1,6 +1,6 @@
 import pymysql
 
-from backend.config.database.db_config import get_db_host_address, get_db_name, get_db_user_and_password
+from backend.api.database.db_config import get_db_host_address, get_db_name, get_db_user_and_password
 
 
 def load_sql(path):

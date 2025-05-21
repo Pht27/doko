@@ -3,7 +3,7 @@
 # --drop um existierende db zu droppen
 
 # ---------- KONFIG ----------
-CONFIG_FILE="../../../config/database/db_config.ini"
+CONFIG_FILE="../../config/database/db_config.ini"
 DROP_FIRST=false
 
 # ---------- OPTIONEN PARSEN ----------
