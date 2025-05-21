@@ -1,0 +1,1380 @@
+special_team_id,team_id,special
+1,22,Karlchen
+2,26,Fischauge
+3,30,Schweinchen
+4,32,Genscherdamen
+5,33,Fuchs gefangen
+6,34,Heidmann
+7,36,Fischauge
+8,40,Doppelkopf
+9,41,Fuchs gefangen
+10,42,Fischauge
+11,59,Heidmann
+12,59,Fuchs gefangen
+13,60,Fischauge
+14,73,Schweinchen
+15,78,Kämmerich
+16,81,Fischauge
+17,82,Fischauge
+18,97,Schweinchen
+19,98,Linksdrehender Gehängter
+20,100,Genscherdamen
+21,101,Fuchs gefangen
+22,103,Fischauge
+23,105,Linksdrehender Gehängter
+24,108,Fischauge
+25,118,Genscherdamen
+26,119,Linksdrehender Gehängter
+27,120,Klaubautermann
+28,121,Genscherdamen
+29,123,Fischauge
+30,123,Klaubautermann
+31,125,Fischauge
+32,126,Genscherdamen
+33,134,Heidmann
+34,134,Fischauge
+35,136,Fischauge
+36,142,Fuchs gefangen
+37,142,Fischauge
+38,145,Heidmann
+39,145,Fischauge
+40,145,Karlchen
+41,147,Fuchs gefangen
+42,148,Heidfrau
+43,153,Fischauge
+44,155,Fischauge
+45,161,Genscherdamen
+46,161,Fuchs gefangen
+47,170,Fischauge
+48,173,Fischauge
+49,175,Fischauge
+50,178,Fuchs gefangen
+51,179,Fischauge
+52,180,Fischauge
+53,181,Linksdrehender Gehängter
+54,181,Fischauge
+55,182,Fischauge
+56,185,Schweinchen
+57,187,Linksdrehender Gehängter
+58,189,Klaubautermann
+59,192,Fischauge
+60,194,Superschweinchen
+61,194,Kämmerich
+62,196,Schweinchen
+63,197,Genscherdamen
+64,199,Fuchs gefangen
+65,200,Fischauge
+66,205,Genscherdamen
+67,207,Schweinchen
+68,207,Genscherdamen
+69,209,Genscherdamen
+70,210,Fischauge
+71,211,Gegengenscherdamen
+72,216,Doppelkopf
+73,216,Fischauge
+74,216,Klaubautermann
+75,217,Fischauge
+76,220,Fischauge
+77,223,Karlchen
+78,224,Fischauge
+79,226,Fischauge
+80,232,Fischauge
+81,232,Karlchen
+82,269,Fischauge
+83,271,Fischauge
+84,272,Schweinchen
+85,274,Fuchs gefangen
+86,275,Fischauge
+87,276,Fischauge
+88,281,Doppelkopf
+89,287,Superschweinchen
+90,288,Schweinchen
+91,288,Fischauge
+92,291,Fuchs gefangen
+93,293,Doppelkopf
+94,294,Fischauge
+95,297,Doppelkopf
+96,298,Genscherdamen
+97,304,Heidmann
+98,304,Fuchs gefangen
+99,311,Heidmann
+100,313,Fischauge
+101,317,Fuchs gefangen
+102,320,Fuchs gefangen
+103,326,Schweinchen
+104,328,Heidmann
+105,330,Fuchs gefangen
+106,330,Fischauge
+107,334,Fuchs gefangen
+108,336,Fuchs gefangen
+109,336,Fischauge
+110,338,Agathe
+111,342,Doppelkopf
+112,342,Fischauge
+113,356,Genscherdamen
+114,356,Fischauge
+115,357,Genscherdamen
+116,357,Fischauge
+117,360,Gegengenscherdamen
+118,366,Linksdrehender Gehängter
+119,372,Klaubautermann
+120,373,Heidmann
+121,374,Schweinchen
+122,387,Schweinchen
+123,387,Fischauge
+124,389,Agathe
+125,395,Fischauge
+126,396,Fischauge
+127,399,Fischauge
+128,400,Fuchs gefangen
+129,400,Fischauge
+130,403,Schweinchen
+131,403,Linksdrehender Gehängter
+132,404,Fischauge
+133,406,Schweinchen
+134,406,Fischauge
+135,407,Fischauge
+136,408,Heidmann
+137,413,Agathe
+138,416,Doppelkopf
+139,417,Genscherdamen
+140,426,Fuchs gefangen
+141,435,Fischauge
+142,442,Fischauge
+143,443,Fuchs gefangen
+144,449,Fuchs gefangen
+145,450,Fischauge
+146,453,Klaubautermann
+147,456,Fischauge
+148,457,Fuchs gefangen
+149,457,Klaubautermann
+150,458,Fischauge
+151,460,Fischauge
+152,465,Schweinchen
+153,465,Genscherdamen
+154,465,Doppelkopf
+155,466,Gegengenscherdamen
+156,473,Fischauge
+157,475,Fischauge
+158,477,Fuchs gefangen
+159,477,Fischauge
+160,478,Linksdrehender Gehängter
+161,479,Kämmerich
+162,480,Fuchs gefangen
+163,488,Fuchs gefangen
+164,488,Fischauge
+165,492,Genscherdamen
+166,493,Linksdrehender Gehängter
+167,493,Fuchs gefangen
+168,495,Gegengenscherdamen
+169,496,Genscherdamen
+170,496,Fischauge
+171,500,Fuchs gefangen
+172,500,Fischauge
+173,501,Hyperschweinchen
+174,502,Superschweinchen
+175,502,Fischauge
+176,503,Fischauge
+177,511,Festmahl
+178,512,Fischauge
+179,513,Fischauge
+180,515,Kämmerich
+181,515,Fischauge
+182,519,Fischauge
+183,520,Fischauge
+184,523,Fuchs gefangen
+185,524,Fischauge
+186,525,Fischauge
+187,527,Heidmann
+188,532,Doppelkopf
+189,532,Fuchs gefangen
+190,533,Fuchs gefangen
+191,533,Fischauge
+192,537,Fuchs gefangen
+193,539,Fischauge
+194,546,Karlchen
+195,549,Fischauge
+196,554,Fuchs gefangen
+197,557,Fischauge
+198,559,Genscherdamen
+199,560,Heidmann
+200,560,Fuchs gefangen
+201,569,Linksdrehender Gehängter
+202,570,Kämmerich
+203,575,Fischauge
+204,578,Doppelkopf
+205,580,Doppelkopf
+206,588,Doppelkopf
+207,588,Fuchs gefangen
+208,588,Fischauge
+209,589,Genscherdamen
+210,589,Heidmann
+211,589,Fuchs gefangen
+212,595,Doppelkopf
+213,595,Fuchs gefangen
+214,596,Fischauge
+215,601,Linksdrehender Gehängter
+216,601,Doppelkopf
+217,601,Fuchs gefangen
+218,602,Genscherdamen
+219,603,Gegengenscherdamen
+220,605,Fuchs gefangen
+221,606,Kämmerich
+222,607,Linksdrehender Gehängter
+223,609,Fischauge
+224,617,Fischauge
+225,624,Fuchs gefangen
+226,627,Linksdrehender Gehängter
+227,633,Kämmerich
+228,634,Linksdrehender Gehängter
+229,634,Karlchen
+230,635,Fischauge
+231,638,Heidmann
+232,640,Fuchs gefangen
+233,642,Gegengenscherdamen
+234,642,Heidmann
+235,643,Schweinchen
+236,644,Genscherdamen
+237,645,Kämmerich
+238,645,Fuchs gefangen
+239,649,Kämmerich
+240,654,Kämmerich
+241,660,Schweinchen
+242,663,Fischauge
+243,665,Fischauge
+244,672,Fuchs gefangen
+245,672,Fischauge
+246,674,Fuchs gefangen
+247,695,Heidfrau
+248,696,Heidmann
+249,697,Gans
+250,702,Genscherdamen
+251,702,Fischauge
+252,706,Fuchs gefangen
+253,709,Klaubautermann
+254,710,Fuchs gefangen
+255,710,Karlchen
+256,717,Genscherdamen
+257,722,Fischauge
+258,723,Schweinchen
+259,725,Schweinchen
+260,727,Heidmann
+261,731,Genscherdamen
+262,731,Gegengenscherdamen
+263,733,Kämmerich
+264,733,Fischauge
+265,734,Superschweinchen
+266,735,Schweinchen
+267,737,Gans
+268,740,Linksdrehender Gehängter
+269,742,Superschweinchen
+270,743,Fischauge
+271,744,Schweinchen
+272,751,Fuchs gefangen
+273,756,Genscherdamen
+274,770,Doppelkopf
+275,770,Fischauge
+276,772,Heidmann
+277,781,Kämmerich
+278,785,Fischauge
+279,785,Karlchen
+280,789,Schweinchen
+281,792,Heidmann
+282,797,Genscherdamen
+283,797,Fuchs gefangen
+284,800,Fischauge
+285,802,Fischauge
+286,811,Fuchs gefangen
+287,814,Fischauge
+288,815,Schweinchen
+289,815,Gegengenscherdamen
+290,819,Fischauge
+291,824,Schweinchen
+292,837,Schweinchen
+293,838,Klaubautermann
+294,858,Fuchs gefangen
+295,861,Klaubautermann
+296,862,Fuchs gefangen
+297,862,Fischauge
+298,864,Fuchs gefangen
+299,864,Karlchen
+300,867,Fischauge
+301,872,Klaubautermann
+302,873,Fuchs gefangen
+303,873,Klaubautermann
+304,877,Schweinchen
+305,880,Genscherdamen
+306,880,Heidmann
+307,880,Heidfrau
+308,886,Fischauge
+309,893,Genscherdamen
+310,894,Gegengenscherdamen
+311,895,Heidmann
+312,896,Heidfrau
+313,898,Linksdrehender Gehängter
+314,900,Fischauge
+315,905,Heidmann
+316,907,Fuchs gefangen
+317,910,Linksdrehender Gehängter
+318,912,Schweinchen
+319,912,Kämmerich
+320,912,Fischauge
+321,913,Linksdrehender Gehängter
+322,915,Kämmerich
+323,918,Fuchs gefangen
+324,919,Genscherdamen
+325,919,Fischauge
+326,920,Fischauge
+327,925,Genscherdamen
+328,925,Gegengenscherdamen
+329,931,Kaffeekränzchen
+330,935,Karlchen
+331,937,Fischauge
+332,938,Fischauge
+333,943,Fuchs gefangen
+334,943,Fischauge
+335,952,Heidfrau
+336,952,Fuchs gefangen
+337,952,Fischauge
+338,953,Genscherdamen
+339,953,Fischauge
+340,954,Gegengenscherdamen
+341,956,Fuchs gefangen
+342,957,Gans
+343,959,Fischauge
+344,959,Klaubautermann
+345,960,Genscherdamen
+346,962,Kämmerich
+347,962,Linksdrehender Gehängter
+348,962,Fuchs gefangen
+349,964,Heidmann
+350,965,Gegengenscherdamen
+351,967,Genscherdamen
+352,968,Fuchs gefangen
+353,969,Heidmann
+354,969,Fuchs gefangen
+355,971,Fuchs gefangen
+356,971,Fischauge
+357,972,Linksdrehender Gehängter
+358,990,Fischauge
+359,993,Heidmann
+360,994,Heidfrau
+361,994,Fuchs gefangen
+362,1005,Fischauge
+363,1006,Genscherdamen
+364,1024,Fuchs gefangen
+365,1029,Heidmann
+366,1032,Fischauge
+367,1037,Genscherdamen
+368,1043,Doppelkopf
+369,1043,Fuchs gefangen
+370,1043,Karlchen
+371,1050,Heidmann
+372,1050,Fuchs gefangen
+373,1055,Karlchen
+374,1056,Klaubautermann
+375,1057,Heidmann
+376,1060,Schweinchen
+377,1060,Fischauge
+378,1062,Genscherdamen
+379,1064,Fischauge
+380,1066,Linksdrehender Gehängter
+381,1077,Schweinchen
+382,1077,Fischauge
+383,1081,Klaubautermann
+384,1082,Fuchs gefangen
+385,1082,Karlchen
+386,1097,Heidmann
+387,1098,Fuchs gefangen
+388,1101,Genscherdamen
+389,1105,Fischauge
+390,1112,Fuchs gefangen
+391,1112,Karlchen
+392,1137,Genscherdamen
+393,1137,Gegengenscherdamen
+394,1137,Fischauge
+395,1138,Fischauge
+396,1141,Genscherdamen
+397,1150,Genscherdamen
+398,1152,Schweinchen
+399,1152,Superschweinchen
+400,1153,Karlchen
+401,1159,Fischauge
+402,1160,Agathe
+403,1161,Schweinchen
+404,1164,Genscherdamen
+405,1166,Fischauge
+406,1167,Fuchs gefangen
+407,1168,Gegengenscherdamen
+408,1168,Doppelkopf
+409,1177,Gans
+410,1178,Fuchs gefangen
+411,1187,Fischauge
+412,1188,Fischauge
+413,1190,Fischauge
+414,1195,Fischauge
+415,1198,Fuchs gefangen
+416,1200,Fischauge
+417,1206,Linksdrehender Gehängter
+418,1207,Fuchs gefangen
+419,1212,Fischauge
+420,1223,Genscherdamen
+421,1224,Gegengenscherdamen
+422,1226,Genscherdamen
+423,1235,Fischauge
+424,1236,Heidmann
+425,1236,Doppelkopf
+426,1237,Fischauge
+427,1238,Genscherdamen
+428,1238,Fuchs gefangen
+429,1238,Fischauge
+430,1241,Fischauge
+431,1243,Gans
+432,1246,Genscherdamen
+433,1247,Fuchs gefangen
+434,1247,Fischauge
+435,1248,Gegengenscherdamen
+436,1248,Agathe
+437,1251,Genscherdamen
+438,1251,Fischauge
+439,1254,Fischauge
+440,1255,Klaubautermann
+441,1258,Fuchs gefangen
+442,1265,Schweinchen
+443,1266,Superschweinchen
+444,1267,Hyperschweinchen
+445,1269,Schweinchen
+446,1272,Fischauge
+447,1274,Fuchs gefangen
+448,1276,Fischauge
+449,1277,Heidmann
+450,1279,Fischauge
+451,1280,Heidfrau
+452,1281,Superschweinchen
+453,1282,Schweinchen
+454,1282,Linksdrehender Gehängter
+455,1285,Fischauge
+456,1288,Genscherdamen
+457,1289,Fuchs gefangen
+458,1289,Karlchen
+459,1302,Klaubautermann
+460,1304,Heidmann
+461,1313,Fischauge
+462,1314,Schweinchen
+463,1314,Hyperschweinchen
+464,1322,Fuchs gefangen
+465,1338,Fischauge
+466,1342,Fischauge
+467,1348,Fischauge
+468,1349,Heidmann
+469,1349,Fischauge
+470,1352,Heidmann
+471,1361,Heidmann
+472,1362,Fischauge
+473,1363,Doppelkopf
+474,1363,Fuchs gefangen
+475,1366,Schweinchen
+476,1366,Klaubautermann
+477,1368,Superschweinchen
+478,1369,Heidfrau
+479,1370,Heidmann
+480,1371,Genscherdamen
+481,1371,Fuchs gefangen
+482,1371,Fischauge
+483,1373,Schweinchen
+484,1374,Kämmerich
+485,1375,Linksdrehender Gehängter
+486,1380,Schweinchen
+487,1380,Fischauge
+488,1382,Superschweinchen
+489,1383,Schweinchen
+490,1385,Schweinchen
+491,1390,Genscherdamen
+492,1392,Gegengenscherdamen
+493,1396,Fischauge
+494,1400,Heidmann
+495,1413,Fischauge
+496,1415,Fuchs gefangen
+497,1415,Fischauge
+498,1415,Klaubautermann
+499,1418,Fuchs gefangen
+500,1421,Linksdrehender Gehängter
+501,1422,Kämmerich
+502,1422,Fuchs gefangen
+503,1423,Fischauge
+504,1424,Heidmann
+505,1425,Schweinchen
+506,1426,Fischauge
+507,1428,Fischauge
+508,1433,Doppelkopf
+509,1440,Karlchen
+510,1445,Heidmann
+511,1448,Heidmann
+512,1448,Fischauge
+513,1450,Fuchs gefangen
+514,1461,Gegengenscherdamen
+515,1463,Schweinchen
+516,1463,Heidmann
+517,1464,Genscherdamen
+518,1470,Genscherdamen
+519,1470,Heidmann
+520,1484,Heidmann
+521,1485,Schweinchen
+522,1486,Heidmann
+523,1487,Superschweinchen
+524,1491,Fischauge
+525,1491,Klaubautermann
+526,1493,Schweinchen
+527,1495,Fischauge
+528,1496,Heidmann
+529,1497,Heidmann
+530,1499,Klaubautermann
+531,1501,Fuchs gefangen
+532,1501,Fischauge
+533,1505,Gans
+534,1509,Doppelkopf
+535,1510,Kämmerich
+536,1510,Karlchen
+537,1516,Fischauge
+538,1516,Klaubautermann
+539,1519,Fischauge
+540,1519,Karlchen
+541,1520,Heidmann
+542,1521,Heidmann
+543,1524,Genscherdamen
+544,1524,Doppelkopf
+545,1524,Fuchs gefangen
+546,1526,Fuchs gefangen
+547,1526,Agathe
+548,1528,Fischauge
+549,1529,Fischauge
+550,1534,Genscherdamen
+551,1535,Gegengenscherdamen
+552,1536,Schweinchen
+553,1538,Gans
+554,1542,Fuchs gefangen
+555,1544,Fuchs gefangen
+556,1545,Schweinchen
+557,1545,Heidmann
+558,1546,Heidmann
+559,1547,Fischauge
+560,1549,Heidmann
+561,1551,Superschweinchen
+562,1551,Kaffeekränzchen
+563,1552,Schweinchen
+564,1554,Gans
+565,1558,Genscherdamen
+566,1560,Fischauge
+567,1563,Genscherdamen
+568,1563,Fischauge
+569,1565,Fischauge
+570,1566,Schweinchen
+571,1569,Festmahl
+572,1570,Heidmann
+573,1575,Fischauge
+574,1577,Kämmerich
+575,1580,Fuchs gefangen
+576,1583,Schweinchen
+577,1583,Fischauge
+578,1584,Genscherdamen
+579,1584,Heidmann
+580,1587,Fuchs gefangen
+581,1587,Fischauge
+582,1588,Fischauge
+583,1589,Doppelkopf
+584,1597,Fischauge
+585,1598,Fischauge
+586,1601,Fischauge
+587,1603,Kämmerich
+588,1604,Linksdrehender Gehängter
+589,1608,Schweinchen
+590,1608,Fischauge
+591,1609,Linksdrehender Gehängter
+592,1611,Heidmann
+593,1612,Fischauge
+594,1613,Fischauge
+595,1620,Fischauge
+596,1621,Fischauge
+597,1621,Klaubautermann
+598,1630,Linksdrehender Gehängter
+599,1630,Fuchs gefangen
+600,1631,Fischauge
+601,1633,Fischauge
+602,1634,Heidmann
+603,1640,Fischauge
+604,1643,Fischauge
+605,1645,Fuchs gefangen
+606,1646,Heidmann
+607,1647,Fischauge
+608,1653,Heidmann
+609,1654,Heidfrau
+610,1666,Gans
+611,1673,Heidmann
+612,1675,Heidmann
+613,1675,Kämmerich
+614,1675,Fischauge
+615,1680,Genscherdamen
+616,1686,Superschweinchen
+617,1686,Heidmann
+618,1688,Schweinchen
+619,1688,Fischauge
+620,1691,Linksdrehender Gehängter
+621,1697,Genscherdamen
+622,1697,Fuchs gefangen
+623,1698,Genscherdamen
+624,1698,Fuchs gefangen
+625,1699,Fischauge
+626,1705,Fischauge
+627,1707,Schweinchen
+628,1707,Kämmerich
+629,1707,Fischauge
+630,1708,Superschweinchen
+631,1710,Heidmann
+632,1711,Genscherdamen
+633,1711,Fuchs gefangen
+634,1711,Festmahl
+635,1719,Schweinchen
+636,1722,Heidmann
+637,1722,Fuchs gefangen
+638,1724,Genscherdamen
+639,1729,Fischauge
+640,1731,Linksdrehender Gehängter
+641,1734,Fuchs gefangen
+642,1737,Gans
+643,1741,Fischauge
+644,1743,Fuchs gefangen
+645,1744,Fuchs gefangen
+646,1750,Fuchs gefangen
+647,1751,Fuchs gefangen
+648,1756,Doppelkopf
+649,1769,Schweinchen
+650,1769,Heidmann
+651,1771,Kämmerich
+652,1772,Linksdrehender Gehängter
+653,1773,Genscherdamen
+654,1777,Fischauge
+655,1782,Heidmann
+656,1782,Fischauge
+657,1783,Genscherdamen
+658,1784,Schweinchen
+659,1802,Gans
+660,1823,Fischauge
+661,1831,Doppelkopf
+662,1831,Fuchs gefangen
+663,1833,Fuchs gefangen
+664,1836,Klaubautermann
+665,1838,Fischauge
+666,1845,Fuchs gefangen
+667,1852,Fischauge
+668,1853,Schweinchen
+669,1854,Genscherdamen
+670,1855,Superschweinchen
+671,1855,Doppelkopf
+672,1856,Fischauge
+673,1859,Schweinchen
+674,1869,Fuchs gefangen
+675,1870,Fischauge
+676,1872,Genscherdamen
+677,1872,Fuchs gefangen
+678,1874,Fuchs gefangen
+679,1879,Schweinchen
+680,1879,Fischauge
+681,1880,Superschweinchen
+682,1880,Heidmann
+683,1881,Superschweinchen
+684,1882,Schweinchen
+685,1883,Hyperschweinchen
+686,1884,Heidmann
+687,1884,Kämmerich
+688,1884,Fischauge
+689,1884,Blutbad
+690,1886,Heidmann
+691,1886,Fischauge
+692,1887,Kämmerich
+693,1889,Fuchs gefangen
+694,1890,Linksdrehender Gehängter
+695,1890,Fischauge
+696,1893,Genscherdamen
+697,1893,Fuchs gefangen
+698,1896,Gegengenscherdamen
+699,1896,Fischauge
+700,1897,Heidmann
+701,1897,Kämmerich
+702,1898,Superschweinchen
+703,1898,Linksdrehender Gehängter
+704,1898,Doppelkopf
+705,1898,Fischauge
+706,1899,Heidmann
+707,1900,Schweinchen
+708,1905,Heidmann
+709,1909,Heidmann
+710,1909,Fischauge
+711,1910,Fuchs gefangen
+712,1911,Kämmerich
+713,1912,Heidfrau
+714,1913,Schweinchen
+715,1914,Superschweinchen
+716,1921,Fuchs gefangen
+717,1923,Fuchs gefangen
+718,1928,Heidmann
+719,1928,Fischauge
+720,1933,Gegengenscherdamen
+721,1933,Fischauge
+722,1934,Genscherdamen
+723,1935,Fuchs gefangen
+724,1938,Gegengenscherdamen
+725,1939,Genscherdamen
+726,1939,Doppelkopf
+727,1943,Fuchs gefangen
+728,1943,Fischauge
+729,1945,Schweinchen
+730,1951,Schweinchen
+731,1951,Fischauge
+732,1954,Fischauge
+733,1957,Fuchs gefangen
+734,1959,Genscherdamen
+735,1961,Heidmann
+736,1961,Fuchs gefangen
+737,1964,Heidfrau
+738,1969,Gans
+739,1970,Kämmerich
+740,1971,Genscherdamen
+741,1972,Karlchen
+742,1975,Gans
+743,1978,Genscherdamen
+744,1979,Fuchs gefangen
+745,1983,Fuchs gefangen
+746,1987,Fischauge
+747,1991,Fischauge
+748,1994,Fuchs gefangen
+749,2006,Superschweinchen
+750,2007,Schweinchen
+751,2009,Heidmann
+752,2013,Klaubautermann
+753,2014,Gans
+754,2014,Karlchen
+755,2018,Heidmann
+756,2020,Schweinchen
+757,2023,Fuchs gefangen
+758,2030,Superschweinchen
+759,2030,Hyperschweinchen
+760,2030,Klaubautermann
+761,2031,Schweinchen
+762,2033,Gans
+763,2034,Karlchen
+764,2036,Kämmerich
+765,2042,Doppelkopf
+766,2042,Fischauge
+767,2044,Schweinchen
+768,2051,Klaubautermann
+769,2052,Fuchs gefangen
+770,2057,Genscherdamen
+771,2057,Fuchs gefangen
+772,2062,Karlchen
+773,2065,Schweinchen
+774,2067,Fischauge
+775,2071,Heidmann
+776,2071,Gans
+777,2074,Linksdrehender Gehängter
+778,2075,Fuchs gefangen
+779,2078,Doppelkopf
+780,2089,Fischauge
+781,2092,Doppelkopf
+782,2092,Fuchs gefangen
+783,2095,Schweinchen
+784,2097,Fuchs gefangen
+785,2101,Schweinchen
+786,2101,Heidmann
+787,2113,Superschweinchen
+788,2116,Schweinchen
+789,2118,Fuchs gefangen
+790,2121,Heidmann
+791,2135,Fischauge
+792,2136,Kämmerich
+793,2137,Fischauge
+794,2138,Kämmerich
+795,2139,Fuchs gefangen
+796,2140,Linksdrehender Gehängter
+797,2140,Karlchen
+798,2143,Fuchs gefangen
+799,2143,Fischauge
+800,2149,Fuchs gefangen
+801,2151,Heidmann
+802,2156,Fischauge
+803,2164,Heidmann
+804,2165,Gegengenscherdamen
+805,2168,Genscherdamen
+806,2168,Doppelkopf
+807,2168,Fischauge
+808,2176,Genscherdamen
+809,2178,Genscherdamen
+810,2181,Heidmann
+811,2186,Fuchs gefangen
+812,2187,Fuchs gefangen
+813,2189,Gegengenscherdamen
+814,2190,Genscherdamen
+815,2195,Schweinchen
+816,2200,Fuchs gefangen
+817,2203,Fischauge
+818,2203,Klaubautermann
+819,2205,Kämmerich
+820,2208,Genscherdamen
+821,2209,Heidmann
+822,2215,Linksdrehender Gehängter
+823,2217,Kämmerich
+824,2219,Heidmann
+825,2219,Gans
+826,2221,Heidmann
+827,2222,Doppelkopf
+828,2224,Fischauge
+829,2235,Fuchs gefangen
+830,2236,Fuchs gefangen
+831,2241,Gegengenscherdamen
+832,2241,Fischauge
+833,2244,Genscherdamen
+834,2245,Linksdrehender Gehängter
+835,2245,Fischauge
+836,2251,Klaubautermann
+837,2252,Fuchs gefangen
+838,2252,Fischauge
+839,2260,Fuchs gefangen
+840,2277,Fischauge
+841,2281,Fuchs gefangen
+842,2281,Fischauge
+843,2292,Genscherdamen
+844,2292,Fuchs gefangen
+845,2296,Fischauge
+846,2297,Fischauge
+847,2298,Kämmerich
+848,2300,Schweinchen
+849,2305,Fuchs gefangen
+850,2305,Agathe
+851,2307,Doppelkopf
+852,2311,Agathe
+853,2312,Fuchs gefangen
+854,2313,Fuchs gefangen
+855,2319,Fischauge
+856,2320,Linksdrehender Gehängter
+857,2327,Fuchs gefangen
+858,2328,Linksdrehender Gehängter
+859,2333,Heidmann
+860,2333,Festmahl
+861,2337,Fuchs gefangen
+862,2337,Fischauge
+863,2345,Linksdrehender Gehängter
+864,2346,Superschweinchen
+865,2346,Fischauge
+866,2347,Fischauge
+867,2348,Schweinchen
+868,2349,Fuchs gefangen
+869,2352,Klaubautermann
+870,2360,Fischauge
+871,2360,Agathe
+872,2365,Fischauge
+873,2368,Fischauge
+874,2369,Gans
+875,2374,Genscherdamen
+876,2376,Fuchs gefangen
+877,2379,Agathe
+878,2385,Fischauge
+879,2386,Genscherdamen
+880,2393,Klaubautermann
+881,2396,Fuchs gefangen
+882,2396,Fischauge
+883,2398,Genscherdamen
+884,2401,Fuchs gefangen
+885,2402,Fuchs gefangen
+886,2403,Genscherdamen
+887,2409,Heidmann
+888,2410,Fischauge
+889,2422,Schweinchen
+890,2422,Fischauge
+891,2423,Superschweinchen
+892,2425,Fischauge
+893,2427,Fuchs gefangen
+894,2428,Fischauge
+895,2428,Karlchen
+896,2436,Fischauge
+897,2436,Karlchen
+898,2441,Fuchs gefangen
+899,2442,Fuchs gefangen
+900,2442,Fischauge
+901,2444,Fischauge
+902,2459,Superschweinchen
+903,2460,Schweinchen
+904,2460,Heidmann
+905,2462,Genscherdamen
+906,2463,Gegengenscherdamen
+907,2467,Genscherdamen
+908,2468,Fuchs gefangen
+909,2470,Heidmann
+910,2483,Fischauge
+911,2484,Fuchs gefangen
+912,2486,Genscherdamen
+913,2488,Fuchs gefangen
+914,2491,Fuchs gefangen
+915,2493,Gegengenscherdamen
+916,2494,Genscherdamen
+917,2496,Doppelkopf
+918,2496,Fuchs gefangen
+919,2509,Genscherdamen
+920,2510,Klaubautermann
+921,2511,Schweinchen
+922,2512,Linksdrehender Gehängter
+923,2515,Schweinchen
+924,2515,Karlchen
+925,2517,Kämmerich
+926,2520,Heidmann
+927,2523,Karlchen
+928,2526,Karlchen
+929,2535,Fuchs gefangen
+930,2536,Fischauge
+931,2537,Fuchs gefangen
+932,2539,Gans
+933,2542,Fuchs gefangen
+934,2545,Linksdrehender Gehängter
+935,2545,Fuchs gefangen
+936,2552,Klaubautermann
+937,2553,Kämmerich
+938,2554,Schweinchen
+939,2564,Fuchs gefangen
+940,2564,Fischauge
+941,2567,Doppelkopf
+942,2569,Fischauge
+943,2571,Fuchs gefangen
+944,2573,Fuchs gefangen
+945,2577,Fischauge
+946,2578,Genscherdamen
+947,2595,Fischauge
+948,2610,Fischauge
+949,2612,Fuchs gefangen
+950,2622,Genscherdamen
+951,2628,Kämmerich
+952,2628,Fischauge
+953,2637,Heidmann
+954,2641,Fischauge
+955,2642,Schweinchen
+956,2642,Heidmann
+957,2645,Heidmann
+958,2645,Linksdrehender Gehängter
+959,2646,Kämmerich
+960,2647,Heidmann
+961,2649,Fuchs gefangen
+962,2653,Doppelkopf
+963,2653,Fuchs gefangen
+964,2663,Genscherdamen
+965,2664,Linksdrehender Gehängter
+966,2665,Fischauge
+967,2667,Schweinchen
+968,2668,Heidmann
+969,2669,Linksdrehender Gehängter
+970,2671,Fuchs gefangen
+971,2672,Agathe
+972,2675,Fischauge
+973,2676,Genscherdamen
+974,2676,Fischauge
+975,2678,Fuchs gefangen
+976,2678,Klaubautermann
+977,2682,Fischauge
+978,2684,Klaubautermann
+979,2688,Doppelkopf
+980,2689,Genscherdamen
+981,2689,Gans
+982,2692,Fischauge
+983,2697,Fuchs gefangen
+984,2698,Fuchs gefangen
+985,2699,Genscherdamen
+986,2712,Fuchs gefangen
+987,2715,Fischauge
+988,2715,Klaubautermann
+989,2716,Schweinchen
+990,2716,Superschweinchen
+991,2723,Agathe
+992,2726,Fuchs gefangen
+993,2727,Fischauge
+994,2730,Fischauge
+995,2739,Schweinchen
+996,2742,Genscherdamen
+997,2742,Heidmann
+998,2743,Heidmann
+999,2745,Agathe
+1000,2746,Fischauge
+1001,2751,Fuchs gefangen
+1002,2754,Genscherdamen
+1003,2755,Fuchs gefangen
+1004,2757,Fuchs gefangen
+1005,2762,Fischauge
+1006,2767,Fuchs gefangen
+1007,2788,Heidmann
+1008,2788,Fischauge
+1009,2790,Fischauge
+1010,2796,Fuchs gefangen
+1011,2801,Klaubautermann
+1012,2809,Fischauge
+1013,2810,Fuchs gefangen
+1014,2817,Fischauge
+1015,2842,Doppelkopf
+1016,2842,Fischauge
+1017,2842,Klaubautermann
+1018,2846,Schweinchen
+1019,2846,Fischauge
+1020,2858,Klaubautermann
+1021,2860,Karlchen
+1022,2861,Heidmann
+1023,2863,Heidmann
+1024,2864,Schweinchen
+1025,2868,Doppelkopf
+1026,2868,Fischauge
+1027,2869,Gans
+1028,2873,Fischauge
+1029,2874,Fischauge
+1030,2876,Genscherdamen
+1031,2876,Fuchs gefangen
+1032,2880,Fuchs gefangen
+1033,2880,Klaubautermann
+1034,2882,Doppelkopf
+1035,2884,Fischauge
+1036,2886,Klaubautermann
+1037,2888,Fuchs gefangen
+1038,2892,Fischauge
+1039,2895,Heidmann
+1040,2895,Fuchs gefangen
+1041,2913,Genscherdamen
+1042,2918,Schweinchen
+1043,2920,Fischauge
+1044,2922,Fuchs gefangen
+1045,2927,Fischauge
+1046,2928,Schweinchen
+1047,2929,Schweinchen
+1048,2930,Fischauge
+1049,2931,Heidmann
+1050,2931,Heidfrau
+1051,2932,Fischauge
+1052,2936,Heidmann
+1053,2936,Fuchs gefangen
+1054,2938,Schweinchen
+1055,2938,Linksdrehender Gehängter
+1056,2939,Klaubautermann
+1057,2942,Klaubautermann
+1058,2943,Schweinchen
+1059,2943,Fischauge
+1060,2950,Kämmerich
+1061,2951,Fuchs gefangen
+1062,2952,Fischauge
+1063,2954,Genscherdamen
+1064,2954,Fuchs gefangen
+1065,2954,Fischauge
+1066,2955,Fischauge
+1067,2958,Fuchs gefangen
+1068,2961,Schweinchen
+1069,2963,Genscherdamen
+1070,2965,Karlchen
+1071,2968,Kämmerich
+1072,2968,Kaffeekränzchen
+1073,2969,Superschweinchen
+1074,2970,Schweinchen
+1075,2970,Kämmerich
+1076,2971,Hyperschweinchen
+1077,2978,Fuchs gefangen
+1078,2983,Kämmerich
+1079,2988,Fischauge
+1080,2988,Karlchen
+1081,2991,Genscherdamen
+1082,2991,Gegengenscherdamen
+1083,2994,Genscherdamen
+1084,2995,Fischauge
+1085,2996,Schweinchen
+1086,3003,Doppelkopf
+1087,3004,Fuchs gefangen
+1088,3004,Fischauge
+1089,3006,Fischauge
+1090,3010,Fischauge
+1091,3012,Heidmann
+1092,3013,Heidmann
+1093,3013,Gans
+1094,3023,Kämmerich
+1095,3024,Fuchs gefangen
+1096,3024,Fischauge
+1097,3029,Schweinchen
+1098,3031,Fischauge
+1099,3035,Fischauge
+1100,3035,Karlchen
+1101,3040,Klaubautermann
+1102,3044,Schweinchen
+1103,3045,Fischauge
+1104,3048,Heidmann
+1105,3049,Fischauge
+1106,3053,Genscherdamen
+1107,3057,Kämmerich
+1108,3074,Agathe
+1109,3075,Doppelkopf
+1110,3076,Schweinchen
+1111,3081,Doppelkopf
+1112,3086,Fischauge
+1113,3087,Heidmann
+1114,3093,Schweinchen
+1115,3098,Klaubautermann
+1116,3100,Fischauge
+1117,3101,Fischauge
+1118,3103,Genscherdamen
+1119,3105,Fuchs gefangen
+1120,3108,Fischauge
+1121,3109,Fuchs gefangen
+1122,3111,Genscherdamen
+1123,3111,Fuchs gefangen
+1124,3114,Karlchen
+1125,3117,Schweinchen
+1126,3121,Fuchs gefangen
+1127,3122,Fuchs gefangen
+1128,3123,Klaubautermann
+1129,3125,Schweinchen
+1130,3126,Fischauge
+1131,3128,Superschweinchen
+1132,3128,Doppelkopf
+1133,3134,Fuchs gefangen
+1134,3137,Linksdrehender Gehängter
+1135,3137,Karlchen
+1136,3139,Fischauge
+1137,3141,Gegengenscherdamen
+1138,3142,Gans
+1139,3143,Genscherdamen
+1140,3154,Fischauge
+1141,3157,Fuchs gefangen
+1142,3171,Linksdrehender Gehängter
+1143,3172,Fischauge
+1144,3173,Genscherdamen
+1145,3174,Heidmann
+1146,3176,Heidfrau
+1147,3176,Fischauge
+1148,3190,Schweinchen
+1149,3195,Fuchs gefangen
+1150,3196,Fuchs gefangen
+1151,3197,Fuchs gefangen
+1152,3201,Fuchs gefangen
+1153,3206,Schweinchen
+1154,3206,Superschweinchen
+1155,3209,Genscherdamen
+1156,3213,Klaubautermann
+1157,3214,Schweinchen
+1158,3214,Fischauge
+1159,3223,Fischauge
+1160,3223,Karlchen
+1161,3225,Heidmann
+1162,3226,Schweinchen
+1163,3229,Fuchs gefangen
+1164,3229,Fischauge
+1165,3237,Fuchs gefangen
+1166,3238,Doppelkopf
+1167,3240,Fuchs gefangen
+1168,3240,Fischauge
+1169,3241,Fuchs gefangen
+1170,3244,Fischauge
+1171,3248,Schweinchen
+1172,3253,Fuchs gefangen
+1173,3254,Heidfrau
+1174,3256,Heidmann
+1175,3262,Fischauge
+1176,3262,Klaubautermann
+1177,3264,Doppelkopf
+1178,3267,Linksdrehender Gehängter
+1179,3268,Heidmann
+1180,3268,Fuchs gefangen
+1181,3269,Genscherdamen
+1182,3272,Fuchs gefangen
+1183,3273,Genscherdamen
+1184,3286,Fischauge
+1185,3288,Gegengenscherdamen
+1186,3297,Heidmann
+1187,3298,Gegengenscherdamen
+1188,3299,Genscherdamen
+1189,3309,Fuchs gefangen
+1190,3309,Fischauge
+1191,3313,Heidmann
+1192,3316,Heidfrau
+1193,3316,Fischauge
+1194,3319,Fischauge
+1195,3322,Schweinchen
+1196,3323,Heidfrau
+1197,3324,Heidmann
+1198,3325,Gans
+1199,3329,Fischauge
+1200,3330,Kämmerich
+1201,3330,Fischauge
+1202,3333,Kämmerich
+1203,3334,Fuchs gefangen
+1204,3337,Fischauge
+1205,3342,Linksdrehender Gehängter
+1206,3346,Fischauge
+1207,3359,Heidmann
+1208,3363,Gans
+1209,3371,Fischauge
+1210,3373,Doppelkopf
+1211,3377,Schweinchen
+1212,3393,Fischauge
+1213,3394,Fuchs gefangen
+1214,3400,Fischauge
+1215,3401,Fischauge
+1216,3402,Gegengenscherdamen
+1217,3403,Genscherdamen
+1218,3403,Fischauge
+1219,3404,Heidmann
+1220,3405,Fuchs gefangen
+1221,3406,Heidmann
+1222,3409,Schweinchen
+1223,3409,Fischauge
+1224,3410,Gegengenscherdamen
+1225,3410,Kämmerich
+1226,3410,Linksdrehender Gehängter
+1227,3412,Genscherdamen
+1228,3414,Fischauge
+1229,3415,Fischauge
+1230,3423,Fischauge
+1231,3429,Fuchs gefangen
+1232,3433,Fischauge
+1233,3437,Doppelkopf
+1234,3438,Genscherdamen
+1235,3439,Fischauge
+1236,3441,Kaffeekränzchen
+1237,3442,Fischauge
+1238,3443,Heidmann
+1239,3444,Schweinchen
+1240,3445,Schweinchen
+1241,3447,Karlchen
+1242,3449,Genscherdamen
+1243,3450,Schweinchen
+1244,3452,Fischauge
+1245,3454,Fuchs gefangen
+1246,3461,Fuchs gefangen
+1247,3462,Fuchs gefangen
+1248,3464,Genscherdamen
+1249,3465,Fuchs gefangen
+1250,3466,Heidmann
+1251,3467,Heidmann
+1252,3468,Fischauge
+1253,3469,Heidmann
+1254,3469,Kämmerich
+1255,3470,Heidfrau
+1256,3470,Linksdrehender Gehängter
+1257,3470,Fischauge
+1258,3482,Fuchs gefangen
+1259,3483,Heidmann
+1260,3484,Fuchs gefangen
+1261,3486,Heidmann
+1262,3486,Kämmerich
+1263,3486,Doppelkopf
+1264,3486,Fischauge
+1265,3489,Karlchen
+1266,3494,Genscherdamen
+1267,3495,Schweinchen
+1268,3502,Fuchs gefangen
+1269,3504,Fischauge
+1270,3506,Fuchs gefangen
+1271,3508,Fischauge
+1272,3509,Fischauge
+1273,3509,Karlchen
+1274,3517,Fuchs gefangen
+1275,3517,Fischauge
+1276,3520,Agathe
+1277,3521,Schweinchen
+1278,3524,Fischauge
+1279,3529,Heidmann
+1280,3529,Gans
+1281,3532,Fischauge
+1282,3533,Superschweinchen
+1283,3534,Schweinchen
+1284,3548,Fuchs gefangen
+1285,3550,Fuchs gefangen
+1286,3552,Fischauge
+1287,3556,Karlchen
+1288,3557,Fischauge
+1289,3558,Karlchen
+1290,3559,Fischauge
+1291,3565,Karlchen
+1292,3573,Schweinchen
+1293,3574,Genscherdamen
+1294,3578,Superschweinchen
+1295,3578,Linksdrehender Gehängter
+1296,3579,Schweinchen
+1297,3580,Kämmerich
+1298,3580,Fischauge
+1299,3582,Heidfrau
+1300,3583,Fischauge
+1301,3584,Schweinchen
+1302,3584,Heidmann
+1303,3585,Fischauge
+1304,3596,Fuchs gefangen
+1305,3598,Agathe
+1306,3599,Linksdrehender Gehängter
+1307,3613,Fischauge
+1308,3614,Klaubautermann
+1309,3619,Karlchen
+1310,3630,Fischauge
+1311,3631,Linksdrehender Gehängter
+1312,3645,Fuchs gefangen
+1313,3646,Fuchs gefangen
+1314,3650,Fischauge
+1315,3651,Fischauge
+1316,3652,Fuchs gefangen
+1317,3653,Genscherdamen
+1318,3653,Linksdrehender Gehängter
+1319,3654,Gans
+1320,3658,Kämmerich
+1321,3661,Fischauge
+1322,3665,Fischauge
+1323,3668,Schweinchen
+1324,3670,Fischauge
+1325,3680,Fischauge
+1326,3680,Klaubautermann
+1327,3681,Heidfrau
+1328,3682,Heidmann
+1329,3685,Genscherdamen
+1330,3687,Linksdrehender Gehängter
+1331,3687,Fischauge
+1332,3688,Fuchs gefangen
+1333,3689,Linksdrehender Gehängter
+1334,3690,Klaubautermann
+1335,3697,Fuchs gefangen
+1336,3699,Superschweinchen
+1337,3700,Schweinchen
+1338,3701,Karlchen
+1339,3703,Schweinchen
+1340,3705,Karlchen
+1341,3712,Fischauge
+1342,3712,Agathe
+1343,3717,Fischauge
+1344,3721,Heidmann
+1345,3725,Doppelkopf
+1346,3726,Fischauge
+1347,3728,Fuchs gefangen
+1348,3733,Fischauge
+1349,3735,Schweinchen
+1350,3738,Karlchen
+1351,3739,Linksdrehender Gehängter
+1352,3743,Fuchs gefangen
+1353,3748,Heidmann
+1354,3751,Karlchen
+1355,3757,Fischauge
+1356,3762,Doppelkopf
+1357,3763,Linksdrehender Gehängter
+1358,3763,Gans
+1359,3766,Fischauge
+1360,3766,Karlchen
+1361,3771,Schweinchen
+1362,3771,Fischauge
+1363,3773,Fischauge
+1364,3778,Fischauge
+1365,3783,Heidmann
+1366,3783,Fuchs gefangen
+1367,3785,Schweinchen
+1368,3785,Fischauge
+1369,3788,Linksdrehender Gehängter
+1370,3788,Fischauge
+1371,3791,Klaubautermann
+1372,3792,Fischauge
+1373,3795,Schweinchen
+1374,3795,Superschweinchen
+1375,3798,Heidmann
+1376,3798,Fischauge
+1377,3799,Fischauge
+1378,3802,Klaubautermann
+1379,3803,Fischauge

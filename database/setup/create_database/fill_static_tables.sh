@@ -1,8 +1,13 @@
 #!/bin/bash
 
 # ---------- KONFIG ----------
-CONFIG_FILE="config/database/db_config.ini"
-SQL_FILE="database/setup/fill_static_tables.sql"
+CONFIG_FILE="$1"
+if [ -z "$CONFIG_FILE" ]; then
+    echo "❌ No config file path provided."
+    exit 1
+fi
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SQL_FILE="$SCRIPT_DIR/sql_queries/fill_static_tables.sql"
 
 # ---------- INI-WERTE LADEN ----------
 DB_NAME=$(awk -F'=' '/^db_name/ {gsub(/ /, "", $2); print $2}' "$CONFIG_FILE")

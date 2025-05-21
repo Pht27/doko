@@ -1,0 +1,13 @@
+DELETE FROM `game_mode`;
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('1', 'Armut');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('2', 'Bubensolo');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('3', 'Damensolo');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('4', 'Farbsolo');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('5', 'Fleischloses');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('6', 'Hochzeit');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('7', 'Knochenloses');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('8', 'Kontrasolo');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('9', 'Normal');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('10', 'Schlanker Martin');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('11', 'Schwarze Sau');
+INSERT INTO `game_mode` (`id`, `name`) VALUES ('12', 'Stille Hochzeit');

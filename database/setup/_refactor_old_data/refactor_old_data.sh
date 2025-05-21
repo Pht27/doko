@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # ---------- CONFIG ----------
-CONFIG_FILE="config/database/db_config.ini"
+CONFIG_FILE="$1"
+if [ -z "$CONFIG_FILE" ]; then
+    echo "❌ No config file path provided."
+    exit 1
+fi
 
 # ---------- INI-WERTE LADEN ----------
 DB_NAME=$(awk -F'=' '/^db_name/ {gsub(/ /, "", $2); print $2}' "$CONFIG_FILE")
@@ -11,7 +15,7 @@ DB_HOST=$(awk -F'=' '/^db_host_adress/ {gsub(/ /, "", $2); print $2}' "$CONFIG_F
 
 # ---------- PATH SETUP ----------
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV_PATH="$SCRIPT_DIR/../../venv"
+VENV_PATH="$SCRIPT_DIR/../../../venv"
 PYTHON="$VENV_PATH/bin/python"
 SQL_DIR="$SCRIPT_DIR/sql_queries"
 
