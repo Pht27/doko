@@ -7,7 +7,13 @@
         </th>
         <th onclick="sortColumn(this)" data-sort="points" data-label="Punkte">
           Punkte
-        </th class="arrow-col">
+        </th>
+        <th onclick="sortColumn(this)" data-sort="winrate" data-label="Winrate">
+          Winrate
+        </th>
+        <th onclick="sortColumn(this)" data-sort="total_games" data-label="Gespielt">
+          Gespielt
+        </th>
 
         <th></th>
         <!-- Für den Pfeil -->
@@ -17,7 +23,9 @@
       {% for player in players %}
       <tr class="leaderboard__row" onclick=>
         <td>{{ player.name }}</td>
-        <td>{{ player.start_points }}</td>
+        <td>{{ player.total_points }}</td>
+        <td>{{ player.winrate }}</td>
+        <td>{{ player.games_played }}</td>
         <td class="arrow">&gt;</td>
       </tr>
       {% endfor %}

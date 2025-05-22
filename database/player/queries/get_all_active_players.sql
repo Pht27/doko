@@ -1,1 +1,0 @@
-SELECT * FROM player WHERE active = 1;

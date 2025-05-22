@@ -20,7 +20,7 @@ PYTHON="$VENV_PATH/bin/python"
 SQL_DIR="$SCRIPT_DIR/sql_queries"
 
 # ---------- CLEARING DIRECTORIES ----------
-echo "🧹 Clearing old SQL and CSV files..."
+echo "✇ Clearing old SQL and CSV files..."
 rm -f "$SCRIPT_DIR/sql_queries/"*.sql
 rm -f "$SCRIPT_DIR/new_csvs/"*.csv
 rm -f "$SCRIPT_DIR/static_csvs/"*.csv
@@ -29,7 +29,7 @@ rm -f "$SCRIPT_DIR/static_csvs/"*.csv
 echo -e "$SQL_COMMANDS" | mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD"
 
 # ---------- RUN PYTHON SCRIPTS ----------
-echo "🔧 Activating Python venv and running Python scripts..."
+echo "❯ Activating Python venv and running Python scripts..."
 "$PYTHON" "$SCRIPT_DIR/create_static_csvs.py"
 "$PYTHON" "$SCRIPT_DIR/refactor_csvs.py"
 "$PYTHON" "$SCRIPT_DIR/convert_csvs_to_sql.py"
@@ -37,6 +37,7 @@ echo "🔧 Activating Python venv and running Python scripts..."
 # ---------- EXECUTE SQL QUERIES ----------
 echo "🗃️  Running SQL files from $SQL_DIR..."
 for sql_file in "$SQL_DIR"/*.sql; do
-    echo "🚀 Running $sql_file..."
+    sql_name=$(basename "$sql_file")
+    echo "🚀 Running $sql_name..."
     mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
 done

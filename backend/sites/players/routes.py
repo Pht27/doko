@@ -12,8 +12,8 @@ players_bp = Blueprint(
 @players_bp.route('/')
 def players():
     players = execute_query_with_placeholder_params(
-        'database/player/queries/get_all_active_players.sql'
+        'database/player/queries/get_stats_for_all_active_players.sql'
     )
     sorted_players = sorted(
-        players, key=lambda p: p['start_points'], reverse=True)
+        players, key=lambda p: p['total_points'], reverse=True)
     return render_template('sites/players/players.html', players=sorted_players)

@@ -40,4 +40,4 @@ for filename in sorted(os.listdir(input_dir)):
                 f_sql.write(stmt + '\n')
 
         print(
-            f"✅ Generated {len(insert_statements)} statements for '{table_name}' in '{sql_path}'")
+            f"✅ Generated {len(insert_statements)} statements for '{table_name}' in '{os.path.basename(sql_path)}'")
