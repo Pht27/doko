@@ -6,6 +6,12 @@
   z-index: 1001;
 }
 
+.hamburger-container {
+  left: auto;
+  right: 20px;
+  transform: none;
+}
+
 .hamburger-btn {
   font-size: 24px;
   background-color: #333;

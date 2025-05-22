@@ -7,11 +7,15 @@
   rel="stylesheet"
   href="{{ url_for('static', filename='css/components/leaderboard.css') }}"
 />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/sites/players.css') }}"
+/>
 
 {% endblock %}
 <!--  -->
 
-<h1>{% block title %} Players {% endblock %}</h1>
+<h1>{% block title %} Spieler {% endblock %}</h1>
 
 {% block titlecard %} Spieler {% endblock %}
 
@@ -25,5 +29,6 @@
 <!--  -->
 {% block extra_scripts %}
 <script src="{{ url_for('static', filename='js/components/leaderboard.js') }}"></script>
+<script src="{{ url_for('static', filename='js/sites/players.js') }}"></script>
 {% endblock %}
 <!--  -->

@@ -13,7 +13,7 @@ DB_USER=$(awk -F'=' '/^db_user/ {gsub(/ /, "", $2); print $2}' "$CONFIG_FILE")
 DB_PASSWORD=$(awk -F'=' '/^db_password/ {gsub(/ /, "", $2); print $2}' "$CONFIG_FILE")
 DB_HOST=$(awk -F'=' '/^db_host_adress/ {gsub(/ /, "", $2); print $2}' "$CONFIG_FILE")
 
-# ---------- SEARCH AND EXECUTE VIEW FILES ----------
+# ---------- SEARCH AND EXECUTE USP FILES ----------
 echo "🔍 Searching for USP definitions..."
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 

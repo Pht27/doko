@@ -2,6 +2,7 @@ import os
 from flask import Flask, redirect, url_for
 
 from backend.sites.players.routes import players_bp
+from backend.sites.match_history.routes import match_history_bp
 
 app = Flask(
     __name__,
@@ -10,6 +11,7 @@ app = Flask(
 )
 
 app.register_blueprint(players_bp)
+app.register_blueprint(match_history_bp)
 
 
 @app.route('/')

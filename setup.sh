@@ -29,7 +29,7 @@ elif $USE_OLD_DATA; then
     /bin/bash database/_setup/refactor_old_data/refactor_old_data.sh "$CONFIG_FILE"
 fi
 
-# ---------- Views and USPs ----------
+# ---------- Views and USPs etc. ----------
 /bin/bash database/_setup/setup_usps_views/create_views.sh "$CONFIG_FILE"
 /bin/bash database/_setup/setup_usps_views/create_usps.sh "$CONFIG_FILE"
 /bin/bash database/_setup/setup_usps_views/run_init_usps.sh "$CONFIG_FILE"
