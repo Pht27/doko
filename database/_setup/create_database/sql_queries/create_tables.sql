@@ -39,7 +39,7 @@ CREATE TABLE team (
 CREATE TABLE special_card (
     id              INT AUTO_INCREMENT,
     name            VARCHAR(100) NOT NULL,
-    description     TEXT NULL,
+    description     TEXT DEFAULT NULL,
 
     PRIMARY KEY (id)
 );
@@ -47,15 +47,18 @@ CREATE TABLE special_card (
 CREATE TABLE extra_point (
     id              INT AUTO_INCREMENT,
     name            VARCHAR(100) NOT NULL,
-    description     TEXT NULL,
+    description     TEXT DEFAULT NULL,
 
     PRIMARY KEY (id)
 );
 
 CREATE TABLE game_mode (
-    id              INT AUTO_INCREMENT,
-    name            VARCHAR(100) NOT NULL,
-    description     TEXT NULL,
+    id                          INT AUTO_INCREMENT,
+    name                        VARCHAR(100) NOT NULL,
+    description                 TEXT DEFAULT NULL,
+    is_solo                     BOOLEAN DEFAULT FALSE,
+    point_multiplier_re         INT DEFAULT 1,
+    point_multiplier_kontra     INT DEFAULT 1,
 
     PRIMARY KEY (id)            
 );

@@ -23,9 +23,14 @@ SQL_DIR="$SCRIPT_DIR/sql_queries"
 echo "🧹 Clearing old SQL and CSV files..."
 rm -f "$SCRIPT_DIR/sql_queries/"*.sql
 rm -f "$SCRIPT_DIR/new_csvs/"*.csv
+rm -f "$SCRIPT_DIR/static_csvs/"*.csv
+
+# ---------- SQL AUSFÜHREN ----------
+echo -e "$SQL_COMMANDS" | mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD"
 
 # ---------- RUN PYTHON SCRIPTS ----------
 echo "🔧 Activating Python venv and running Python scripts..."
+"$PYTHON" "$SCRIPT_DIR/create_static_csvs.py"
 "$PYTHON" "$SCRIPT_DIR/refactor_csvs.py"
 "$PYTHON" "$SCRIPT_DIR/convert_csvs_to_sql.py"
 
