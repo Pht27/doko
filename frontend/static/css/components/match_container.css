@@ -5,6 +5,7 @@
   padding: 0.8rem;
   margin-bottom: 0.5rem;
   transition: box-shadow 0.2s ease;
+  /* border-left: 8px solid rgb(45, 41, 68); */
 }
 
 .match-header {

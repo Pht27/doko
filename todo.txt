@@ -1,0 +1,3 @@
+- match history offset und limit (bei altem abgucken?)
+- matches expandable machen (mit extrapunkten und special card infos und dann kommt edit button!)
+- player seite gescheit machen -> klickbar
