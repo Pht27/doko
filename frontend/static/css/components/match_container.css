@@ -1,45 +1,66 @@
-.match-card {
-  background: white;
-  border: 2px solid #ccc;
-  border-radius: px;
-  padding: 0.8rem;
-  margin-bottom: 0.5rem;
-  transition: box-shadow 0.2s ease;
-  /* border-left: 8px solid rgb(45, 41, 68); */
+/* === MATCH CONTAINER === */
+.match-container {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
+.match-container.show {
+  display: block;
+  opacity: 1;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.8rem 0.8rem 0.2rem;
+  padding-bottom: 0rem;
+  transition: box-shadow 0.2s ease;
+}
+
+/* === MATCH HEADER === */
 .match-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   font-size: 0.9rem;
   color: #666;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0rem;
+}
+
+.match-header-left,
+.match-header-center,
+.match-header-right {
+  flex: 1;
 }
 
 .match-header-left {
-  flex: 1;
   text-align: left;
 }
 
 .match-header-center {
-  flex: 1;
   text-align: center;
 }
 
 .match-header-right {
-  flex: 1;
   text-align: right;
 }
 
+.game-type {
+  font-weight: 600;
+  color: #0066cc;
+}
+
+.solo-game-type {
+  color: #f39c12;
+}
+
+/* === META ROW === */
 .match-meta-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
   font-size: 0.9rem;
-  margin-bottom: 0.3rem;
   color: #444;
+  margin-bottom: 0.3rem;
 }
 
 .party-title {
@@ -48,7 +69,6 @@
 }
 
 .party-title.kontra {
-  flex: 1;
   text-align: right;
 }
 
@@ -57,67 +77,125 @@
   text-align: center;
 }
 
-.game-type {
-  font-weight: 600;
-  color: #0066cc; /* default blue */
-}
-
-.solo-game-type {
-  color: #f39c12; /* orange for solos */
-}
-
+/* === MATCH BODY (collapsed view) === */
 .match-body {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-}
-
-.match-body {
-  display: flex;
-  flex-wrap: nowrap; /* ❗️prevents wrapping */
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   gap: 0.5rem;
-  overflow-x: auto; /* optional: allows scroll if content doesn't fit */
+  align-items: start;
 }
 
-.party-box {
-  flex: 1 1 0; /* ❗️forces shrinking */
-  min-width: 0;
-  box-sizing: border-box;
-  border-radius: 8px;
-  padding: 0.5rem;
-  background-color: #f9f9f9;
+.match-body.hidden,
+.expanded-match-body.hidden {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.player-name {
-  font-size: 0.95rem;
+/* === EXPANDED MATCH BODY === */
+.expanded-match-body {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.5rem;
+  align-items: start;
 }
 
-.player-name:not(:last-child) {
-  margin-bottom: 6px;
-}
-
-.points-box {
+.party-column {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: bold;
-  min-width: 10px;
-  margin: 0 0.5rem;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.party-win {
-  background: #e1f5e6;
-}
-
-.party-lose {
-  background: #fdecea;
+/* === PARTY BLOCKS === */
+.party-box,
+.team-block {
+  background-color: #f0f4ff;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  gap: 0.3rem;
 }
 
 .party-box.kontra-team {
   text-align: right;
+}
+
+/* Win/Lose Styles */
+.party-win,
+.team-block.party-win,
+.party-box.party-win {
+  background-color: #e1f5e6;
+}
+
+.party-lose,
+.team-block.party-lose,
+.party-box.party-lose {
+  background-color: #fdecea;
+}
+
+/* === TEAM CONTENT === */
+.team-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #2c3e50;
+}
+
+.team-special,
+.team-extra {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.team-title.kontra-team,
+.team-special.kontra-team,
+.team-extra.kontra-team {
+  text-align: right;
+}
+
+/* === POINTS === */
+.points-box {
+  background: transparent;
+  padding: 0 0.4rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.points-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.3rem;
+  background: transparent;
+}
+
+/* === EXPAND TOGGLE BUTTON === */
+.expand-toggle {
+  width: 100%;
+  height: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+
+  /* 🧼 Prevent blue tap flash on mobile */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Arrow styling */
+.arrow-icon-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+  color: #979797;
+}
+
+/* Flip the arrow when expanded */
+.expand-toggle.expanded .arrow-icon-container {
+  transform: translate(-50%, -50%) rotate(180deg);
 }

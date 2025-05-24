@@ -1,4 +1,7 @@
 body {
   background-color: #e2e3e6; /* Beispiel: helles Grau */
   font-family: sans-serif; /* Optional: Einheitliche Schrift */
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
 }

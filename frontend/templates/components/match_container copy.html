@@ -19,36 +19,11 @@
     <div class="party-title kontra">Kontra</div>
   </div>
 
-  <div class="match-body">
-    <div
-      class="party-box {% if match.winning_party == 'Re' %}party-win{% elif match.winning_party == 'Kontra' %}party-lose{% endif %}"
-    >
-      {% for position, players in match.re_teams.items() %}
-      <div class="team-title">{{ players | join(', ') }}</div>
-      {% endfor %}
-    </div>
-
-    <!-- Points Column -->
-    <div class="points-column">
-      <div class="points-box">{{ match.points }}</div>
-    </div>
-
-    <div
-      class="party-box kontra-team {% if match.winning_party == 'Kontra' %}party-win{% elif match.winning_party == 'Re' %}party-lose{% endif %}"
-    >
-      {% for position, players in match.kontra_teams.items() %}
-      <div class="team-title">{{ players | join(', ') }}</div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="expanded-match-body">
+  <div class="expanded-view-grid">
     <!-- Re Teams -->
     <div class="party-column">
       {% for position, team in match.teams.items() if team.party == 'Re' %}
-      <div
-        class="team-block {% if match.winning_party == 'Re' %}party-win{% elif match.winning_party == 'Kontra' %}party-lose{% endif %}"
-      >
+      <div class="team-block party-win">
         <div class="team-title">{{ team.players | join(', ') }}</div>
         {% if team.special_cards %}
         <div class="team-special">
@@ -74,18 +49,14 @@
     <!-- Kontra Teams -->
     <div class="party-column">
       {% for position, team in match.teams.items() if team.party == 'Kontra' %}
-      <div
-        class="team-block {% if match.winning_party == 'Kontra' %}party-win{% elif match.winning_party == 'Re' %}party-lose{% endif %}"
-      >
-        <div class="team-title kontra-team">
-          {{ team.players | join(', ') }}
-        </div>
+      <div class="team-block party-lose">
+        <div class="team-title">{{ team.players | join(', ') }}</div>
         {% if team.special_cards %}
-        <div class="team-special kontra-team">
+        <div class="team-special">
           <strong>Special cards:</strong> {{ team.special_cards | join(', ') }}
         </div>
         {% endif %} {% if team.extra_points %}
-        <div class="team-extra kontra-team">
+        <div class="team-extra">
           <strong>Extra points:</strong>
           {% for name, count in team.extra_points.items() %}
           <span>{{ name }} ({{ count }})</span>{% if not loop.last %}, {% endif
@@ -96,19 +67,4 @@
       {% endfor %}
     </div>
   </div>
-  <button class="expand-toggle" type="button">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      class="arrow-icon-container"
-    >
-      <path
-        fill="currentColor"
-        fill-rule="nonzero"
-        d="M12 13.2 16.5 9l1.5 1.4-6 5.6-6-5.6L7.5 9z"
-      ></path>
-    </svg>
-  </button>
 </div>

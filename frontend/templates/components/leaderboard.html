@@ -1,34 +1,58 @@
-<div class="leaderboard__container">
-  <table id="leaderboard__table" class="leaderboard__table">
-    <thead>
-      <tr>
-        <th onclick="sortColumn(this)" data-sort="name" data-label="Name">
-          Name
-        </th>
-        <th onclick="sortColumn(this)" data-sort="points" data-label="Punkte">
-          Punkte
-        </th>
-        <th onclick="sortColumn(this)" data-sort="winrate" data-label="Winrate">
-          Winrate
-        </th>
-        <th onclick="sortColumn(this)" data-sort="total_games" data-label="Gespielt">
-          Gespielt
-        </th>
+<div class="leaderboard">
+  <div class="leaderboard__controls">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Suche Spieler..."
+      class="search-input"
+    />
 
-        <th></th>
-        <!-- Für den Pfeil -->
-      </tr>
-    </thead>
-    <tbody>
+    <div class="sort">
+      <label for="sortSelect">Nach</label>
+      <select id="sortSelect">
+        <option value="points">Punkte</option>
+        <option value="name">Name</option>
+        <option value="winrate">Winrate</option>
+        <option value="games_played">Gespielt</option>
+      </select>
+    </div>
+    <label class="checkbox-container">
+      <input type="checkbox" id="toggleInactive" />
+      Inaktive anzeigen
+    </label>
+  </div>
+
+  <div class="leaderboard__container">
+    <div class="leaderboard__list">
       {% for player in players %}
-      <tr class="leaderboard__row" onclick=>
-        <td>{{ player.name }}</td>
-        <td>{{ player.total_points }}</td>
-        <td>{{ player.winrate }}</td>
-        <td>{{ player.games_played }}</td>
-        <td class="arrow">&gt;</td>
-      </tr>
+      <a
+        href="/players/{{ player.id }}"
+        class="leaderboard__card"
+        data-name="{{ player.name | lower }}"
+        data-points="{{ player.total_points }}"
+        data-winrate="{{ player.winrate }}"
+        data-mean="{{ player.mean_points }}"
+        data-active="{{ player.active }}"
+        data-games_played="{{ player.games_played }}"
+      >
+        <div class="info">
+          <div class="name">{{ player.name }}</div>
+          <div class="meta">
+            <span>{{ player.winrate }}% WR</span>
+            <span>{{ player.games_played }} gespielt</span>
+          </div>
+        </div>
+
+        <div class="stats-right">
+          <span class="points">{{ player.total_points }} Pkt</span>
+          <span class="mean"
+            >({{ '+' if player.mean_points >= 0 else '' }}{{ player.mean_points
+            }})</span
+          >
+          <div class="arrow">&gt;</div>
+        </div>
+      </a>
       {% endfor %}
-    </tbody>
-  </table>
+    </div>
+  </div>
 </div>

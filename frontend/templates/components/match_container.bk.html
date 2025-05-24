@@ -1,0 +1,41 @@
+<div class="match-container {% if match.is_solo %}solo{% endif %}">
+  <div class="match-header">
+    <div class="match-header-left">
+      {{ match.time_stamp.strftime("%a, %d %b %Y") }}
+    </div>
+    <div
+      class="match-header-center game-type {% if match.is_solo %}solo-game-type{% endif %}"
+    >
+      {{ match.game_type }}
+    </div>
+    <div class="match-header-right">
+      {{ match.time_stamp.strftime("%H:%M") }}
+    </div>
+  </div>
+
+  <div class="match-meta-row">
+    <div class="party-title">Re</div>
+    <div class="points-title">Points</div>
+    <div class="party-title kontra">Kontra</div>
+  </div>
+
+  <div class="match-body">
+    <div
+      class="party-box {% if match.winning_party == 'Re' %}party-win{% elif match.winning_party == 'Kontra' %}party-lose{% endif %}"
+    >
+      {% for position, players in match.re_team.items() %}
+      <div class="player-name">{{ players | join(' + ') }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="points-box">{{ match.points }}</div>
+
+    <div
+      class="party-box kontra-team {% if match.winning_party == 'Kontra' %}party-win{% elif match.winning_party == 'Re' %}party-lose{% endif %}"
+    >
+      {% for position, players in match.kontra_team.items() %}
+      <div class="player-name">{{ players | join(' + ') }}</div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

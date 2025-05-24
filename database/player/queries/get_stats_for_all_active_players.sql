@@ -1,1 +1,0 @@
-SELECT * FROM player_stats WHERE active = 1;

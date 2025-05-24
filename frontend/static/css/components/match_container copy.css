@@ -1,0 +1,138 @@
+.match-container {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.match-container.show {
+  display: block;
+  opacity: 1;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: px;
+  padding: 0.8rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+.match-header-left {
+  flex: 1;
+  text-align: left;
+}
+
+.match-header-center {
+  flex: 1;
+  text-align: center;
+}
+
+.match-header-right {
+  flex: 1;
+  text-align: right;
+}
+
+.match-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: #444;
+}
+
+.party-title {
+  flex: 1;
+  text-align: left;
+}
+
+.party-title.kontra {
+  flex: 1;
+  text-align: right;
+}
+
+.points-title {
+  flex: 1;
+  text-align: center;
+}
+
+.game-type {
+  font-weight: 600;
+  color: #0066cc; /* default blue */
+}
+
+.solo-game-type {
+  color: #f39c12; /* orange for solos */
+}
+
+.match-body {
+  display: flex;
+  flex-wrap: nowrap; /* ❗️prevents wrapping */
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  overflow-x: auto; /* optional: allows scroll if content doesn't fit */
+}
+
+.party-box {
+  flex: 1 1 0; /* ❗️forces shrinking */
+  min-width: 0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0.5rem;
+  background-color: #f9f9f9;
+}
+
+.player-name {
+  font-size: 0.95rem;
+}
+
+.player-name:not(:last-child) {
+  margin-bottom: 6px;
+}
+
+.points-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  min-width: 10px;
+  margin: 0 0.5rem;
+}
+
+.party-win {
+  background: #e1f5e6;
+}
+
+.party-lose {
+  background: #fdecea;
+}
+
+.party-box.kontra-team {
+  text-align: right;
+}
+
+.match-container {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.match-container {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hidden {
+  display: none !important;
+}

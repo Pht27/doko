@@ -1,41 +1,45 @@
-let currentSort = { key: null, direction: "asc" };
+document.addEventListener("DOMContentLoaded", () => {
+  const sortSelect = document.getElementById("sortSelect");
+  const searchInput = document.getElementById("searchInput");
+  const toggleInactive = document.getElementById("toggleInactive");
+  const list = document.querySelector(".leaderboard__list");
 
-function sortColumn(header) {
-  const table = document.getElementById("leaderboard__table");
-  const key = header.dataset.sort;
-  const direction =
-    currentSort.key === key && currentSort.direction === "asc" ? "desc" : "asc";
+  const originalCards = Array.from(list.children); // full list
 
-  currentSort = { key, direction };
-  sortTableByColumn(table, key, direction);
+  function sortAndFilter() {
+    const sortKey = sortSelect.value;
+    const query = searchInput.value.toLowerCase();
+    const showInactive = toggleInactive.checked;
 
-  // Reset all headers
-  const headers = table.querySelectorAll("th");
+    const filtered = originalCards.filter((card) => {
+      const matchesSearch = card.dataset.name.includes(query);
+      const isActive = card.dataset.active === "1";
+      return matchesSearch && (isActive || showInactive);
+    });
 
-  headers.forEach((h) => {
-    if (h.dataset.label) {
-      h.innerHTML = h.dataset.label;
-    }
-  });
-}
+    const sorted = filtered.sort((a, b) => {
+      let valA = a.dataset[sortKey];
+      let valB = b.dataset[sortKey];
+      return sortKey === "name"
+        ? valA.localeCompare(valB)
+        : parseFloat(valB) - parseFloat(valA);
+    });
 
-function sortTableByColumn(table, key, direction) {
-  const tbody = table.querySelector("tbody");
-  const rows = Array.from(tbody.querySelectorAll("tr"));
+    list.style.opacity = 0;
+    setTimeout(() => {
+      list.innerHTML = "";
+      sorted.forEach((card) => {
+        // Add inactive class if needed
+        card.classList.toggle("inactive", card.dataset.active === "0");
+        list.appendChild(card);
+      });
+      list.style.opacity = 1;
+    }, 150);
+  }
 
-  const index = key === "name" ? 0 : 1;
-  const isNumeric = key === "points";
+  sortSelect.addEventListener("change", sortAndFilter);
+  searchInput.addEventListener("input", sortAndFilter);
+  toggleInactive.addEventListener("change", sortAndFilter);
 
-  rows.sort((a, b) => {
-    const aVal = a.children[index].textContent.trim();
-    const bVal = b.children[index].textContent.trim();
-
-    const cmp = isNumeric
-      ? parseFloat(aVal) - parseFloat(bVal)
-      : aVal.localeCompare(bVal);
-
-    return direction === "asc" ? cmp : -cmp;
-  });
-
-  rows.forEach((row) => tbody.appendChild(row));
-}
+  sortAndFilter();
+});

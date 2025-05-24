@@ -1,50 +1,167 @@
+.leaderboard {
+  margin: auto;
+  font-family: "Inter", sans-serif;
+  color: #333;
+  background: #fafafa;
+}
+
+.leaderboard__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#searchInput {
+  flex: 1 1 auto;
+  min-width: 120px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#sortSelect {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 0.9rem;
+}
+
 .leaderboard__container {
-  margin: 2rem auto;
-  padding: 1.5rem;
-  max-width: 700px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  /* background: #fafafa; */
+  padding: 0.5rem;
+  /* border-radius: 12px; */
+  /* box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03); */
 }
 
-.leaderboard__table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: sans-serif;
+.leaderboard__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.1s ease;
 }
 
-.leaderboard__table th.arrow-col,
-.leaderboard__table td.arrow-col {
-  width: 1%;
+.leaderboard__card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e4e8f7;
+  border-radius: 5px;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  /* transition: transform 0.2s ease, opacity 0.05s ease; */
+}
+
+.leaderboard__card:hover {
+  background: #f1f4ff;
+  transform: scale(1.01);
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   white-space: nowrap;
-  text-align: right;
 }
 
-.leaderboard__table thead th {
-  text-align: left;
-  padding: 0.75rem 1rem;
-  background-color: #f4f4f4;
-  cursor: pointer;
-  font-weight: bold;
-  border-bottom: 2px solid #ddd;
-  /* Mobile polish */
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
+.points {
+  font-weight: 600;
+  color: #222;
 }
 
-.leaderboard__table tbody td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #eee;
+.mean {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #666;
 }
 
-.leaderboard__row:hover {
-  background-color: #f9f9f9;
-  cursor: pointer;
+.meta {
+  font-size: 0.75rem;
+  color: #777;
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.2rem;
 }
 
 .arrow {
-  text-align: right;
-  color: #ccc;
-  font-size: 1rem;
-  width: 20px;
+  font-size: 1.2rem;
+  color: #979797;
+}
+
+/* Existing styles kept, here are just the additions */
+
+#searchInput {
+  flex: 1 1 auto;
+  min-width: 16px;
+  padding: 0.4rem 0.6rem 0.4rem 2rem; /* space for icon */
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  background-image: url("data:image/svg+xml,%3Csvg fill='gray' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 2a8 8 0 105.293 14.293l5.707 5.707 1.414-1.414-5.707-5.707A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.5rem center;
+  background-size: 1rem 1rem;
+}
+
+/* Animate sorting */
+.leaderboard__list {
+  transition: opacity 0.2s ease;
+}
+
+/* Modern styled checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  user-select: none;
+  cursor: pointer;
+  color: #444;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #4f6df5; /* Modern look for checkbox */
+}
+
+/* Inactive player card styling */
+.leaderboard__card.inactive {
+  background-color: #f0f0f0;
+  color: #888;
+  opacity: 0.7;
+}
+
+.leaderboard__controls {
+  display: flex;
+  align-items: center;
+  /* flex-wrap: wrap; allows small screens to break */
+  gap: 0.8rem;
+}
+
+.leaderboard__controls > * {
+  flex-shrink: 0;
 }
