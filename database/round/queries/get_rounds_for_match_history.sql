@@ -33,7 +33,7 @@ LEFT JOIN team_in_round_has_extra_point tirhep
 LEFT JOIN extra_point ep
         ON tirhep.extra_point_id = ep.id
 LEFT JOIN team_in_round_has_special_card tirhsc
-        ON (tirhsc.round_id = r.id AND  tirhep.team_id = thm.team_id)
+        ON (tirhsc.round_id = r.id AND  tirhsc.team_id = thm.team_id)
 LEFT JOIN special_card sc
         ON tirhsc.special_card_id = sc.id
 ORDER BY r.time_stamp DESC;

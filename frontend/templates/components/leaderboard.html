@@ -8,7 +8,7 @@
     />
 
     <div class="sort">
-      <label for="sortSelect">Nach</label>
+      <label for="sortSelect">Sortieren nach</label>
       <select id="sortSelect">
         <option value="points">Punkte</option>
         <option value="name">Name</option>
@@ -16,10 +16,11 @@
         <option value="games_played">Gespielt</option>
       </select>
     </div>
-    <label class="checkbox-container">
-      <input type="checkbox" id="toggleInactive" />
-      Inaktive anzeigen
-    </label>
+
+    <div class="checkbox-wrapper">
+      <input id="toggleInactive" type="checkbox" class="switch" />
+      <label for="toggleInactive">Inaktive anzeigen</label>
+    </div>
   </div>
 
   <div class="leaderboard__container">

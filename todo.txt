@@ -1,3 +1,3 @@
-- match history offset und limit (bei altem abgucken?)
-- matches expandable machen (mit extrapunkten und special card infos und dann kommt edit button!)
-- player seite gescheit machen -> klickbar
+- matches edit button überlegen
+- player personal page
+- spieler hinzufügen -> werden die teams direkt inserted?? -> stored procedure die alle teams erstellt und 

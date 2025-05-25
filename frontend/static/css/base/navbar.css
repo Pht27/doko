@@ -14,7 +14,7 @@
 
 .hamburger-btn {
   font-size: 24px;
-  background-color: #333;
+  background-color: #333333dc;
   color: #fff;
   border: none;
   width: 60px;
@@ -29,13 +29,19 @@
   outline: none;
 }
 
+.hamburger-btn.active {
+  border: 1px solid rgb(49, 49, 49);
+  /* color: #6e6e6e; */
+  background-color: #727272dc;
+}
+
 .hamburger-btn:focus {
   outline: none;
 }
 
-.hamburger-btn:hover {
+/* .hamburger-btn:hover {
   background-color: #555;
-}
+} */
 
 .overlay-menu {
   position: fixed;
@@ -70,6 +76,7 @@
 
 .overlay-menu li {
   margin: 20px 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .overlay-menu a {
