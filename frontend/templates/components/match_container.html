@@ -52,11 +52,11 @@
         <div class="team-title">{{ team.players | join(', ') }}</div>
         {% if team.special_cards %}
         <div class="team-special">
-          <strong>Special cards:</strong> {{ team.special_cards | join(', ') }}
+          <strong>Sonderkarten:</strong> {{ team.special_cards | join(', ') }}
         </div>
         {% endif %} {% if team.extra_points %}
         <div class="team-extra">
-          <strong>Extra points:</strong>
+          <strong>Extrapunkte:</strong>
           {% for name, count in team.extra_points.items() %}
           <span>{{ name }} ({{ count }})</span>{% if not loop.last %}, {% endif
           %} {% endfor %}
@@ -82,11 +82,11 @@
         </div>
         {% if team.special_cards %}
         <div class="team-special kontra-team">
-          <strong>Special cards:</strong> {{ team.special_cards | join(', ') }}
+          <strong>Sonderkarten:</strong> {{ team.special_cards | join(', ') }}
         </div>
         {% endif %} {% if team.extra_points %}
         <div class="team-extra kontra-team">
-          <strong>Extra points:</strong>
+          <strong>Extrapunkte:</strong>
           {% for name, count in team.extra_points.items() %}
           <span>{{ name }} ({{ count }})</span>{% if not loop.last %}, {% endif
           %} {% endfor %}

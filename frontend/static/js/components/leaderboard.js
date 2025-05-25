@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function addPlayer() {
   const playerName = prompt("Namen eingeben:");
-  if (!playerName) return;
 
   try {
     const response = await fetch("/players/add_player", {
