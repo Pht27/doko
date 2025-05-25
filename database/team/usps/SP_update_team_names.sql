@@ -1,5 +1,5 @@
 -- RUN_ON_DB_CREATION
-DELIMITER //
+DELIMITER $$
 
 CREATE PROCEDURE update_team_names()
 BEGIN
@@ -31,6 +31,6 @@ BEGIN
     END LOOP;
 
     CLOSE team_cursor;
-END //
+END $$
 
 DELIMITER ;

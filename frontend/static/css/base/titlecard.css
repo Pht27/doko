@@ -8,5 +8,5 @@
   border-bottom: 2px solid #444;
   margin-bottom: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 0px 0px 5px 5px;
 }

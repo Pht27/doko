@@ -32,6 +32,7 @@ fi
 # ---------- Views and USPs etc. ----------
 /bin/bash database/_setup/setup_usps_views/create_views.sh "$CONFIG_FILE"
 /bin/bash database/_setup/setup_usps_views/create_usps.sh "$CONFIG_FILE"
+/bin/bash database/_setup/setup_usps_views/create_udfs.sh "$CONFIG_FILE"
 /bin/bash database/_setup/setup_usps_views/run_init_usps.sh "$CONFIG_FILE"
 
 echo '✔️ DONE'

@@ -38,17 +38,14 @@
 }
 
 .leaderboard__container {
-  /* background: #fafafa; */
   padding: 0.5rem;
-  /* border-radius: 12px; */
-  /* box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03); */
 }
 
 .leaderboard__list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  transition: all 0.1s ease;
+  gap: 0.3rem;
+  transition: all 0.3s ease;
 }
 
 .leaderboard__card {
@@ -61,11 +58,11 @@
   text-decoration: none;
   color: #333;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-  /* transition: transform 0.2s ease, opacity 0.05s ease; */
 }
 
 .leaderboard__card:hover {
   background: #f1f4ff;
+  transition: all 0.3s ease;
   transform: scale(1.01);
 }
 
@@ -302,4 +299,28 @@
 .checkbox-wrapper *:before,
 .checkbox-wrapper *:after {
   box-sizing: inherit;
+}
+
+.add-player {
+  display: flex;
+  align-items: center;
+  /* background: #e4e8f7; */
+  border-radius: 5px;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  color: #333;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06); */
+  background-color: #dddddd;
+  color: #333;
+  opacity: 0.8;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+}
+
+.add-player:hover {
+  background-color: #dddddd;
+  transition: all 0.1s ease;
+  transform: scale(1.01);
+  cursor: pointer;
 }

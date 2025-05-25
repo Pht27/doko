@@ -31,6 +31,7 @@ def execute_query_with_placeholder_params(sql_filepath, params=()):
         with conn.cursor() as cur:
             query = load_sql(sql_filepath)
             cur.execute(query, params)
+            conn.commit()
             return cur.fetchall()
     finally:
         conn.close()
@@ -43,6 +44,26 @@ def execute_stored_procedure_with_params(stored_procedure_name, params=()):
         with conn.cursor() as cur:
             cur.callproc(stored_procedure_name, params)
             result = cur.fetchall()
+            conn.commit()
+        return result
+    finally:
+        conn.close()
+
+
+# hilft beim ausführen von funktionen
+def call_function(cursor, func_name, *args):
+    placeholders = ", ".join(["%s"] * len(args))
+    query = f"SELECT {func_name}({placeholders}) AS result"
+    cursor.execute(query, args)
+    return cursor.fetchone()["result"]
+
+# geeignet für defined function mit parametern
+def execute_defined_function_with_params(defined_function_name, *args):
+    conn = get_db_connection()
+    try:
+        with conn.cursor() as cur:
+            result = call_function(cur, defined_function_name, *args)
+            conn.commit()
         return result
     finally:
         conn.close()
