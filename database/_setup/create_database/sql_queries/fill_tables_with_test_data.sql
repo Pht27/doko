@@ -96,3 +96,30 @@ INSERT INTO round_has_team VALUES
 (5, 7, 2, 'Kontra'),
 (5, 2, 3, 'Kontra'),
 (5, 9, 4, 'Kontra');
+
+
+-- Round 1: Diana’s team (Team 3) gets "Heidfrau"
+INSERT INTO team_in_round_has_special_card VALUES (1, 3, 3);  -- Heidfrau
+
+-- Round 2: Charlie’s team (Team 2) gets "Schweinchen"
+INSERT INTO team_in_round_has_special_card VALUES (2, 2, 8);  -- Schweinchen
+
+-- Round 3: Bob & Frank (Team 6) get "Kemmerich"
+INSERT INTO team_in_round_has_special_card VALUES (3, 6, 6);  -- Kemmerich
+
+-- Round 3: Charlie (Team 2) gets "Genscherdamen"
+INSERT INTO team_in_round_has_special_card VALUES (3, 2, 2);  -- Genscherdamen
+
+
+-- Round 1: Eve & Frank (Team 4) get Karlchen and Fuchs
+INSERT INTO team_in_round_has_extra_point VALUES (1, 4, 7, 1);  -- Karlchen
+INSERT INTO team_in_round_has_extra_point VALUES (1, 4, 4, 1);  -- Fuchs gefangen
+
+-- Round 2: Charlie (Team 2) gets a Doppelkopf
+INSERT INTO team_in_round_has_extra_point VALUES (2, 2, 2, 1);  -- Doppelkopf
+
+-- Round 3: Bob & Frank (Team 6) get Fischauge
+INSERT INTO team_in_round_has_extra_point VALUES (3, 6, 3, 2);  -- Fischauge
+
+-- Round 3: Alice (Team 7) gets Agathe
+INSERT INTO team_in_round_has_extra_point VALUES (4, 7, 1, 1);  -- Agathe
