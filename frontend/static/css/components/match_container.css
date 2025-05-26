@@ -92,7 +92,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .party-column.expanded {
@@ -110,8 +110,7 @@
   padding: 0rem 0.9rem 0rem 0.9rem;
   font-size: 0.9rem;
   font-weight: normal;
-  transition: 0.3s;
-  transition: padding 0.4s ease, background-color 0.3s ease;
+  transition: padding 0.2s ease, border-radius 0.1s ease;
 }
 
 .team-block:last-child {
@@ -156,7 +155,7 @@
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-  transition: max-height 0.3s ease-out, opacity 0.5s ease;
+  transition: max-height 0.25s ease, opacity 0.5s ease;
 }
 
 .team-special.show,
@@ -188,9 +187,8 @@
   opacity: 0;
   overflow: hidden;
   border-left: 3px solid #e0e0e0;
-  margin-top: 1rem;
-  padding-left: 1rem;
-  transition: max-height 0.3s linear, opacity 0.4s ease;
+  transition: margin-top 0.2s ease, padding-left 0.2s ease, max-height 0.2s ease,
+    opacity 0.4s ease, gap 0.1s ease;
   display: flex;
   flex-direction: column;
   gap: 0.8rem; /* sets space between comments */
@@ -198,6 +196,8 @@
 
 .comment-section.show {
   max-height: 200px;
+  margin-top: 1rem;
+  padding-left: 1rem;
   opacity: 1;
 }
 
