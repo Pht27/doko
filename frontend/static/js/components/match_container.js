@@ -4,22 +4,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const matchBody = container.querySelector(".match-body");
     const expandedBody = container.querySelector(".expanded-match-body");
 
-    // Ensure expanded view is hidden on load
+    // Control buttons (excluding the toggle button)
+    const controlButtons = container.querySelectorAll(
+      ".match-controls .match-controls-button"
+    );
+
+    // Initial state: hide expanded view and control buttons
     expandedBody.classList.add("hidden");
+    controlButtons.forEach((btn) => btn.classList.add("hidden"));
 
     toggleButton.addEventListener("click", () => {
       const isExpanded = !expandedBody.classList.contains("hidden");
 
       if (isExpanded) {
-        // Collapse back to regular view
+        // Collapse view
         expandedBody.classList.add("hidden");
         matchBody.classList.remove("hidden");
         toggleButton.classList.remove("expanded");
+        controlButtons.forEach((btn) => btn.classList.add("hidden"));
       } else {
-        // Expand to show details
+        // Expand view
         matchBody.classList.add("hidden");
         expandedBody.classList.remove("hidden");
         toggleButton.classList.add("expanded");
+        controlButtons.forEach((btn) => btn.classList.remove("hidden"));
       }
     });
   });
