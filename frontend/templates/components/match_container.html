@@ -20,29 +20,6 @@
   </div>
 
   <div class="match-body">
-    <div
-      class="party-box {% if match.winning_party == 'Re' %}party-win{% elif match.winning_party == 'Kontra' %}party-lose{% endif %}"
-    >
-      {% for position, team in match.teams.items() if team.party == 'Re'%}
-      <div class="team-title">{{ team.name }}</div>
-      {% endfor %}
-    </div>
-
-    <!-- Points Column -->
-    <div class="points-column">
-      <div class="points-box">{{ match.points }}</div>
-    </div>
-
-    <div
-      class="party-box kontra-team {% if match.winning_party == 'Kontra' %}party-win{% elif match.winning_party == 'Re' %}party-lose{% endif %}"
-    >
-      {% for position, team in match.teams.items() if team.party == 'Kontra'%}
-      <div class="team-title">{{ team.name }}</div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="expanded-match-body">
     <!-- Re Teams -->
     <div class="party-column">
       {% for position, team in match.teams.items() if team.party == 'Re' %}
@@ -82,14 +59,14 @@
       >
         <div class="team-title">{{ team.name }}</div>
         {% if team.special_cards %} {% if team.special_cards %}
-        <div class="team-special kontra-team">
+        <div class="team-special team">
           <strong>Sonderkarten:</strong><br />
           {% for card in team.special_cards %}
           <span>{{ card }}</span><br />
           {% endfor %}
         </div>
         {% endif %} {% if team.extra_points %}
-        <div class="team-extra kontra-team">
+        <div class="team-extra">
           <strong>Extrapunkte:</strong><br />
           {% for name, count in team.extra_points.items() %}
           <span>{{ name }} ({{ count }})</span><br />
