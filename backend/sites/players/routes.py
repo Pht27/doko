@@ -27,6 +27,7 @@ def players():
     transformed_player_data = transform_player_data(players)
     return render_template('sites/players/players.html', players=transformed_player_data)
 
+
 @players_bp.route('/add_player', methods=['POST'])
 def add_player():
     data = request.get_json()
@@ -35,12 +36,16 @@ def add_player():
     if not name:
         return jsonify(error="Name darf nicht leer sein."), 400
 
+    if ',' in name:
+        return jsonify(error="Name darf kein Komma enthalten."), 400
+
     max_player_name_length = int(get_max_player_name_length())
 
     if len(name) > max_player_name_length:
         return jsonify(error="Name darf nicht länger als " + str(max_player_name_length) + " Zeichen sein.")
 
-    name_taken = execute_defined_function_with_params('DF_check_if_name_is_taken', name)
+    name_taken = execute_defined_function_with_params(
+        'DF_check_if_name_is_taken', name)
     if name_taken:
         return jsonify(error="Name ist bereits vergeben."), 400
 

@@ -36,3 +36,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+async function addComment(button) {
+  const roundId = button.getAttribute("data-round-id");
+  const commentToAdd = prompt("Kommentar:");
+
+  if (!commentToAdd || commentToAdd.trim() === "") return;
+
+  const response = await fetch("/match_history/add_comment", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      round_id: roundId,
+      comment: commentToAdd.trim(),
+    }),
+  });
+
+  const result = await response.json();
+  if (response.ok) {
+    alert("Kommentar gespeichert.");
+    // Optional: Refresh page or update UI dynamically
+    location.reload(); // or inject the new comment into the DOM
+  } else {
+    alert("Fehler: " + result.error);
+  }
+}

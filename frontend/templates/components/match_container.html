@@ -108,7 +108,13 @@
   </div>
 
   <div class="match-controls">
-    <span class="match-controls-button left">Kommentieren</span>
+    <span
+      class="match-controls-button left"
+      onclick="addComment(this)"
+      data-round-id="{{ match.round_id }}"
+    >
+      Kommentieren
+    </span>
 
     <button class="expand-toggle" type="button">
       <svg
