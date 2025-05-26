@@ -4,9 +4,9 @@
       {{ match.time_stamp.strftime("%a, %d %b %Y") }}
     </div>
     <div
-      class="match-header-center game-type {% if match.is_solo %}solo-game-type{% endif %}"
+      class="match-header-center game-type {% if match.game_type.is_solo %}solo-game-type{% endif %}"
     >
-      {{ match.game_type }}
+      {{ match.game_type.game_type_name }}
     </div>
     <div class="match-header-right">
       {{ match.time_stamp.strftime("%H:%M") }}
@@ -15,7 +15,7 @@
 
   <div class="match-meta-row">
     <div class="party-title">Re</div>
-    <div class="points-title">Points</div>
+    <div class="points-title">Punkte</div>
     <div class="party-title kontra">Kontra</div>
   </div>
 
@@ -103,7 +103,7 @@
 
   <div class="comment-section">
     {% for comment in match.comments %}
-    <div class="comment">{{ comment }}</div>
+    <div class="comment">{{ comment.text }}</div>
     {% endfor %}
   </div>
 

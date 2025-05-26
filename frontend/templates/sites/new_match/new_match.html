@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+<!--  -->
+{% block extra_styles %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/sites/new_match.css') }}"
+/>
+{% endblock %}
+<!--  -->
+
+<h1>{% block title %} Spiel eintragen {% endblock %}</h1>
+
+{% block titlecard %} Spiel eintragen {% endblock %}
+
+<!--  -->
+{% block content %}
+<div id="match-editor-container">
+  {% include 'components/match_editor.html' %}
+</div>
+{% endblock %}
+<!--  -->
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/sites/new_match.js') }}"></script>
+{% endblock %}
+<!--  -->

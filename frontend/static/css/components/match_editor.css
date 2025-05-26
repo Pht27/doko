@@ -1,0 +1,260 @@
+/* === MATCH CONTAINER === */
+.match-container {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.match-container.show {
+  display: block;
+  opacity: 1;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.8rem 0.8rem 0.2rem;
+  padding-bottom: 0rem;
+  transition: box-shadow 0.2s ease;
+}
+
+/* === MATCH HEADER === */
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0rem;
+}
+
+.match-header-left,
+.match-header-center,
+.match-header-right {
+  flex: 1;
+}
+
+.match-header-left {
+  text-align: left;
+}
+
+.match-header-center {
+  text-align: center;
+}
+
+.match-header-right {
+  text-align: right;
+}
+
+.game-type {
+  font-weight: 600;
+  color: #0066cc;
+}
+
+.solo-game-type {
+  color: #f39c12;
+}
+
+/* === META ROW === */
+.match-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 0.3rem;
+}
+
+.party-title {
+  flex: 1;
+  text-align: left;
+}
+
+.party-title.kontra {
+  text-align: right;
+}
+
+.points-title {
+  flex: 1;
+  text-align: center;
+}
+
+/* === MATCH BODY (collapsed view) === */
+.match-body {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.5rem;
+  align-items: start;
+}
+
+.match-body.hidden,
+.expanded-match-body.hidden {
+  display: none;
+  opacity: 0;
+}
+
+/* === EXPANDED MATCH BODY === */
+.expanded-match-body {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.5rem;
+  align-items: start;
+}
+
+.party-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.party-column.kontra {
+  text-align: right;
+}
+
+/* === PARTY BLOCKS === */
+.party-box,
+.team-block {
+  background-color: #f0f4ff;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  gap: 0.3rem;
+}
+
+.party-box.kontra-team {
+  text-align: right;
+}
+
+/* Win/Lose Styles */
+.party-win,
+.team-block.party-win,
+.party-box.party-win {
+  background-color: #e1f5e6;
+}
+
+.party-lose,
+.team-block.party-lose,
+.party-box.party-lose {
+  background-color: #fdecea;
+}
+
+/* === TEAM CONTENT === */
+.team-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #2c3e50;
+}
+
+.team-special,
+.team-extra {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.team-title.kontra-team,
+.team-special.kontra-team,
+.team-extra.kontra-team {
+  text-align: right;
+}
+
+/* === POINTS === */
+.points-box {
+  background: transparent;
+  padding: 0 0.4rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.points-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.3rem;
+  background: transparent;
+}
+
+/* === COMMENT SECTION === */
+
+.comment-section.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.comment-section {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid #e0e0e0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem; /* sets space between comments */
+}
+
+.comment-section .comment {
+  color: #555; /* Subtle dark gray */
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* === MATCH CONTROLS === */
+.match-controls {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.match-controls-button {
+  background: none;
+  border: none;
+  color: #aaa;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+
+  opacity: 1;
+}
+
+.match-controls-button.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.match-controls-button.left {
+  text-align: left;
+  justify-self: start;
+}
+
+.match-controls-button.right {
+  text-align: right;
+  justify-self: end;
+}
+
+.expand-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+
+  transition: opacity 0.3s ease;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+.arrow-icon-container {
+  transition: transform 0.3s ease;
+  color: #979797;
+}
+
+.expand-toggle.expanded .arrow-icon-container {
+  transform: rotate(180deg);
+}

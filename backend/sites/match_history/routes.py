@@ -19,7 +19,12 @@ def match_history():
     comments_by_round = execute_query_with_placeholder_params(
         'database/comment/queries/get_comments_by_round.sql', ()
     )
-    transformed_matches = transform_match_data(matches, comments_by_round)
+    player_ids_by_team = execute_query_with_placeholder_params(
+        'database/team/queries/get_player_ids_by_team.sql'
+    )
+    transformed_matches = transform_match_data(
+        matches, comments_by_round, player_ids_by_team)
+    print(transformed_matches[0])
     return render_template('sites/match_history/match_history.html', matches=transformed_matches)
 
 
@@ -28,8 +33,7 @@ def add_comment():
     data = request.get_json()
     round_id = data.get('round_id')
     comment = data.get('comment', '').strip()
-    print(round_id)
-    print(comment)
+
     if not comment:
         return jsonify(error="Kommentar darf nicht leer sein."), 400
 

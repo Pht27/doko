@@ -1,3 +1,7 @@
-- matches edit button überlegen
 - player personal page
-- spieler hinzufügen -> werden die teams direkt inserted?? -> stored procedure die alle teams erstellt und 
+
+match container:
+party column + team container in beiden fällen. dann expanded / nicht expanded.
+in nicht expanded gap=0 und keine borde radius (ausser erster und letzer), sodass es aussieht wie jetzt (mehr oder weniger)
+in expanded gap adden und extra punkte etc anzeigen, sowie comments und buttons
+-----> macht auch editor einfacher.

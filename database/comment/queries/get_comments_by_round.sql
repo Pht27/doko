@@ -1,5 +1,6 @@
 SELECT
     r.id AS round_id,
+    c.id AS comment_id,
     c.text AS comment
 FROM
     round r
