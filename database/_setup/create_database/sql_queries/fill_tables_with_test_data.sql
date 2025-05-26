@@ -130,7 +130,11 @@ INSERT INTO team_in_round_has_extra_point VALUES (4, 7, 1, 1);  -- Agathe
 INSERT INTO comment (text) VALUES ('Das Spiel war ja crazy!');
 INSERT INTO comment (text) VALUES ('Kaum zu glauben! -A.');
 INSERT INTO comment (text) VALUES ('Outplayed -B.');
+INSERT INTO comment (text) VALUES ('Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development. Its purpose is to permit a page layout to be designed, independently of the copy that will subsequently populate it, or to demonstrate various fonts of a typeface without meaningful text that could be distracting. Lorem ipsum is typically a corrupted version of De finibus bonorum et malorum, a 1st-century BC text by the Roman statesman and philosopher Cicero, with words altered, added, and removed to make it nonsensical and improper Latin.');
+INSERT INTO comment (text) VALUES ('Cicero mit Schlaganfall');
 
 INSERT INTO round_has_comment (round_id, comment_id) VALUES (1, 1);
 INSERT INTO round_has_comment (round_id, comment_id) VALUES (3, 2);
 INSERT INTO round_has_comment (round_id, comment_id) VALUES (3, 3);
+INSERT INTO round_has_comment (round_id, comment_id) VALUES (4, 4);
+INSERT INTO round_has_comment (round_id, comment_id) VALUES (4, 5);

@@ -173,6 +173,29 @@
   background: transparent;
 }
 
+/* === COMMENT SECTION === */
+
+.comment-section.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.comment-section {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid #e0e0e0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem; /* sets space between comments */
+}
+
+.comment-section .comment {
+  color: #555; /* Subtle dark gray */
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
 /* === MATCH CONTROLS === */
 .match-controls {
   display: grid;

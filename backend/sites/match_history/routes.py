@@ -15,6 +15,8 @@ def match_history():
     matches = execute_query_with_placeholder_params(
         'database/round/queries/get_rounds_for_match_history.sql', ()
     )
-    transformed_matches = transform_match_data(matches)
-    print(transformed_matches[0])
+    comments_by_round = execute_query_with_placeholder_params(
+        'database/round/queries/get_comments_by_round.sql', ()
+    )
+    transformed_matches = transform_match_data(matches, comments_by_round)
     return render_template('sites/match_history/match_history.html', matches=transformed_matches)

@@ -2,13 +2,19 @@ from collections import defaultdict
 from datetime import datetime
 
 
-def transform_match_data(rows):
+def transform_match_data(rows, comments):
     """
     Transforms flat match row data into grouped match structure.
-    Adds grouped players, special cards, and extra points per team (by position).
+    Adds grouped players, special cards, extra points, and comments per team (by position).
     """
     matches = {}
     player_ids = []
+
+    # Step 1: Group comments by round_id
+    comments_by_round = defaultdict(list)
+    for entry in comments:
+        if entry['comment']:  # Ignore None
+            comments_by_round[entry['round_id']].append(entry['comment'])
 
     for row in rows:
         round_id = row['round_id']
@@ -29,6 +35,7 @@ def transform_match_data(rows):
                 'points': row['points'],
                 'winning_party': row['winning_party'],
                 'is_solo': is_solo,
+                'comments': comments_by_round.get(round_id, []),
                 'teams': defaultdict(lambda: {
                     'party': None,
                     'name': None,
@@ -50,7 +57,6 @@ def transform_match_data(rows):
     # Post-process for output formatting
     result = []
     for match in matches.values():
-        # Convert sets to lists for JSON/template compatibility
         for team in match['teams'].values():
             team['special_cards'] = list(team['special_cards'])
             team['extra_points'] = dict(team['extra_points'])
