@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS round_has_team;
 DROP TABLE IF EXISTS round_is_game_mode;
 DROP TABLE IF EXISTS team_in_round_has_extra_point;
 DROP TABLE IF EXISTS team_in_round_has_special_card;
+DROP TABLE IF EXISTS round_has_comment;
 
 DROP TABLE IF EXISTS player;
 DROP TABLE IF EXISTS team;
@@ -10,6 +11,7 @@ DROP TABLE IF EXISTS round;
 DROP TABLE IF EXISTS extra_point;
 DROP TABLE IF EXISTS special_card;
 DROP TABLE IF EXISTS game_mode;
+DROP TABLE IF EXISTS comment;
 
 CREATE TABLE player (
     id              INT AUTO_INCREMENT,
@@ -63,6 +65,13 @@ CREATE TABLE game_mode (
     PRIMARY KEY (id)            
 );
 
+CREATE TABLE comment (
+    id                          INT AUTO_INCREMENT,
+    text                        TEXT NOT NULL,
+
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE team_has_member (
     team_id     INT,
     player_id   INT,
@@ -113,4 +122,12 @@ CREATE TABLE team_in_round_has_extra_point (
     FOREIGN KEY (round_id)                              REFERENCES round(id),
     FOREIGN KEY (team_id)                               REFERENCES team(id),
     FOREIGN KEY (extra_point_id)                        REFERENCES extra_point(id)
+);
+
+CREATE TABLE round_has_comment (
+    round_id        INT,
+    comment_id      INT,
+
+    FOREIGN KEY (round_id)                              REFERENCES round(id),
+    FOREIGN KEY (comment_id)                             REFERENCES comment(id)
 );

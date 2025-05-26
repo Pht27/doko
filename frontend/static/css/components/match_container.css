@@ -105,6 +105,10 @@
   gap: 1rem;
 }
 
+.party-column.kontra {
+  text-align: right;
+}
+
 /* === PARTY BLOCKS === */
 .party-box,
 .team-block {
@@ -169,7 +173,7 @@
   background: transparent;
 }
 
-/* === LEADERBOARD CONTROLS === */
+/* === MATCH CONTROLS === */
 .match-controls {
   display: grid;
   grid-template-columns: 1fr auto 1fr;

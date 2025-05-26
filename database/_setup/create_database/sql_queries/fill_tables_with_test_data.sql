@@ -97,6 +97,7 @@ INSERT INTO round_has_team VALUES
 (5, 2, 3, 'Kontra'),
 (5, 9, 4, 'Kontra');
 
+-- SPECIAL CARDS AND EXTRA POINTS
 
 -- Round 1: Diana’s team (Team 3) gets "Heidfrau"
 INSERT INTO team_in_round_has_special_card VALUES (1, 3, 3);  -- Heidfrau
@@ -123,3 +124,13 @@ INSERT INTO team_in_round_has_extra_point VALUES (3, 6, 3, 2);  -- Fischauge
 
 -- Round 3: Alice (Team 7) gets Agathe
 INSERT INTO team_in_round_has_extra_point VALUES (4, 7, 1, 1);  -- Agathe
+
+
+-- COMMENTS
+INSERT INTO comment (text) VALUES ('Das Spiel war ja crazy!');
+INSERT INTO comment (text) VALUES ('Kaum zu glauben! -A.');
+INSERT INTO comment (text) VALUES ('Outplayed -B.');
+
+INSERT INTO round_has_comment (round_id, comment_id) VALUES (1, 1);
+INSERT INTO round_has_comment (round_id, comment_id) VALUES (3, 2);
+INSERT INTO round_has_comment (round_id, comment_id) VALUES (3, 3);

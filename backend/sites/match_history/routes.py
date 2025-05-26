@@ -16,4 +16,5 @@ def match_history():
         'database/round/queries/get_rounds_for_match_history.sql', ()
     )
     transformed_matches = transform_match_data(matches)
+    print(transformed_matches[0])
     return render_template('sites/match_history/match_history.html', matches=transformed_matches)

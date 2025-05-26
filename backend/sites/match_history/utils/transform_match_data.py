@@ -14,10 +14,8 @@ def transform_match_data(rows):
         round_id = row['round_id']
         position = row['position']
         party = row.get('team_party')  # 'Re' or 'Kontra'
-        player_name = row['player_name']
+        team_name = row['team_name']
         is_solo = row.get('is_solo', False)
-
-        player_id = row['player_id']
 
         special_card = row.get('special_card_name')
         extra_point_name = row.get('extra_point_name')
@@ -33,18 +31,15 @@ def transform_match_data(rows):
                 'is_solo': is_solo,
                 'teams': defaultdict(lambda: {
                     'party': None,
-                    'players': [],
+                    'name': None,
                     'special_cards': set(),
                     'extra_points': defaultdict(int)
                 })
             }
-            player_ids = []
 
-        if player_id not in player_ids:
-            team = matches[round_id]['teams'][position]
-            team['party'] = party
-            team['players'].append(player_name)
-            player_ids.append(player_id)
+        team = matches[round_id]['teams'][position]
+        team['party'] = party
+        team['name'] = team_name
 
         if special_card:
             team['special_cards'].add(special_card)
@@ -59,12 +54,6 @@ def transform_match_data(rows):
         for team in match['teams'].values():
             team['special_cards'] = list(team['special_cards'])
             team['extra_points'] = dict(team['extra_points'])
-
-        # After building match['teams'] in the loop
-        match['re_teams'] = {pos: team['players'] for pos,
-                             team in match['teams'].items() if team['party'] == 'Re'}
-        match['kontra_teams'] = {pos: team['players'] for pos,
-                                 team in match['teams'].items() if team['party'] == 'Kontra'}
 
         result.append(match)
 

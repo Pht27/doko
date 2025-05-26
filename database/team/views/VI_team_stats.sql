@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW team_stats AS
+CREATE OR REPLACE VIEW VI_team_stats AS
 SELECT
     t.id AS team_id,
     t.name AS team_name,

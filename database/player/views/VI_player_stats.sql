@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW player_stats AS
+CREATE OR REPLACE VIEW VI_player_stats AS
 SELECT 
     id, 
     name, 
@@ -41,7 +41,7 @@ FROM
                 team_id
         ) AS team_player_counts ON thm.team_id = team_player_counts.team_id
     LEFT JOIN
-        team_stats tp ON tp.team_id = thm.team_id
+        VI_team_stats tp ON tp.team_id = thm.team_id
     GROUP BY
         p.id, p.name
 ) AS alias;

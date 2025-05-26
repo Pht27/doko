@@ -23,8 +23,8 @@
     <div
       class="party-box {% if match.winning_party == 'Re' %}party-win{% elif match.winning_party == 'Kontra' %}party-lose{% endif %}"
     >
-      {% for position, players in match.re_teams.items() %}
-      <div class="team-title">{{ players | join(', ') }}</div>
+      {% for position, team in match.teams.items() if team.party == 'Re'%}
+      <div class="team-title">{{ team.name }}</div>
       {% endfor %}
     </div>
 
@@ -36,8 +36,8 @@
     <div
       class="party-box kontra-team {% if match.winning_party == 'Kontra' %}party-win{% elif match.winning_party == 'Re' %}party-lose{% endif %}"
     >
-      {% for position, players in match.kontra_teams.items() %}
-      <div class="team-title">{{ players | join(', ') }}</div>
+      {% for position, team in match.teams.items() if team.party == 'Kontra'%}
+      <div class="team-title">{{ team.name }}</div>
       {% endfor %}
     </div>
   </div>
@@ -49,7 +49,7 @@
       <div
         class="team-block {% if match.winning_party == 'Re' %}party-win{% elif match.winning_party == 'Kontra' %}party-lose{% endif %}"
       >
-        <div class="team-title">{{ team.players | join(', ') }}</div>
+        <div class="team-title">{{ team.name }}</div>
         {% if team.special_cards %}
         <div class="team-special">
           <strong>Sonderkarten:</strong><br />
@@ -75,14 +75,12 @@
     </div>
 
     <!-- Kontra Teams -->
-    <div class="party-column">
+    <div class="party-column kontra">
       {% for position, team in match.teams.items() if team.party == 'Kontra' %}
       <div
         class="team-block {% if match.winning_party == 'Kontra' %}party-win{% elif match.winning_party == 'Re' %}party-lose{% endif %}"
       >
-        <div class="team-title kontra-team">
-          {{ team.players | join(', ') }}
-        </div>
+        <div class="team-title">{{ team.name }}</div>
         {% if team.special_cards %} {% if team.special_cards %}
         <div class="team-special kontra-team">
           <strong>Sonderkarten:</strong><br />
