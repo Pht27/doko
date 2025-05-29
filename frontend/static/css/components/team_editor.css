@@ -1,3 +1,6 @@
+/* ===============================
+   MODAL WRAPPER
+   =============================== */
 .modal {
   position: fixed;
   inset: 0;
@@ -17,39 +20,51 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
+/* ===============================
+   MODAL CONTENT
+   =============================== */
+
+.modal-title {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.2rem 0.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.3rem 0rem 0.2rem;
+  border-radius: 0px 0px 5px 5px;
+}
 .modal__content {
   position: relative;
+  z-index: 1001;
   background: white;
   border-radius: 8px;
-  padding: 0.5rem 1.5rem;
-  width: 90%;
-  max-width: 400px;
-  z-index: 1001;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-
-  max-height: 70%;
-  width: 90%;
+  padding: 0rem 1.5rem 0.5rem;
+  width: 80%;
+  max-width: 90%;
+  max-height: 85%;
   overflow-y: auto;
+  border: solid 2px #8a8a8a;
 }
 
 .modal__content ul {
   list-style: none;
-  gap: 5px;
   padding-left: 0;
+  gap: 5px;
 }
 
 .modal__content li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.3rem 0;
   background: #e4e8f7;
   border-radius: 5px;
   padding: 0.8rem 1rem;
+  margin: 10px 0;
   text-decoration: none;
   color: #333;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-  margin: 10px 0;
 }
 
 .modal__content button.remove-btn {
@@ -60,6 +75,9 @@
   cursor: pointer;
 }
 
+/* ===============================
+   FORM & SELECTOR STYLES
+   =============================== */
 .editor-section {
   margin-bottom: 1rem;
 }
@@ -68,10 +86,10 @@
 .search-results {
   border: 1px solid #ccc;
   background: white;
+  border-radius: 8px;
   max-height: 150px;
   overflow-y: auto;
   padding: 0.5rem;
-  border-radius: 8px;
 }
 
 .selector-item,
@@ -80,10 +98,9 @@
   cursor: pointer;
 }
 
-.hidden {
-  display: none;
-}
-
+/* ===============================
+   SEARCH INPUT STYLES
+   =============================== */
 .player-search {
   display: flex;
   border: none;
@@ -95,7 +112,7 @@
 .player-search:focus {
   outline: none;
   box-shadow: none;
-  border-color: #333; /* or your preferred color */
+  border-color: #333;
 }
 
 .add-button {
@@ -106,7 +123,9 @@
   cursor: pointer;
 }
 
-/* POINT CONTROLS */
+/* ===============================
+   POINT CONTROLS
+   =============================== */
 .point-item {
   display: flex;
   align-items: center;
@@ -139,4 +158,11 @@
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+/* ===============================
+   UTILITIES
+   =============================== */
+.hidden {
+  display: none;
 }
