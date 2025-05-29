@@ -98,4 +98,14 @@ def add_player():
 
 @api_bp.route('/add_round', methods=['POST'])
 def add_round():
-    pass
+    data = request.get_json()
+
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    # Print the received round data to the terminal
+    print("Received round data:")
+    print(data)
+
+    # Just return a simple success message
+    return jsonify({"message": "Round received successfully"}), 200

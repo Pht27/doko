@@ -8,4 +8,3 @@
 - kommentare in mathc history scrollbar machen
 - schauen wie man SQl backupen kann
 - kommentare löschen: alle round has comments löschen und nur neue einfügen -> comments bleiben in db aber werden nicht mehr angezeigt!
-

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initial state: hide expanded view and control buttons
     commentSection.classList.add("hidden");
-    controlButtons.forEach((btn) => btn.classList.add("hidden"));
+    // controlButtons.forEach((btn) => btn.classList.add("hidden"));
     teamSpecials.forEach((ts) => ts.classList.add("hidden"));
     teamExtras.forEach((te) => te.classList.add("hidden"));
 
@@ -83,4 +83,8 @@ async function addComment(button) {
   } else {
     alert("Fehler: " + result.error);
   }
+}
+
+function goToEditMatch(roundId) {
+  window.location.href = `/new_match/?round_id=${roundId}`;
 }

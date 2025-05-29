@@ -24,5 +24,4 @@ def match_history():
     )
     transformed_matches = transform_match_data(
         matches, comments_by_round, player_ids_by_team)
-    print(transformed_matches[2])
     return render_template('sites/match_history/match_history.html', matches=transformed_matches)

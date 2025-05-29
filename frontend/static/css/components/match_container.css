@@ -233,6 +233,7 @@
 .match-controls-button.show {
   opacity: 1;
   cursor: pointer;
+  pointer-events: all;
 }
 
 .match-controls-button.left {

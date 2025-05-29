@@ -10,7 +10,8 @@ const switchOrderMap = {}; // teamIndex -> timestamp
 let lastSwitchedTeamIndex = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-  init();
+  console.log(initialRoundData);
+  init(initialRoundData);
 });
 
 // init functions
@@ -21,49 +22,7 @@ async function init(round = null) {
   allExtraPoints = await getExtraPoints();
   allSpecialCards = await getSpecialCards();
 
-  round = roundData = {
-    round_id: 3,
-    time_stamp: null,
-    game_mode: { game_mode_id: 3, game_mode_name: "Normal", is_solo: false },
-    points: 1,
-    winning_party: "Re",
-    comments: [
-      { id: 2, text: "Kaum zu glauben! -A." },
-      { id: 3, text: "Outplayed -B." },
-    ],
-    teams: {
-      1: {
-        party: "Kontra",
-        name: "Alice, Eve",
-        special_cards: [],
-        extra_points: {},
-        player_ids: [1, 5],
-      },
-      2: {
-        party: "Kontra",
-        name: "Charlie",
-        special_cards: ["Genscherdamen"],
-        extra_points: {},
-        player_ids: [3],
-      },
-      3: {
-        party: "Re",
-        name: "Diana",
-        special_cards: [],
-        extra_points: {},
-        player_ids: [4],
-      },
-      4: {
-        party: "Re",
-        name: "Bob, Frank",
-        special_cards: ["Kemmerich"],
-        extra_points: { Fischauge: 2 },
-        player_ids: [2, 6],
-      },
-    },
-  };
-
-  initRoundData(null);
+  initRoundData(round);
   initGameModeSelector();
   initPoints();
   initWinningParty();
@@ -136,7 +95,6 @@ function initGameModeSelector() {
       }
     } else if (mode.name === "Normal") {
       option.selected = "selected";
-      console.log(roundData.game_mode.name);
     }
     select.appendChild(option);
   });
@@ -249,13 +207,10 @@ function updatePoints() {
 }
 
 function removeComment(commentIdToRemove) {
-  console.log(commentIdToRemove);
   const index = roundData.comments.findIndex(
     (comment) => comment.id === commentIdToRemove
   );
-  console.log(index);
   roundData.comments.splice(index, 1);
-  console.log(roundData.comments);
   renderComments();
 }
 
@@ -602,21 +557,42 @@ function hideCommentButtons() {
   }
 }
 
-function saveGame() {
+async function saveGame() {
   if (!checkInput()) {
     return;
   }
 
   const jsDate = new Date();
   roundData.time_stamp = jsDate.toISOString();
-  console.log(roundData);
 
   const cameToEdit = roundData.round_id;
+
+  try {
+    const response = await fetch("/api/add_round", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(roundData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Fehler beim Speichern der Runde");
+    }
+
+    if (!cameToEdit) {
+      alert("Spiel erfolgreich gespeichert!");
+    }
+  } catch (error) {
+    console.error("Save failed:", error);
+    alert("Beim Speichern ist ein Fehler aufgetreten.");
+  }
 
   if (cameToEdit) {
     window.location.href = "/match_history";
     return;
   }
+
   resetForm();
 }
 
@@ -637,6 +613,10 @@ function checkInput() {
   for (const [teamId, team] of Object.entries(roundData.teams)) {
     if (team.player_ids.length === 0) {
       alert("Bitte allen Teams mindestens eine Spieler*in zuweisen!");
+      return false;
+    }
+    if (team.player_ids.length > 2) {
+      alert("Nicht mehr als zwei Spieler*innen pro Team!");
       return false;
     }
   }
