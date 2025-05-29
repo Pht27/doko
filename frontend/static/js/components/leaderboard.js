@@ -28,16 +28,14 @@ function sortAndFilter() {
   });
 
   list.style.opacity = 0;
-  setTimeout(() => {
-    list.innerHTML = "";
-    sorted.forEach((card) => {
-      // Add inactive class if needed
-      card.classList.toggle("inactive", card.dataset.active === "0");
-      list.appendChild(card);
-    });
-    list.appendChild(addNewPlayerButton);
-    list.style.opacity = 1;
-  }, 150);
+  list.innerHTML = "";
+  sorted.forEach((card) => {
+    // Add inactive class if needed
+    card.classList.toggle("inactive", card.dataset.active === "0");
+    list.appendChild(card);
+  });
+  list.appendChild(addNewPlayerButton);
+  list.style.opacity = 1;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -52,7 +50,7 @@ async function addPlayer() {
   const playerName = prompt("Namen eingeben:");
 
   try {
-    const response = await fetch("/players/add_player", {
+    const response = await fetch("/api/add_player", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,0 +1,142 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal--hidden {
+  display: none;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal__content {
+  position: relative;
+  background: white;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  width: 90%;
+  max-width: 400px;
+  z-index: 1001;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+  max-height: 70%;
+  width: 90%;
+  overflow-y: auto;
+}
+
+.modal__content ul {
+  list-style: none;
+  gap: 5px;
+  padding-left: 0;
+}
+
+.modal__content li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0;
+  background: #e4e8f7;
+  border-radius: 5px;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  margin: 10px 0;
+}
+
+.modal__content button.remove-btn {
+  background: none;
+  border: none;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.editor-section {
+  margin-bottom: 1rem;
+}
+
+.selector,
+.search-results {
+  border: 1px solid #ccc;
+  background: white;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.selector-item,
+.search-item {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.player-search {
+  display: flex;
+  border: none;
+  border-bottom: solid 1px #49494954;
+  padding-bottom: 4px;
+  margin-bottom: 2px;
+}
+
+.player-search:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #333; /* or your preferred color */
+}
+
+.add-button {
+  border: none;
+  background: none;
+  font-weight: light;
+  color: #646464ce;
+  cursor: pointer;
+}
+
+/* POINT CONTROLS */
+.point-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  gap: 1rem;
+}
+
+.point-name {
+  flex-grow: 1;
+}
+
+.point-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.point-controls button {
+  padding: 2px 6px;
+}
+
+.point-value {
+  min-width: 24px;
+  text-align: center;
+}
+
+.remove-point-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

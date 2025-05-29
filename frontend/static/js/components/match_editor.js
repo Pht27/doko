@@ -1,0 +1,429 @@
+let allPlayers;
+let allExtraPoints;
+let allSpecialCards;
+
+let roundData;
+
+// for displaying in the right order
+const switchOrderMap = {}; // teamIndex -> timestamp
+let lastSwitchedTeamIndex = null;
+
+document.addEventListener("DOMContentLoaded", () => {
+  init();
+});
+
+// init functions
+
+async function init(matchID = null) {
+  const gameModes = await getGameModes();
+  initGameModeSelector(gameModes);
+
+  allPlayers = await getPlayers();
+  allExtraPoints = await getExtraPoints();
+  allSpecialCards = await getSpecialCards();
+
+  initRoundData();
+  updateTeamBlocks();
+}
+
+function initRoundData(round = null) {
+  roundData = {
+    round_id: null,
+    time_stamp: null,
+    game_type: {
+      game_type_id: null,
+      game_type_name: "",
+      is_solo: false,
+    },
+    points: 0,
+    winning_party: "",
+    comments: [],
+    teams: {
+      1: {
+        party: "Re",
+        name: "",
+        special_cards: [],
+        extra_points: {},
+        player_ids: [],
+      },
+      2: {
+        party: "Re",
+        name: "",
+        special_cards: [],
+        extra_points: {},
+        player_ids: [],
+      },
+      3: {
+        party: "Kontra",
+        name: "",
+        special_cards: [],
+        extra_points: {},
+        player_ids: [],
+      },
+      4: {
+        party: "Kontra",
+        name: "",
+        special_cards: [],
+        extra_points: {},
+        player_ids: [],
+      },
+    },
+  };
+  roundData = {
+    round_id: 3,
+    time_stamp: null,
+    game_type: { game_type_id: 3, game_type_name: "Normal", is_solo: false },
+    points: 1,
+    winning_party: "Re",
+    comments: [
+      { id: 2, text: "Kaum zu glauben! -A." },
+      { id: 3, text: "Outplayed -B." },
+    ],
+    teams: {
+      1: {
+        party: "Kontra",
+        name: "Alice, Eve",
+        special_cards: [],
+        extra_points: {},
+        player_ids: [1, 5],
+      },
+      2: {
+        party: "Kontra",
+        name: "Charlie",
+        special_cards: ["Genscherdamen"],
+        extra_points: {},
+        player_ids: [3],
+      },
+      3: {
+        party: "Re",
+        name: "Diana",
+        special_cards: [],
+        extra_points: {},
+        player_ids: [4],
+      },
+      4: {
+        party: "Re",
+        name: "Bob, Frank",
+        special_cards: ["Kemmerich"],
+        extra_points: { Fischauge: 2 },
+        player_ids: [2, 6],
+      },
+    },
+  };
+}
+
+function initGameModeSelector(gameModes) {
+  const wrapper = document.querySelector(".match-header-center.game-type");
+
+  const select = document.createElement("select");
+  select.name = "game_mode";
+
+  gameModes.forEach((mode) => {
+    const option = document.createElement("option");
+    option.value = mode.id;
+    option.textContent = mode.name;
+    if (mode.name === "Normal") {
+      option.selected = "selected";
+    }
+    select.appendChild(option);
+  });
+
+  wrapper.innerHTML = ""; // Clear existing
+  wrapper.appendChild(select);
+}
+
+// update functions
+
+function updateTeamBlocks() {
+  let reBlocks = [];
+  let kontraBlocks = [];
+
+  for (let i = 1; i <= 4; i++) {
+    const team = roundData.teams[i];
+    const isEmpty = isTeamBlockEmpty(i);
+
+    const contentHTML = isEmpty
+      ? '<div class="add-team-block-note">Hinzufügen</div>'
+      : renderTeamContent(team);
+
+    const innerHTML = contentHTML;
+
+    const block = {
+      position: i,
+      party: team.party,
+      innerHTML,
+      lastSwitchTime: switchOrderMap[i] || 0, // fallback to 0
+    };
+
+    if (team.party === "Re") {
+      reBlocks.push(block);
+    } else {
+      kontraBlocks.push(block);
+    }
+  }
+
+  // Sort within party by lastSwitchTime
+  reBlocks.sort((a, b) => a.lastSwitchTime - b.lastSwitchTime);
+  kontraBlocks.sort((a, b) => a.lastSwitchTime - b.lastSwitchTime);
+
+  const teamBlocks = [...reBlocks, ...kontraBlocks];
+
+  renderTeamBlocks(teamBlocks);
+}
+
+// getter functions
+
+async function getGameModes() {
+  const url = "/api/get_game_modes";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+
+    if (!Array.isArray(json)) {
+      throw new Error("Invalid response format: expected an array");
+    }
+
+    return json;
+  } catch (error) {
+    console.error("Failed to fetch game modes:", error.message);
+  }
+}
+
+async function getPlayers() {
+  const url = "/api/get_active_players";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+
+    if (!Array.isArray(json)) {
+      throw new Error("Invalid response format: expected an array");
+    }
+
+    return json;
+  } catch (error) {
+    console.error("Failed to fetch players:", error.message);
+  }
+}
+
+async function getExtraPoints() {
+  const url = "/api/get_extra_points";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+
+    if (!Array.isArray(json)) {
+      throw new Error("Invalid response format: expected an array");
+    }
+
+    return json;
+  } catch (error) {
+    console.error("Failed to fetch extra points:", error.message);
+  }
+}
+
+async function getSpecialCards() {
+  const url = "/api/get_special_cards";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+
+    if (!Array.isArray(json)) {
+      throw new Error("Invalid response format: expected an array");
+    }
+
+    return json;
+  } catch (error) {
+    console.error("Failed to fetch special cards:", error.message);
+  }
+}
+
+// Helper functions
+
+function isTeamBlockEmpty(idToCheck) {
+  return (
+    roundData["teams"][idToCheck]["player_ids"].length === 0 &&
+    Object.keys(roundData["teams"][idToCheck]["extra_points"]).length === 0 &&
+    roundData["teams"][idToCheck]["special_cards"].length === 0
+  );
+}
+
+function getTeamNameFromPlayerIds(playerIds) {
+  let teamName = "";
+  let moreThanOne = false;
+
+  for (id of playerIds) {
+    let relevantPlayers = allPlayers.filter((player) => player["id"] === id);
+    let playerName = relevantPlayers[0]["name"];
+
+    if (moreThanOne) {
+      teamName += ", ";
+    }
+
+    teamName += playerName;
+
+    moreThanOne = true;
+  }
+
+  return teamName;
+}
+
+function switchParty(teamId) {
+  const currentParty = roundData.teams[teamId].party;
+  roundData.teams[teamId].party = currentParty === "Re" ? "Kontra" : "Re";
+
+  switchOrderMap[teamId] = Date.now(); // store UI-only switch time
+
+  lastSwitchedTeamIndex = teamId;
+
+  updateTeamBlocks(); // Update data → rerender
+}
+
+// render functions
+
+function renderTeamBlocks(teamBlocks) {
+  const reContainer = document.querySelector("#re-column");
+  const kontraContainer = document.querySelector("#kontra-column");
+
+  // Clear existing blocks
+  reContainer.innerHTML = "";
+  kontraContainer.innerHTML = "";
+
+  teamBlocks.forEach((team) => {
+    const div = document.createElement("div");
+
+    div.classList.add("team-block");
+    div.id = `team-block-${team.position}`;
+    div.innerHTML = team.innerHTML;
+
+    if (team.position === lastSwitchedTeamIndex) {
+      div.classList.add("incoming");
+      requestAnimationFrame(() => {
+        div.classList.add("slide-in");
+      });
+    }
+
+    enableSwipeToSwitch(div, team.position);
+
+    // Append to correct container
+    if (team.party === "Re") {
+      reContainer.appendChild(div);
+    } else if (team.party === "Kontra") {
+      kontraContainer.appendChild(div);
+    }
+  });
+}
+
+function renderTeamContent(team) {
+  const name = getTeamNameFromPlayerIds(team.player_ids);
+
+  const specialCardsHTML = (team.special_cards || [])
+    .map((card) => `<span>${card}</span><br />`)
+    .join("");
+
+  const extraPointsHTML = Object.entries(team.extra_points || {})
+    .map(([key, value]) => `<span>${key} (${value})</span><br />`)
+    .join("");
+
+  return `
+    <div class="team-info">
+      <div class="team-name">${name}</div>
+
+      ${
+        specialCardsHTML
+          ? `<div class="team-special">
+            <strong>Sonderkarten:</strong><br />
+            ${specialCardsHTML}
+          </div>`
+          : ""
+      }
+
+      ${
+        extraPointsHTML
+          ? `<div class="team-extra">
+            <strong>Extrapunkte:</strong><br />
+            ${extraPointsHTML}
+          </div>`
+          : ""
+      }
+    </div>
+  `;
+}
+
+// animations
+
+function enableSwipeToSwitch(element, teamIndex) {
+  let startX = null;
+  let swiped = false;
+  const threshold = 50;
+
+  element.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    swiped = false;
+  });
+
+  element.addEventListener("touchend", (e) => {
+    if (startX === null) return;
+
+    const endX = e.changedTouches[0].clientX;
+    const deltaX = endX - startX;
+
+    const direction = deltaX > 0 ? "right" : "left";
+    const absDelta = Math.abs(deltaX);
+
+    const team = roundData.teams[teamIndex];
+
+    // Enforce direction
+    const validSwipe =
+      (team.party === "Re" && direction === "right") ||
+      (team.party === "Kontra" && direction === "left");
+
+    if (absDelta > threshold && validSwipe) {
+      swiped = true;
+
+      animateSwipeOut(element, direction);
+
+      // Wait for swipe-out to finish, then switch + render
+      setTimeout(() => {
+        lastSwitchedTeamIndex = teamIndex; // 🔥 Set this right before update
+        switchParty(teamIndex); // We'll handle render separately
+        updateTeamBlocks();
+      }, 150);
+    }
+
+    startX = null;
+  });
+
+  // Click handler — only if not swiped
+  element.addEventListener("click", () => {
+    if (swiped) return;
+    teamBlockClickHandler(teamIndex);
+  });
+}
+
+function animateSwipeOut(element, direction) {
+  element.style.transition = "transform 0.15s ease-out, opacity 0.15s";
+  element.style.opacity = "0";
+  element.style.transform =
+    direction === "right" ? "translateX(80%)" : "translateX(-80%)";
+}
+
+// event handlers
+function teamBlockClickHandler(teamIndex) {
+  openTeamEditor(teamIndex);
+}

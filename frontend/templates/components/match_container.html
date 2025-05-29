@@ -26,7 +26,7 @@
       <div
         class="team-block {% if match.winning_party == 'Re' %}party-win{% elif match.winning_party == 'Kontra' %}party-lose{% endif %}"
       >
-        <div class="team-title">{{ team.name }}</div>
+        <div class="team-name">{{ team.name }}</div>
         {% if team.special_cards %}
         <div class="team-special">
           <strong>Sonderkarten:</strong><br />
@@ -57,9 +57,9 @@
       <div
         class="team-block {% if match.winning_party == 'Kontra' %}party-win{% elif match.winning_party == 'Re' %}party-lose{% endif %}"
       >
-        <div class="team-title">{{ team.name }}</div>
+        <div class="team-name">{{ team.name }}</div>
         {% if team.special_cards %} {% if team.special_cards %}
-        <div class="team-special team">
+        <div class="team-special">
           <strong>Sonderkarten:</strong><br />
           {% for card in team.special_cards %}
           <span>{{ card }}</span><br />

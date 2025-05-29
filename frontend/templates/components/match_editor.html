@@ -1,0 +1,99 @@
+<div class="match-container">
+  <div class="match-header">
+    <div class="match-header-left"></div>
+    <div class="match-header-center game-type"></div>
+    <div class="match-header-right"></div>
+  </div>
+
+  <div class="match-meta-row">
+    <div class="party-title">Re</div>
+    <div class="points-title">Punkte</div>
+    <div class="party-title kontra">Kontra</div>
+  </div>
+
+  <div class="match-body">
+    <!-- Re Teams -->
+    <div class="party-column" id="re-column">
+      <div class="team-block" id="team-block-1"></div>
+      <div class="team-block" id="team-block-2"></div>
+    </div>
+
+    <!-- Points Column -->
+    <div class="points-column">
+      <div class="points-box">0</div>
+    </div>
+
+    <!-- Kontra Teams -->
+    <div class="party-column kontra" id="kontra-column">
+      <div class="team-block" id="team-block-3"></div>
+      <div class="team-block" id="team-block-4"></div>
+    </div>
+  </div>
+
+  <div class="comment-section"></div>
+</div>
+
+<div id="team-editor-modal" class="modal modal--hidden">
+  <div class="modal__backdrop"></div>
+  <div class="modal__content" id="team-editor-content">
+    <h2>Team bearbeiten</h2>
+
+    <div id="team-players-section">
+      <h3>Spieler</h3>
+      <ul id="team-players-list"></ul>
+    </div>
+    <div class="editor-section">
+      <input
+        type="text"
+        id="player-search"
+        placeholder="Spieler hinzufügen..."
+        autocomplete="off"
+        oninput="playerSearchHandleInput(event)"
+        class="player-search"
+      />
+      <div id="player-search-results" class="search-results hidden"></div>
+    </div>
+
+    <div id="team-special-section">
+      <h3>Sonderkarten</h3>
+      <ul id="team-special-list"></ul>
+    </div>
+    <div class="editor-section">
+      <button
+        id="add-special-card-btn"
+        onclick="specialCardButtonHandleClick(event)"
+        class="add-button"
+      >
+        + Sonderkarte hinzufügen
+      </button>
+      <div id="special-card-selector" class="selector hidden"></div>
+    </div>
+
+    <div id="team-extra-section">
+      <h3>Extrapunkte</h3>
+      <ul id="team-extra-list"></ul>
+    </div>
+    <div class="editor-section">
+      <button
+        id="add-extra-point-btn"
+        onclick="extraPointButtonHandleClick(event)"
+        class="add-button"
+      >
+        + Extrapunkt hinzufügen
+      </button>
+      <div id="extra-point-selector" class="selector hidden"></div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/components/match_editor.js') }}"></script>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/components/match_editor.css') }}"
+/>
+
+<script src="{{ url_for('static', filename='js/components/team_editor.js') }}"></script>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/components/team_editor.css') }}"
+/>

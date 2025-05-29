@@ -1,7 +1,14 @@
+- kommentieren knopf fixen (kein prompt bitte)
+- add player kein prompt sondern popup
 - player personal page
+- stats total page -> karten winrates, ep winrates. team winrates. besondere matches (meiste pkt, meiste ep, meiste sonderkarten oder so)
+- in match history spieler namen zu links zu deren page machen
+- 4 api calls in new match zu einem machen wegen performance
 
-match container:
-party column + team container in beiden fällen. dann expanded / nicht expanded.
-in nicht expanded gap=0 und keine borde radius (ausser erster und letzer), sodass es aussieht wie jetzt (mehr oder weniger)
-in expanded gap adden und extra punkte etc anzeigen, sowie comments und buttons
------> macht auch editor einfacher.
+match editor:
+ROUND JSON schon so initialisieren, wie es im print steht
+hat ganz normale match container. wenn man einen container anklickt kommt ein popup -> dort dann spieler, sonderkarten und ep adden.
+an der seite der container pfeil buttons, um sie auf die andere seite zu holen
+punkte / spielmodus / winner gute idee?
+winner -> neben Re Kontra title? Re, Kontra, größer
+kommentare anzeigen / bearbeiten -> wie so whatsapp nachrichten darunter (mit X zum löschen und neues feld zum kommentar hinzufügen)

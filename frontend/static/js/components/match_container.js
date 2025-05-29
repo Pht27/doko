@@ -64,7 +64,7 @@ async function addComment(button) {
 
   if (!commentToAdd || commentToAdd.trim() === "") return;
 
-  const response = await fetch("/match_history/add_comment", {
+  const response = await fetch("/api/add_comment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -24,21 +24,5 @@ def match_history():
     )
     transformed_matches = transform_match_data(
         matches, comments_by_round, player_ids_by_team)
-    print(transformed_matches[0])
+    print(transformed_matches[2])
     return render_template('sites/match_history/match_history.html', matches=transformed_matches)
-
-
-@match_history_bp.route('/add_comment', methods=['POST'])
-def add_comment():
-    data = request.get_json()
-    round_id = data.get('round_id')
-    comment = data.get('comment', '').strip()
-
-    if not comment:
-        return jsonify(error="Kommentar darf nicht leer sein."), 400
-
-    # Save comment to the database
-    execute_stored_procedure_with_params(
-        'SP_insert_comment', (round_id, comment))
-
-    return jsonify(message="Kommentar hinzugefügt."), 200
