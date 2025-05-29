@@ -94,3 +94,8 @@ def add_player():
 
     execute_stored_procedure_with_params('SP_insert_player', (name,))
     return jsonify(message=f"{name} wurde hinzugefügt."), 200
+
+
+@api_bp.route('/add_round', methods=['POST'])
+def add_round():
+    pass

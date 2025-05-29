@@ -4,11 +4,8 @@
 - stats total page -> karten winrates, ep winrates. team winrates. besondere matches (meiste pkt, meiste ep, meiste sonderkarten oder so)
 - in match history spieler namen zu links zu deren page machen
 - 4 api calls in new match zu einem machen wegen performance
+- navbar, wenn kein Link gedrückt, schließen
+- kommentare in mathc history scrollbar machen
+- schauen wie man SQl backupen kann
+- kommentare löschen: alle round has comments löschen und nur neue einfügen -> comments bleiben in db aber werden nicht mehr angezeigt!
 
-match editor:
-ROUND JSON schon so initialisieren, wie es im print steht
-hat ganz normale match container. wenn man einen container anklickt kommt ein popup -> dort dann spieler, sonderkarten und ep adden.
-an der seite der container pfeil buttons, um sie auf die andere seite zu holen
-punkte / spielmodus / winner gute idee?
-winner -> neben Re Kontra title? Re, Kontra, größer
-kommentare anzeigen / bearbeiten -> wie so whatsapp nachrichten darunter (mit X zum löschen und neues feld zum kommentar hinzufügen)

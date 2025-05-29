@@ -5,25 +5,29 @@
 
   <div class="match-meta-row">
     <label class="party-title">
-      Re
       <input
-        type="radio"
+        type="checkbox"
         name="winner"
         value="Re"
         onchange="updateWinningParty(event)"
+        id="re-checkbox"
+        class="styled-checkbox"
       />
+      <span class="custom-label">Re</span>
     </label>
 
     <div class="points-title">Punkte</div>
 
     <label class="party-title kontra">
       <input
-        type="radio"
+        type="checkbox"
         name="winner"
         value="Kontra"
         onchange="updateWinningParty(event)"
+        id="kontra-checkbox"
+        class="styled-checkbox"
       />
-      Kontra
+      <span class="custom-label">Kontra</span>
     </label>
   </div>
 
@@ -36,7 +40,13 @@
 
     <!-- Points Column -->
     <div class="points-column">
-      <div class="points-box">0</div>
+      <input
+        type="text"
+        class="points-box-input"
+        min="-99"
+        max="99"
+        oninput="updatePoints()"
+      />
     </div>
 
     <!-- Kontra Teams -->
@@ -46,8 +56,33 @@
     </div>
   </div>
 
-  <div class="comment-section"></div>
+  <div class="comment-section">
+    <div class="comment-title">Kommentare</div>
+    <div class="comment-list"></div>
+    <input
+      type="text"
+      id="add-comment"
+      placeholder="Schreibe einen Kommentar..."
+      autocomplete="off"
+      class="add-comment"
+      onfocus="showCommentButtons()"
+      onblur="hideCommentButtons()"
+    />
+    <div class="comment-button-wrapper hidden">
+      <button class="comment-button discard" onclick="discardComment()">
+        Abbrechen
+      </button>
+      <button class="comment-button send" onclick="addComment()">
+        Kommentieren
+      </button>
+    </div>
+  </div>
+  <div class="save-button-wrapper">
+    <button class="save-button" onclick="saveGame()">Speichern</button>
+  </div>
 </div>
+
+<!-- MODAL -->
 
 <div id="team-editor-modal" class="modal modal--hidden">
   <div class="modal__backdrop"></div>

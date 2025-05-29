@@ -15,62 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // init functions
 
-async function init(matchID = null) {
+async function init(round = null) {
   allGameModes = await getGameModes();
   allPlayers = await getPlayers();
   allExtraPoints = await getExtraPoints();
   allSpecialCards = await getSpecialCards();
 
-  initGameModeSelector();
-  initRoundData();
-  updateTeamBlocks();
-}
-
-function initRoundData(round = null) {
-  roundData = {
-    round_id: null,
-    time_stamp: null,
-    game_mode: {
-      game_mode_id: null,
-      game_mode_name: "",
-      is_solo: false,
-    },
-    points: 0,
-    winning_party: null,
-    comments: [],
-    teams: {
-      1: {
-        party: "Re",
-        name: "",
-        special_cards: [],
-        extra_points: {},
-        player_ids: [],
-      },
-      2: {
-        party: "Re",
-        name: "",
-        special_cards: [],
-        extra_points: {},
-        player_ids: [],
-      },
-      3: {
-        party: "Kontra",
-        name: "",
-        special_cards: [],
-        extra_points: {},
-        player_ids: [],
-      },
-      4: {
-        party: "Kontra",
-        name: "",
-        special_cards: [],
-        extra_points: {},
-        player_ids: [],
-      },
-    },
-  };
-  return;
-  roundData = {
+  round = roundData = {
     round_id: 3,
     time_stamp: null,
     game_mode: { game_mode_id: 3, game_mode_name: "Normal", is_solo: false },
@@ -111,6 +62,64 @@ function initRoundData(round = null) {
       },
     },
   };
+
+  initRoundData(null);
+  initGameModeSelector();
+  initPoints();
+  initWinningParty();
+
+  updateTeamBlocks();
+  updateGameMode();
+  renderComments();
+}
+
+function initRoundData(round = null) {
+  if (round) {
+    roundData = round;
+  } else {
+    roundData = {
+      round_id: null,
+      time_stamp: null,
+      game_mode: {
+        game_mode_id: null,
+        game_mode_name: "",
+        is_solo: false,
+      },
+      points: null,
+      winning_party: null,
+      comments: [],
+      teams: {
+        1: {
+          party: "Re",
+          name: "",
+          special_cards: [],
+          extra_points: {},
+          player_ids: [],
+        },
+        2: {
+          party: "Re",
+          name: "",
+          special_cards: [],
+          extra_points: {},
+          player_ids: [],
+        },
+        3: {
+          party: "Kontra",
+          name: "",
+          special_cards: [],
+          extra_points: {},
+          player_ids: [],
+        },
+        4: {
+          party: "Kontra",
+          name: "",
+          special_cards: [],
+          extra_points: {},
+          player_ids: [],
+        },
+      },
+    };
+  }
 }
 
 function initGameModeSelector() {
@@ -121,11 +130,34 @@ function initGameModeSelector() {
     const option = document.createElement("option");
     option.value = mode.id;
     option.textContent = mode.name;
-    if (mode.name === "Normal") {
+    if (roundData.game_mode.game_mode_name) {
+      if (mode.name === roundData.game_mode.game_mode_name) {
+        option.selected = "selected";
+      }
+    } else if (mode.name === "Normal") {
       option.selected = "selected";
+      console.log(roundData.game_mode.name);
     }
     select.appendChild(option);
   });
+}
+
+function initPoints() {
+  if (roundData.points) {
+    let pointsInput = document.querySelector(".points-box-input");
+    pointsInput.value = roundData.points;
+  }
+}
+
+function initWinningParty() {
+  if (roundData.winning_party) {
+    if (roundData.winning_party === "Re") {
+      document.getElementById("re-checkbox").checked = true;
+    }
+    if (roundData.winning_party === "Kontra") {
+      document.getElementById("kontra-checkbox").checked = true;
+    }
+  }
 }
 
 // update functions
@@ -177,9 +209,9 @@ function updateGameMode() {
   }
 
   // Update roundData
-  roundData.game_type = {
-    game_type_id: selectedMode.id,
-    game_type_name: selectedMode.name,
+  roundData.game_mode = {
+    game_mode_id: selectedMode.id,
+    game_mode_name: selectedMode.name,
     is_solo: Boolean(selectedMode.is_solo),
   };
 
@@ -192,9 +224,57 @@ function updateGameMode() {
 }
 
 function updateWinningParty(event) {
-  const winningParty = event.target.value;
-  roundData["winning_party"] = winningParty;
-  renderWinningTeamBlocks(winningParty);
+  const selectedValue = event.target.value;
+  const isChecked = event.target.checked;
+
+  // Uncheck both checkboxes first
+  document.getElementById("re-checkbox").checked = false;
+  document.getElementById("kontra-checkbox").checked = false;
+
+  if (isChecked) {
+    // Re-check the one that was clicked
+    event.target.checked = true;
+    roundData["winning_party"] = selectedValue;
+    renderWinningTeamBlocks(selectedValue);
+  } else {
+    // None selected
+    roundData["winning_party"] = null;
+    renderWinningTeamBlocks(null);
+  }
+}
+
+function updatePoints() {
+  let pointsInput = document.querySelector(".points-box-input");
+  roundData.points = pointsInput.value;
+}
+
+function removeComment(commentIdToRemove) {
+  console.log(commentIdToRemove);
+  const index = roundData.comments.findIndex(
+    (comment) => comment.id === commentIdToRemove
+  );
+  console.log(index);
+  roundData.comments.splice(index, 1);
+  console.log(roundData.comments);
+  renderComments();
+}
+
+function discardComment() {
+  let input = document.querySelector("#add-comment");
+  input.value = "";
+  hideCommentButtons();
+}
+
+function addComment() {
+  const input = document.querySelector("#add-comment");
+  if (input.value === "") {
+    return;
+  }
+  const comment = { id: null, text: input.value };
+  roundData.comments.push(comment);
+  input.value = "";
+  hideCommentButtons();
+  renderComments();
 }
 
 // getter functions
@@ -316,8 +396,6 @@ function switchParty(teamId) {
   switchOrderMap[teamId] = Date.now(); // store UI-only switch time
 
   lastSwitchedTeamIndex = teamId;
-
-  updateTeamBlocks(); // Update data → rerender
 }
 
 // render functions
@@ -419,6 +497,34 @@ function renderWinningTeamBlocks(winningParty) {
   }
 }
 
+function renderComments() {
+  let commentList = document.querySelector(".comment-list");
+
+  commentList.innerHTML = "";
+
+  roundData.comments.forEach((comment) => {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("comment-wrapper");
+
+    const commentText = document.createElement("div");
+    commentText.classList.add("comment");
+    commentText.innerHTML = comment.text;
+
+    wrapper.appendChild(commentText);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-comment-button");
+    deleteButton.addEventListener("click", () => {
+      removeComment(comment.id);
+    });
+    deleteButton.innerHTML = "✖";
+
+    wrapper.appendChild(deleteButton);
+
+    commentList.appendChild(wrapper);
+  });
+}
+
 // animations
 
 function enableSwipeToSwitch(element, teamIndex) {
@@ -480,4 +586,77 @@ function animateSwipeOut(element, direction) {
 // event handlers
 function teamBlockClickHandler(teamIndex) {
   openTeamEditor(teamIndex);
+}
+
+function showCommentButtons() {
+  let commentButtonWrapper = document.querySelector(".comment-button-wrapper");
+  commentButtonWrapper.classList.remove("hidden");
+}
+
+function hideCommentButtons() {
+  let commentButtonWrapper = document.querySelector(".comment-button-wrapper");
+  let input = document.querySelector("#add-comment");
+  if (input.value.trim() === "") {
+    commentButtonWrapper.classList.add("hidden");
+    input.value = "";
+  }
+}
+
+function saveGame() {
+  if (!checkInput()) {
+    return;
+  }
+
+  const jsDate = new Date();
+  roundData.time_stamp = jsDate.toISOString();
+  console.log(roundData);
+
+  const cameToEdit = roundData.round_id;
+
+  if (cameToEdit) {
+    window.location.href = "/match_history";
+    return;
+  }
+  resetForm();
+}
+
+function checkInput() {
+  if (!roundData.game_mode.game_mode_id) {
+    alert("Bitte Spielmodus angeben!");
+    return false;
+  }
+  if (!roundData.points) {
+    alert("Bitte Punkte angeben!");
+    return false;
+  }
+  if (!roundData.winning_party) {
+    alert("Bitte Siegerpartei angeben!");
+    return false;
+  }
+
+  for (const [teamId, team] of Object.entries(roundData.teams)) {
+    if (team.player_ids.length === 0) {
+      alert("Bitte allen Teams mindestens eine Spieler*in zuweisen!");
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function resetForm() {
+  roundData.round_id = null;
+  roundData.time_stamp = null;
+  roundData.game_mode = null;
+  roundData.points = null;
+  roundData.winningParty = null;
+  roundData.comments = [];
+
+  Object.entries(roundData.teams).forEach(([teamId, team]) => {
+    team.special_cards = [];
+    team.extra_points = {};
+  });
+
+  document.getElementById("kontra-checkbox").checked = false;
+  document.getElementById("re-checkbox").checked = false;
 }

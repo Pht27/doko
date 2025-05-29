@@ -1,11 +1,11 @@
 /* === MATCH CONTAINER === */
 .match-container {
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: white;
   border: 2px solid #ccc;
   border-radius: 8px;
-  padding: 0.8rem 0.8rem 0.2rem;
-  padding-bottom: 0rem;
+  padding: 1.2rem 0.8rem;
 }
 
 /* === MATCH HEADER === */
@@ -23,7 +23,7 @@
   height: 100%;
   font-size: 1rem;
   text-align: center;
-  padding: 0.4rem 2.5rem 0.4rem 1.4rem; /* more right padding */
+  padding: 0.4rem 1.4rem;
   border-radius: 50px;
   appearance: none; /* optional: removes default OS styles */
   background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
@@ -50,7 +50,7 @@
   font-weight: bold;
   font-size: 1.2rem;
   color: #444;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
   margin-top: 0.4rem;
 }
 
@@ -61,6 +61,35 @@
 
 .party-title.kontra {
   text-align: right;
+  align-items: right;
+  margin-left: auto;
+}
+
+/* Hide native checkbox */
+.styled-checkbox {
+  display: none;
+}
+
+/* Styled label span */
+.custom-label {
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  background-color: #d8d8d800;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid lightgray;
+}
+
+/* Checked state styling */
+.styled-checkbox:checked + .custom-label {
+  background-color: #4a7a56;
+  color: white;
+  border-color: #00423c;
 }
 
 .points-title {
@@ -71,9 +100,9 @@
 /* === MATCH BODY (collapsed view) === */
 .match-body {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 0.5rem;
+  grid-template-columns: 42% 16% 42%;
   align-items: start;
+  padding: 0rem;
 }
 
 /* === PARTY COLUMN === */
@@ -133,35 +162,128 @@
 }
 
 /* === POINTS === */
-.points-box {
-  background: transparent;
-  padding: 0 0.7rem;
-  font-weight: bold;
+.points-box-input {
+  width: 2.5ch; /* fits 1–2 digits */
+  height: 1.8rem;
+  text-align: center;
   font-size: 1.4rem;
+  border: none;
+  border-bottom: solid;
+  background: transparent;
+  outline: none;
+  padding: 0;
+  padding-bottom: 0.1rem;
+  margin: 0;
+  font-weight: bold;
 }
-
 .points-column {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 0.3rem;
+  padding: 0rem;
   background: transparent;
 }
 
 /* === COMMENT SECTION === */
 
+.comment-title {
+  font-weight: bold;
+  font-size: large;
+}
+
 .comment-section {
   overflow: hidden;
-  border-left: 3px solid #e0e0e0;
   display: flex;
   flex-direction: column;
   gap: 0.8rem; /* sets space between comments */
-  margin-top: 1rem;
-  padding-left: 1rem;
+  margin: 2rem 0.1rem 1rem;
+  padding: 0rem;
 }
 
-.comment-section .comment {
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.comment-wrapper {
+  display: flex;
+  justify-content: space-between; /* pushes items apart */
+  align-items: flex-end;
+  background-color: #f0f4ffbb;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  border-bottom-right-radius: 0px;
+  position: relative; /* needed for the pseudo-element */
+}
+
+.comment {
   color: #555; /* Subtle dark gray */
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-size: 0.9rem;
+}
+
+.delete-comment-button {
+  background: none;
+  border: none;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.comment-button-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  align-items: end;
+  margin-left: auto;
+}
+
+.comment-button {
+  border-radius: 24px;
+  border: none;
+  padding: 0.9rem 1.2rem;
+}
+
+.comment-button.discard {
+  background-color: #e6e6e698;
+  color: darkgray;
+}
+
+.comment-button.send {
+  background-color: #0066cc;
+  color: white;
+  font-weight: bold;
+}
+
+.add-comment {
+  padding: 0.4rem;
+  margin: 0.1rem;
+  border: none;
+  border-bottom: solid;
+}
+
+.add-comment:focus {
+  padding-bottom: 2rem;
+  outline: solid;
+  border: none;
+}
+
+/* === SAVE BUTTON === */
+.save-button {
+  font-weight: bold;
+  background-color: #222;
+  color: #fff;
+  font-size: large;
+  align-content: center;
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  border: none;
+  width: 60%;
+}
+
+.save-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0rem;
 }
