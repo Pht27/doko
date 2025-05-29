@@ -175,11 +175,14 @@ function fillModal(teamIndex) {
   // Players
   const playersList = document.getElementById("team-players-list");
   playersList.innerHTML = "";
-  getTeamNameFromPlayerIds(team.player_ids)
-    .split(", ")
-    .forEach((name, idx) => {
+
+  teamName = getTeamNameFromPlayerIds(team.player_ids);
+
+  if (teamName) {
+    teamName.split(", ").forEach((name, idx) => {
       playersList.innerHTML += `<li>${name} <button class="remove-btn" onclick="removePlayer(${teamIndex}, ${idx}, event)">✖</button></li>`;
     });
+  }
 
   // Special Cards
   const specialList = document.getElementById("team-special-list");

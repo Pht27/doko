@@ -17,12 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function init(matchID = null) {
   allGameModes = await getGameModes();
-  initGameModeSelector(allGameModes);
-
   allPlayers = await getPlayers();
   allExtraPoints = await getExtraPoints();
   allSpecialCards = await getSpecialCards();
 
+  initGameModeSelector();
   initRoundData();
   updateTeamBlocks();
 }
@@ -37,7 +36,7 @@ function initRoundData(round = null) {
       is_solo: false,
     },
     points: 0,
-    winning_party: "",
+    winning_party: null,
     comments: [],
     teams: {
       1: {
@@ -70,6 +69,7 @@ function initRoundData(round = null) {
       },
     },
   };
+  return;
   roundData = {
     round_id: 3,
     time_stamp: null,
@@ -113,7 +113,8 @@ function initRoundData(round = null) {
   };
 }
 
-function initGameModeSelector(gameModes) {
+function initGameModeSelector() {
+  gameModes = allGameModes;
   const select = document.querySelector(".game-mode-select");
 
   gameModes.forEach((mode) => {
@@ -137,11 +138,9 @@ function updateTeamBlocks() {
     const team = roundData.teams[i];
     const isEmpty = isTeamBlockEmpty(i);
 
-    const contentHTML = isEmpty
-      ? '<div class="add-team-block-note">Hinzufügen</div>'
+    const innerHTML = isEmpty
+      ? '<div class="add-team-block-note">Hinzufügen...</div>'
       : renderTeamContent(team);
-
-    const innerHTML = contentHTML;
 
     const block = {
       position: i,
@@ -190,6 +189,12 @@ function updateGameMode() {
   } else {
     select.classList.remove("solo");
   }
+}
+
+function updateWinningParty(event) {
+  const winningParty = event.target.value;
+  roundData["winning_party"] = winningParty;
+  renderWinningTeamBlocks(winningParty);
 }
 
 // getter functions
@@ -321,6 +326,8 @@ function renderTeamBlocks(teamBlocks) {
   const reContainer = document.querySelector("#re-column");
   const kontraContainer = document.querySelector("#kontra-column");
 
+  const winningParty = roundData["winning_party"];
+
   // Clear existing blocks
   reContainer.innerHTML = "";
   kontraContainer.innerHTML = "";
@@ -337,6 +344,14 @@ function renderTeamBlocks(teamBlocks) {
       requestAnimationFrame(() => {
         div.classList.add("slide-in");
       });
+    }
+
+    if (winningParty) {
+      if (team.party === winningParty) {
+        div.classList.add("winning");
+      } else {
+        div.classList.add("losing");
+      }
     }
 
     enableSwipeToSwitch(div, team.position);
@@ -384,6 +399,24 @@ function renderTeamContent(team) {
       }
     </div>
   `;
+}
+
+function renderWinningTeamBlocks(winningParty) {
+  const reBlocks = document.querySelectorAll("#re-column .team-block");
+  const kontraBlocks = document.querySelectorAll("#kontra-column .team-block");
+
+  // Reset all team blocks
+  [...reBlocks, ...kontraBlocks].forEach((block) => {
+    block.classList.remove("winning", "losing");
+  });
+
+  if (winningParty === "Re") {
+    reBlocks.forEach((block) => block.classList.add("winning"));
+    kontraBlocks.forEach((block) => block.classList.add("losing"));
+  } else if (winningParty === "Kontra") {
+    kontraBlocks.forEach((block) => block.classList.add("winning"));
+    reBlocks.forEach((block) => block.classList.add("losing"));
+  }
 }
 
 // animations

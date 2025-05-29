@@ -99,14 +99,17 @@
 }
 
 /* Win/Lose Styles */
-.team-block.party-win {
+.team-block.winning {
   background-color: #e1f5e6;
 }
 
-.party-lose,
-.team-block.party-lose,
-.party-box.party-lose {
+.team-block.losing {
   background-color: #fdecea;
+}
+
+.add-team-block-note {
+  color: gray;
+  font-style: italic;
 }
 
 /* === TEAM CONTENT === */

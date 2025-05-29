@@ -4,16 +4,34 @@
   </div>
 
   <div class="match-meta-row">
-    <div class="party-title">Re</div>
+    <label class="party-title">
+      Re
+      <input
+        type="radio"
+        name="winner"
+        value="Re"
+        onchange="updateWinningParty(event)"
+      />
+    </label>
+
     <div class="points-title">Punkte</div>
-    <div class="party-title kontra">Kontra</div>
+
+    <label class="party-title kontra">
+      <input
+        type="radio"
+        name="winner"
+        value="Kontra"
+        onchange="updateWinningParty(event)"
+      />
+      Kontra
+    </label>
   </div>
 
   <div class="match-body">
     <!-- Re Teams -->
     <div class="party-column" id="re-column">
-      <div class="team-block" id="team-block-1"></div>
-      <div class="team-block" id="team-block-2"></div>
+      <div class="team-block" id="team-block-1">Hinzufügen...</div>
+      <div class="team-block" id="team-block-2">Hinzufügen...</div>
     </div>
 
     <!-- Points Column -->
@@ -23,8 +41,8 @@
 
     <!-- Kontra Teams -->
     <div class="party-column kontra" id="kontra-column">
-      <div class="team-block" id="team-block-3"></div>
-      <div class="team-block" id="team-block-4"></div>
+      <div class="team-block" id="team-block-3">Hinzufügen...</div>
+      <div class="team-block" id="team-block-4">Hinzufügen...</div>
     </div>
   </div>
 
