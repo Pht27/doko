@@ -7,7 +7,7 @@ def transform_match_data(rows, comments, player_team_links):
     Transforms flat match row data into structured match format.
 
     Each match includes:
-      - game_type as dict (id, name, is_solo)
+      - game_mode as dict (id, name, is_solo)
       - list of comment dicts (id, text)
       - teams with player_ids
     """
@@ -35,9 +35,9 @@ def transform_match_data(rows, comments, player_team_links):
         team_id = row['team_id']
 
         # Game type info
-        game_type = {
-            'game_type_id': row['game_type_id'],
-            'game_type_name': row['game_type'],
+        game_mode = {
+            'game_mode_id': row['game_mode_id'],
+            'game_mode_name': row['game_mode'],
             'is_solo': bool(row.get('is_solo', False))
         }
 
@@ -51,7 +51,7 @@ def transform_match_data(rows, comments, player_team_links):
             matches[round_id] = {
                 'round_id': round_id,
                 'time_stamp': row['time_stamp'],
-                'game_type': game_type,
+                'game_mode': game_mode,
                 'points': row['points'],
                 'winning_party': row['winning_party'],
                 'comments': comments_by_round.get(round_id, []),

@@ -1,8 +1,8 @@
 SELECT
     r.id                            AS round_id,
     r.time_stamp                    AS time_stamp,
-    gm.name                         AS game_type,
-    gm.id                           AS game_type_id,
+    gm.name                         AS game_mode,
+    gm.id                           AS game_mode_id,
     r.points                        AS points,
     r.winning_party                 AS winning_party,
     t.id                            AS team_id,

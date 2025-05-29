@@ -1,6 +1,7 @@
 let allPlayers;
 let allExtraPoints;
 let allSpecialCards;
+let allGameModes;
 
 let roundData;
 
@@ -15,8 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // init functions
 
 async function init(matchID = null) {
-  const gameModes = await getGameModes();
-  initGameModeSelector(gameModes);
+  allGameModes = await getGameModes();
+  initGameModeSelector(allGameModes);
 
   allPlayers = await getPlayers();
   allExtraPoints = await getExtraPoints();
@@ -30,9 +31,9 @@ function initRoundData(round = null) {
   roundData = {
     round_id: null,
     time_stamp: null,
-    game_type: {
-      game_type_id: null,
-      game_type_name: "",
+    game_mode: {
+      game_mode_id: null,
+      game_mode_name: "",
       is_solo: false,
     },
     points: 0,
@@ -72,7 +73,7 @@ function initRoundData(round = null) {
   roundData = {
     round_id: 3,
     time_stamp: null,
-    game_type: { game_type_id: 3, game_type_name: "Normal", is_solo: false },
+    game_mode: { game_mode_id: 3, game_mode_name: "Normal", is_solo: false },
     points: 1,
     winning_party: "Re",
     comments: [
@@ -113,10 +114,7 @@ function initRoundData(round = null) {
 }
 
 function initGameModeSelector(gameModes) {
-  const wrapper = document.querySelector(".match-header-center.game-type");
-
-  const select = document.createElement("select");
-  select.name = "game_mode";
+  const select = document.querySelector(".game-mode-select");
 
   gameModes.forEach((mode) => {
     const option = document.createElement("option");
@@ -127,9 +125,6 @@ function initGameModeSelector(gameModes) {
     }
     select.appendChild(option);
   });
-
-  wrapper.innerHTML = ""; // Clear existing
-  wrapper.appendChild(select);
 }
 
 // update functions
@@ -169,6 +164,32 @@ function updateTeamBlocks() {
   const teamBlocks = [...reBlocks, ...kontraBlocks];
 
   renderTeamBlocks(teamBlocks);
+}
+
+function updateGameMode() {
+  const select = document.querySelector(".game-mode-select");
+  const selectedId = parseInt(select.value, 10); // convert value to number
+
+  const selectedMode = allGameModes.find((mode) => mode.id === selectedId);
+
+  if (!selectedMode) {
+    console.warn("Game mode not found for ID:", selectedId);
+    return;
+  }
+
+  // Update roundData
+  roundData.game_type = {
+    game_type_id: selectedMode.id,
+    game_type_name: selectedMode.name,
+    is_solo: Boolean(selectedMode.is_solo),
+  };
+
+  // Toggle .solo class on the select
+  if (selectedMode.is_solo) {
+    select.classList.add("solo");
+  } else {
+    select.classList.remove("solo");
+  }
 }
 
 // getter functions

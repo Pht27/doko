@@ -4,9 +4,9 @@
       {{ match.time_stamp.strftime("%a, %d %b %Y") }}
     </div>
     <div
-      class="match-header-center game-type {% if match.game_type.is_solo %}solo-game-type{% endif %}"
+      class="match-header-center game-type {% if match.game_mode.is_solo %}solo-game-type{% endif %}"
     >
-      {{ match.game_type.game_type_name }}
+      {{ match.game_mode.game_mode_name }}
     </div>
     <div class="match-header-right">
       {{ match.time_stamp.strftime("%H:%M") }}
