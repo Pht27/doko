@@ -88,10 +88,11 @@ function initGameModeSelector() {
     const option = document.createElement("option");
     option.value = mode.id;
     option.textContent = mode.name;
-    if (roundData.game_mode) {
+    if (roundData.game_mode.game_mode_id) {
       if (mode.name === roundData.game_mode.game_mode_name) {
         option.selected = "selected";
       }
+      console.log(roundData.game_mode);
     } else if (mode.name === "Normal") {
       option.selected = "selected";
     }
