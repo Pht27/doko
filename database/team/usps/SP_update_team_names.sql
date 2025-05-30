@@ -1,7 +1,7 @@
 -- RUN_ON_DB_CREATION
 DELIMITER $$
 
-CREATE PROCEDURE update_team_names()
+CREATE PROCEDURE SP_update_team_names()
 BEGIN
     DECLARE done INT DEFAULT FALSE;
     DECLARE current_team_id INT;

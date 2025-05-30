@@ -1,15 +1,16 @@
 DELIMITER $$
 CREATE PROCEDURE SP_insert_round (
-    IN p_winning_party VARCHAR(50),
-    IN p_points INT,
-    IN p_time_stamp DATETIME,
-    OUT p_round_id INT
+    IN winning_party VARCHAR(50),
+    IN points INT,
+    IN time_stamp DATETIME
 )
 BEGIN
+    DECLARE round_id INT;
     INSERT INTO round (winning_party, points, time_stamp)
-    VALUES (p_winning_party, p_points, p_time_stamp);
+    VALUES (winning_party, points, time_stamp);
 
-    SET p_round_id = LAST_INSERT_ID();
+    SET round_id = LAST_INSERT_ID();
+    SELECT round_id; 
 END $$
 
 DELIMITER ;

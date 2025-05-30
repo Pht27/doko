@@ -105,11 +105,6 @@ def add_round():
     if not data:
         return jsonify({"error": "No data received"}), 400
 
-    # Print the received round data to the terminal
-    print("Received round data:")
-    print(data)
-
     insert_round_data(data)
 
-    # Just return a simple success message
     return jsonify({"message": "Round added successfully"}), 200

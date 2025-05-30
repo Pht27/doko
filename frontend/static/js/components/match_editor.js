@@ -88,14 +88,14 @@ function initGameModeSelector() {
     const option = document.createElement("option");
     option.value = mode.id;
     option.textContent = mode.name;
-    if (roundData.game_mode.game_mode_id) {
-      if (mode.name === roundData.game_mode.game_mode_name) {
+    if (roundData.game_mode)
+      if (roundData.game_mode.game_mode_id) {
+        if (mode.name === roundData.game_mode.game_mode_name) {
+          option.selected = "selected";
+        }
+      } else if (mode.name === "Normal") {
         option.selected = "selected";
       }
-      console.log(roundData.game_mode);
-    } else if (mode.name === "Normal") {
-      option.selected = "selected";
-    }
     select.appendChild(option);
   });
 }
@@ -574,7 +574,7 @@ async function saveGame() {
   roundData.time_stamp = jsDate.toISOString();
 
   const cameToEdit = roundData.round_id;
-
+  console.log(1);
   try {
     const response = await fetch("/api/add_round", {
       method: "POST",
@@ -583,25 +583,26 @@ async function saveGame() {
       },
       body: JSON.stringify(roundData),
     });
+    console.log(2);
 
     if (!response.ok) {
       throw new Error("Fehler beim Speichern der Runde");
     }
-
-    if (!cameToEdit) {
-      alert("Spiel erfolgreich gespeichert!");
-    }
   } catch (error) {
+    console.log(3);
     console.error("Save failed:", error);
     alert("Beim Speichern ist ein Fehler aufgetreten.");
   }
-
+  console.log(4);
+  if (!cameToEdit) {
+    alert("Spiel erfolgreich gespeichert!");
+    resetForm();
+    return;
+  }
   if (cameToEdit) {
     window.location.href = "/match_history";
     return;
   }
-
-  resetForm();
 }
 
 function checkInput() {
@@ -635,7 +636,11 @@ function checkInput() {
 function resetForm() {
   roundData.round_id = null;
   roundData.time_stamp = null;
-  roundData.game_mode = null;
+  roundData.game_mode = {
+    game_mode_id: null,
+    game_mode_name: "",
+    is_solo: false,
+  };
   roundData.points = null;
   roundData.winning_party = null;
   roundData.comments = [];

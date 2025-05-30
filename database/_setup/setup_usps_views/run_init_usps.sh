@@ -22,7 +22,7 @@ find "$BASE_DIR" -type f -path "*/usps/*.sql" | while read -r usp_file; do
         usp_name=$(basename "$usp_file")
 
         # Extract procedure name by removing 'SP_' prefix and '.sql' suffix
-        proc_name="${usp_name#SP_}"
+        proc_name="${usp_name}"
         proc_name="${proc_name%.sql}"
 
         echo "⚙️ Running init USP: $usp_name"

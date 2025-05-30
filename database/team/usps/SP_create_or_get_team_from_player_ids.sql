@@ -18,16 +18,20 @@ BEGIN
             HAVING COUNT(*) = 2 AND
                    SUM(thm.player_id = player_id1) = 1 AND
                    SUM(thm.player_id = player_id2) = 1
-            LIMIT 1
         );
     ELSE
         -- Case 2: Only one player is present
         SET found_team_id = (
             SELECT thm.team_id
             FROM team_has_member thm
-            WHERE thm.player_id = player_id1
+            WHERE thm.team_id IN (
+                SELECT team_id
+                FROM team_has_member
+                GROUP BY team_id
+                HAVING COUNT(*) = 1
+            )
             GROUP BY thm.team_id
-            HAVING COUNT(*) = 1
+            HAVING MAX(player_id) = player_id1
             LIMIT 1
         );
     END IF;
