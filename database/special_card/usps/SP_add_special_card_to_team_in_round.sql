@@ -7,5 +7,6 @@ CREATE PROCEDURE SP_add_special_card_to_team_in_round (
 BEGIN
     INSERT INTO team_in_round_has_special_card (round_id, team_id, special_card_id)
     VALUES (round_id, team_id, special_card_id);
-END;
+END $$
+
 DELIMITER ;

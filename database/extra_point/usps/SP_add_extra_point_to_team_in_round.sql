@@ -8,5 +8,6 @@ CREATE PROCEDURE SP_add_extra_point_to_team_in_round (
 BEGIN
     INSERT INTO team_in_round_has_extra_point (round_id, team_id, extra_point_id, count)
     VALUES (round_id, team_id, extra_point_id, count);
-END;
+END $$
+
 DELIMITER ;

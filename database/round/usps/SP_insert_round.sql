@@ -10,5 +10,6 @@ BEGIN
     VALUES (p_winning_party, p_points, p_time_stamp);
 
     SET p_round_id = LAST_INSERT_ID();
-END;
+END $$
+
 DELIMITER ;

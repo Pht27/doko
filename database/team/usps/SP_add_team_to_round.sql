@@ -8,5 +8,6 @@ CREATE PROCEDURE SP_add_team_to_round (
 BEGIN
     INSERT INTO round_has_team (round_id, team_id, position, party)
     VALUES (round_id, team_id, position, party);
-END;
+END $$
+
 DELIMITER ;
