@@ -199,6 +199,7 @@
   margin-top: 1rem;
   padding-left: 1rem;
   opacity: 1;
+  overflow-y: auto;
 }
 
 .comment-section .comment {
