@@ -25,45 +25,76 @@ def get_db_connection():
 
 
 # geeignet für sql files mit paltzhalter %s
-def execute_query_with_placeholder_params(sql_filepath, params=()):
-    conn = get_db_connection()
+def execute_query_with_placeholder_params(sql_filepath, params=(), conn=None):
+    create_connection = False
+    if conn is None:
+        conn = get_db_connection()
+        create_connection = True
+
     try:
         with conn.cursor() as cur:
             query = load_sql(sql_filepath)
             cur.execute(query, params)
-            conn.commit()
+            if create_connection:
+                conn.commit()
             return cur.fetchall()
+    except Exception:
+        if create_connection:
+            conn.rollback()
+        raise
     finally:
-        conn.close()
+        if create_connection:
+            conn.close()
 
 
 # geeignet für stored procedures mit parametern
-def execute_stored_procedure_with_params(stored_procedure_name, params=()):
-    conn = get_db_connection()
+def execute_stored_procedure_with_params(stored_procedure_name, params=(), conn=None):
+    create_connection = False
+    if conn is None:
+        conn = get_db_connection()
+        create_connection = True
+
     try:
         with conn.cursor() as cur:
             cur.callproc(stored_procedure_name, params)
             result = cur.fetchall()
+        if create_connection:
             conn.commit()
         return result
+    except Exception as e:
+        if create_connection:
+            conn.rollback()
+        raise
     finally:
-        conn.close()
+        if create_connection:
+            conn.close()
 
 
 # hilft beim ausführen von funktionen
-def call_function(cursor, func_name, *args):
-    placeholders = ", ".join(["%s"] * len(args))
-    query = f"SELECT {func_name}({placeholders}) AS result"
-    cursor.execute(query, args)
-    return cursor.fetchone()["result"]
+def call_function(conn, func_name, *args):
+    with conn.cursor() as cursor:
+        placeholders = ", ".join(["%s"] * len(args))
+        query = f"SELECT {func_name}({placeholders}) AS result"
+        cursor.execute(query, args)
+        return cursor.fetchone()["result"]
+
 
 # geeignet für defined function mit parametern
-def execute_defined_function_with_params(defined_function_name, *args):
-    conn = get_db_connection()
+def execute_defined_function_with_params(defined_function_name, *args, conn=None):
+    create_connection = False
+    if conn is None:
+        conn = get_db_connection()
+        create_connection = True
+
     try:
-        with conn.cursor() as cur:
-            result = call_function(cur, defined_function_name, *args)
+        result = call_function(conn, defined_function_name, *args)
+        if create_connection:
             conn.commit()
         return result
+    except Exception:
+        if create_connection:
+            conn.rollback()
+        raise
     finally:
-        conn.close()
+        if create_connection:
+            conn.close()

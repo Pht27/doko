@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE PROCEDURE insert_round (
+CREATE PROCEDURE SP_insert_round (
     IN p_winning_party VARCHAR(50),
     IN p_points INT,
     IN p_time_stamp DATETIME,

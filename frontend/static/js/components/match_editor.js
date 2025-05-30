@@ -10,7 +10,6 @@ const switchOrderMap = {}; // teamIndex -> timestamp
 let lastSwitchedTeamIndex = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log(initialRoundData);
   init(initialRoundData);
 });
 
@@ -89,7 +88,7 @@ function initGameModeSelector() {
     const option = document.createElement("option");
     option.value = mode.id;
     option.textContent = mode.name;
-    if (roundData.game_mode.game_mode_name) {
+    if (roundData.game_mode) {
       if (mode.name === roundData.game_mode.game_mode_name) {
         option.selected = "selected";
       }
@@ -101,9 +100,11 @@ function initGameModeSelector() {
 }
 
 function initPoints() {
+  let pointsInput = document.querySelector(".points-box-input");
   if (roundData.points) {
-    let pointsInput = document.querySelector(".points-box-input");
     pointsInput.value = roundData.points;
+  } else {
+    pointsInput.value = "";
   }
 }
 
@@ -115,6 +116,12 @@ function initWinningParty() {
     if (roundData.winning_party === "Kontra") {
       document.getElementById("kontra-checkbox").checked = true;
     }
+  } else {
+    // Uncheck both checkboxes first
+    document.getElementById("re-checkbox").checked = false;
+    document.getElementById("kontra-checkbox").checked = false;
+    roundData["winning_party"] = null;
+    renderWinningTeamBlocks(null);
   }
 }
 
@@ -629,7 +636,7 @@ function resetForm() {
   roundData.time_stamp = null;
   roundData.game_mode = null;
   roundData.points = null;
-  roundData.winningParty = null;
+  roundData.winning_party = null;
   roundData.comments = [];
 
   Object.entries(roundData.teams).forEach(([teamId, team]) => {
@@ -637,6 +644,11 @@ function resetForm() {
     team.extra_points = {};
   });
 
-  document.getElementById("kontra-checkbox").checked = false;
-  document.getElementById("re-checkbox").checked = false;
+  initGameModeSelector();
+  initPoints();
+  initWinningParty();
+
+  updateTeamBlocks();
+  updateGameMode();
+  renderComments();
 }

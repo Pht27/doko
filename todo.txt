@@ -7,4 +7,8 @@
 - navbar, wenn kein Link gedrückt, schließen
 - kommentare in mathc history scrollbar machen
 - schauen wie man SQl backupen kann
-- kommentare löschen: alle round has comments löschen und nur neue einfügen -> comments bleiben in db aber werden nicht mehr angezeigt!
+- über all in match history etc gamemode id mitnehmen für eind.
+
+AKTUELL:
+- kommentare löschen: alle round has comments löschen und nur neue einfügen -> comments bleiben in db aber werden nicht mehr angezeigt! (selbe für teams, ep etc)
+

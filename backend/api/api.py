@@ -1,11 +1,13 @@
 from flask import Blueprint, render_template, request, jsonify
 
-
 from backend.api.config_API import get_max_player_name_length
 
 from backend.api.database.db_API import execute_query_with_placeholder_params
 from backend.api.database.db_API import execute_defined_function_with_params
 from backend.api.database.db_API import execute_stored_procedure_with_params
+from backend.api.database.db_API import get_db_connection
+
+from backend.api.utils.insert_round_data import insert_round_data
 
 api_bp = Blueprint(
     'api',                   # interner Name
@@ -107,5 +109,7 @@ def add_round():
     print("Received round data:")
     print(data)
 
+    insert_round_data(data)
+
     # Just return a simple success message
-    return jsonify({"message": "Round received successfully"}), 200
+    return jsonify({"message": "Round added successfully"}), 200
