@@ -59,8 +59,7 @@ CREATE TABLE game_mode (
     name                        VARCHAR(100) NOT NULL,
     description                 TEXT DEFAULT NULL,
     is_solo                     BOOLEAN DEFAULT FALSE,
-    point_multiplier_re         INT DEFAULT 1,
-    point_multiplier_kontra     INT DEFAULT 1,
+    solo_party                  VARCHAR(50) DEFAULT NULL,
 
     PRIMARY KEY (id)            
 );

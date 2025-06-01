@@ -5,13 +5,14 @@ SELECT
     total_points,
     games_played,
     games_won / nullif(games_played,0) AS winrate,
-    total_points / nullif(games_played,0) AS mean_points,
+    (total_points - start_points) / nullif(games_played,0) AS mean_points,
     active
 FROM
 (
     SELECT
         p.id AS id,
         p.name AS name,
+        p.start_points AS start_points,
 
         p.start_points + COALESCE(SUM(
             CASE

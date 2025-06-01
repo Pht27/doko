@@ -7,3 +7,25 @@
 - schauen wie man SQl backupen kann
 - über all in match history etc gamemode id mitnehmen für eind.
 
+STATS:
+PLAYER
+- bei player stats ist gerade die durschnittl punkte die ohne die team größe einbezogen -> unterscheiden in bereinigt und spielwert
+- ab hier immer spielwert nehmen für punkte -> spielwert heißt mit multiplikator
+
+- punkte
+- winrate nach partner / allein
+- solo winrate / gespielte solos
+- winrate in den letzten 20 spielen
+
+- Zeitreihe
+
+- winrate / punkte / anzahl nach spielmodus als re / kontra
+- winrate / punkte / anzahl nach sonderkarte als benutzer / gegen
+- winrate / punkte / anzahl nach extrapunkt als benutzer / gegen
+
+- bestes / schlechtestes Spiel
+
+TOTAL
+- winrate / punkte / anzahl nach spielmodus als re
+- winrate / punkte / anzahl nach extrapunkt als re / kontra
+- winrate / punkte / anzahl nach sonderkarte

@@ -1,13 +1,13 @@
-id,name,description,is_solo,point_multiplier_re,point_multiplier_kontra
-1,Armut,,0,1,1
-2,Hochzeit,,0,1,1
-3,Normal,,0,1,1
-4,Bubensolo,,1,3,1
-5,Damensolo,,1,3,1
-6,Farbsolo,,1,3,1
-7,Fleischloses,,1,3,1
-8,Knochenloses,,1,3,1
-9,Kontrasolo,,1,1,3
-10,Schlanker Martin,,1,3,1
-11,Schwarze Sau,,1,3,1
-12,Stille Hochzeit,,1,3,1
+id,name,description,is_solo,solo_party
+1,Armut,,0,
+2,Hochzeit,,0,
+3,Normal,,0,
+4,Bubensolo,,1,Re
+5,Damensolo,,1,Re
+6,Farbsolo,,1,Re
+7,Fleischloses,,1,Re
+8,Knochenloses,,1,Re
+9,Kontrasolo,,1,Kontra
+10,Schlanker Martin,,1,Re
+11,Schwarze Sau,,1,Re
+12,Stille Hochzeit,,1,Re

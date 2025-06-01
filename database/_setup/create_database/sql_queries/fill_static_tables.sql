@@ -2,15 +2,15 @@
 INSERT INTO game_mode (name) VALUES ('Armut');
 INSERT INTO game_mode (name) VALUES ('Hochzeit');
 INSERT INTO game_mode (name) VALUES ('Normal');
-INSERT INTO game_mode (name, is_solo, point_multiplier_re) VALUES ('Bubensolo', TRUE, 3);
-INSERT INTO game_mode (name, is_solo, point_multiplier_re) VALUES ('Damensolo', TRUE, 3);
-INSERT INTO game_mode (name, is_solo, point_multiplier_re) VALUES ('Farbsolo', TRUE, 3);
-INSERT INTO game_mode (name, is_solo, point_multiplier_re) VALUES ('Fleischloses', TRUE, 3);
-INSERT INTO game_mode (name, is_solo, point_multiplier_re) VALUES ('Knochenloses', TRUE, 3);
-INSERT INTO game_mode (name, is_solo, point_multiplier_kontra) VALUES ('Kontrasolo', TRUE, 3);
-INSERT INTO game_mode (name, is_solo, point_multiplier_re) VALUES ('Schlanker Martin', TRUE, 3);
-INSERT INTO game_mode (name, is_solo, point_multiplier_re) VALUES ('Schwarze Sau', TRUE, 3);
-INSERT INTO game_mode (name, is_solo, point_multiplier_re) VALUES ('Stille Hochzeit', TRUE, 3);
+INSERT INTO game_mode (name, is_solo, solo_party) VALUES ('Bubensolo', TRUE, 'Re');
+INSERT INTO game_mode (name, is_solo, solo_party) VALUES ('Damensolo', TRUE, 'Re');
+INSERT INTO game_mode (name, is_solo, solo_party) VALUES ('Farbsolo', TRUE, 'Re');
+INSERT INTO game_mode (name, is_solo, solo_party) VALUES ('Fleischloses', TRUE, 'Re');
+INSERT INTO game_mode (name, is_solo, solo_party) VALUES ('Knochenloses', TRUE, 'Re');
+INSERT INTO game_mode (name, is_solo, solo_party) VALUES ('Kontrasolo', TRUE, 'Kontra');
+INSERT INTO game_mode (name, is_solo, solo_party) VALUES ('Schlanker Martin', TRUE, 'Re');
+INSERT INTO game_mode (name, is_solo, solo_party) VALUES ('Schwarze Sau', TRUE, 'Re');
+INSERT INTO game_mode (name, is_solo, solo_party) VALUES ('Stille Hochzeit', TRUE, 'Re');
 
 -- SPECIAL CARDS
 INSERT INTO special_card (name) VALUES ('Gegengenscherdamen');
