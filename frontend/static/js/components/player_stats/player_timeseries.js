@@ -1,4 +1,5 @@
-initTimeSeries(playerInfo.id);
+const playerId = document.getElementById("content").dataset.playerId;
+initTimeSeries(playerId);
 
 async function initTimeSeries(playerId) {
   const timeSeries = await fetchTimeSeries(playerId);

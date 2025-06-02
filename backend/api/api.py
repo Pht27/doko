@@ -13,6 +13,7 @@ from backend.api.database.db_API import get_db_connection
 from backend.api.utils.insert_round_data import insert_round_data
 from backend.api.utils.set_activity_status import set_activity_status
 from backend.api.utils.serialize_timeseries import serialize_timeseries
+from backend.api.utils.rename_player_base_stats import rename_player_base_stats
 
 api_bp = Blueprint(
     'api',                   # interner Name
@@ -78,6 +79,25 @@ def get_card_by_name():
 ###############################
 ########## STATS ##############
 ###############################
+
+@api_bp.route('/player_info/<int:player_id>', methods=['GET'])
+def player_info(player_id):
+    player_info = execute_query_with_placeholder_params(
+        'database/player/queries/get_player_by_id.sql', player_id
+    )[0]
+
+    return jsonify(player_info)
+
+
+@api_bp.route('/player_base_stats/<int:player_id>', methods=['GET'])
+def player_base_stats(player_id):
+    player_base_stats = execute_query_with_placeholder_params(
+        'database/player/queries/get_base_stats_for_specific_player.sql', player_id
+    )[0]
+
+    player_base_stats = rename_player_base_stats(player_base_stats)
+
+    return jsonify(player_base_stats)
 
 
 @api_bp.route('/player_timeseries/<int:player_id>', methods=['GET'])

@@ -2,7 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
-function init() {
+let playerInfo;
+
+async function init() {
+  const playerId = document.getElementById("content").dataset.playerId;
+  playerInfo = await fetchPlayerInfo(playerId);
+  const baseStats = await fetchBaseStats(playerId);
+
+  initPlayerName(playerInfo.name);
   initProfilePicture(playerInfo.picture_name);
   initActivityBar(playerInfo.active);
   initPlayerBaseStats(baseStats);
@@ -24,6 +31,9 @@ async function initProfilePicture(pictureName) {
     .catch((err) => {
       console.error("Failed to load card:", err);
     });
+}
+function initPlayerName(name) {
+  document.querySelector(".player-name").innerHTML = name;
 }
 function initActivityBar(isActive) {
   initDeactivateButton(isActive);
@@ -76,6 +86,16 @@ function initPlayerBaseStats(baseStats) {
   addRow("Mittlere Solo Punkte", baseStats["Mittlere Solo Punkte"]);
 }
 
+async function fetchPlayerInfo(playerId) {
+  const res = await fetch(`/api/player_info/${playerId}`);
+  const data = await res.json();
+  return data;
+}
+async function fetchBaseStats(playerId) {
+  const res = await fetch(`/api/player_base_stats/${playerId}`);
+  const data = await res.json();
+  return data;
+}
 async function fetchProfilePicture(pictureName) {}
 
 function updateActivityStatus() {

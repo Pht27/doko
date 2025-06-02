@@ -7,7 +7,6 @@ from backend.api.database.db_API import execute_query_with_placeholder_params
 from backend.api.database.db_API import execute_stored_procedure_with_params
 
 from backend.sites.players.utils.transform_player_data import transform_player_data
-from backend.sites.players.utils.transform_player_data import rename_stats
 
 
 players_bp = Blueprint(
@@ -25,18 +24,8 @@ def players():
     transformed_player_data = transform_player_data(players)
     return render_template('sites/players/players.html', players=transformed_player_data)
 
+
 @players_bp.route('/<int:player_id>')
 def specific_player(player_id):
-    player_base_stats = execute_query_with_placeholder_params(
-        'database/player/queries/get_base_stats_for_specific_player.sql', player_id
-    )[0]
-    player_info = execute_query_with_placeholder_params(
-        'database/player/queries/get_player_by_id.sql', player_id
-    )[0]
 
-    player_base_stats.pop('player_id', None)
-    player_base_stats.pop('start_points', None)
-
-    player_base_stats = rename_stats(player_base_stats)
-
-    return render_template('sites/players/specific_player.html', base_stats=player_base_stats, info=player_info)
+    return render_template('sites/players/specific_player.html', player_id=player_id)

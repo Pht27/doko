@@ -11,14 +11,14 @@
 {% endblock %}
 <!--  -->
 
-<h1>{% block title %} Profil: {{info.name}} {% endblock %}</h1>
+<h1>{% block title %} Profil {% endblock %}</h1>
 
 {% block titlecard %} Profil {% endblock %}
 
 <!--  -->
 {% block content %}
 <!--  -->
-<div class="content">
+<div class="content" id="content" data-player-id="{{ player_id }}">
   {% include 'components/player_stats/player_header.html' %}
   <!--  -->
   {% include 'components/player_stats/player_timeseries.html' %}
@@ -32,10 +32,6 @@
 
 <!--  -->
 {% block extra_scripts %}
-<script>
-  const playerInfo = {{ info|tojson|safe }};
-  const baseStats = {{ base_stats|tojson|safe }};
-</script>
 <script src="{{ url_for('static', filename='js/sites/specific_player.js') }}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

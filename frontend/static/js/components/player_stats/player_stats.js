@@ -2,13 +2,22 @@ document.addEventListener("DOMContentLoaded", () => {
   initTabs();
 });
 
-function initTabs() {
+async function initTabs() {
+  const playerId = document.getElementById("content").dataset.playerId;
+
   initTabContent();
+
+  const specialCardsStats = await fetchSpecialCardsStats(playerId);
+  initSpecialCardsStats(specialCardsStats);
 }
 
 function initTabContent() {
   const specialCardsRadio = document.getElementById("tab-special-cards");
   specialCardsRadio.checked = true;
+}
+
+function initSpecialCardsStats(specialCardsStats) {
+  console.log(specialCardsStats);
 }
 
 function updateTabContent() {
@@ -33,4 +42,10 @@ function updateTabContent() {
   } else if (statsAloneRadio.checked) {
     document.getElementById("content-stats-alone").classList.add("show");
   }
+}
+
+async function fetchSpecialCardsStats(playerId) {
+  const res = await fetch(`/api/player_special_cards_stats/${playerId}`);
+  const data = await res.json();
+  return data;
 }
