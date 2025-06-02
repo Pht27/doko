@@ -144,7 +144,7 @@
 }
 
 .player-header-wrapper {
-  max-width: 35%;
+  max-width: 40%;
 }
 
 .player-stats-wrapper {
@@ -178,7 +178,7 @@
 
 .profile-card svg {
   border-radius: 5px;
-  width: 100%;
+  width: fit-content;
   height: auto;
   display: flex;
 }

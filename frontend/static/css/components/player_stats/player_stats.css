@@ -1,0 +1,78 @@
+/* === TABS WRAPPER === */
+
+.tabs-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  margin: 4px 7px;
+
+  background-color: rgb(255, 255, 255);
+  border: solid 1px rgb(162, 162, 162);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  border-radius: 14px;
+}
+
+/* === TABS === */
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.tabs input[type="radio"] {
+  display: none;
+}
+
+.tab-label {
+  flex: 1;
+  text-align: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+
+  border-bottom: solid 1px rgb(162, 162, 162);
+
+  transition: all 0.3s ease;
+  max-width: 23%;
+  word-break: break-all;
+  font-size: 15px;
+}
+
+label[for="tab-special-cards"] {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+
+label[for="tab-stats-alone"] {
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.tab-label:hover {
+  background-color: #f5f5f5;
+}
+
+#tab-special-cards:checked + label[for="tab-special-cards"],
+#tab-extra-points:checked + label[for="tab-extra-points"],
+#tab-team-partners:checked + label[for="tab-team-partners"],
+#tab-stats-alone:checked + label[for="tab-stats-alone"] {
+  border-bottom: 2px solid #4b35d7;
+  color: #4b35d7;
+  background-color: #f0f0ff;
+}
+
+/* === TAB CONTENT === */
+
+.tab-content {
+  display: none;
+  padding: 10px;
+}
+
+.tab-content.show {
+  display: flex;
+  padding: 10px;
+}

@@ -1,0 +1,47 @@
+<div class="tabs-wrapper">
+  <div class="tabs">
+    <input
+      type="radio"
+      name="tab-control"
+      id="tab-special-cards"
+      checked
+      onchange="updateTabContent()"
+    />
+    <label for="tab-special-cards" class="tab-label">Sonderkarten</label>
+
+    <input
+      type="radio"
+      name="tab-control"
+      id="tab-extra-points"
+      onchange="updateTabContent()"
+    />
+    <label for="tab-extra-points" class="tab-label">Extrapunkte</label>
+
+    <input
+      type="radio"
+      name="tab-control"
+      id="tab-team-partners"
+      onchange="updateTabContent()"
+    />
+    <label for="tab-team-partners" class="tab-label">Teamstatistik</label>
+
+    <input
+      type="radio"
+      name="tab-control"
+      id="tab-stats-alone"
+      onchange="updateTabContent()"
+    />
+    <label for="tab-stats-alone" class="tab-label">Einzelstatistik</label>
+  </div>
+
+  <div class="tab-content show" id="content-special-cards">1...</div>
+  <div class="tab-content" id="content-extra-points">2...</div>
+  <div class="tab-content" id="content-team-partners">3...</div>
+  <div class="tab-content" id="content-stats-alone">4...</div>
+</div>
+
+<script src="{{ url_for('static', filename='js/components/player_stats/player_stats.js') }}"></script>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/components/player_stats/player_stats.css') }}"
+/>
