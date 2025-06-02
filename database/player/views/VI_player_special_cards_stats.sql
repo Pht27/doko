@@ -12,7 +12,7 @@ CREATE OR REPLACE VIEW VI_player_special_cards_stats AS
     FROM team_in_round_has_special_card tirhsc
     LEFT JOIN VI_round_points_per_player rppp
     ON rppp.round_id = tirhsc.round_id AND rppp.team_id = tirhsc.team_id
-    LEFT JOIN special_card sc
+    RIGHT JOIN special_card sc
     ON sc.id = tirhsc.special_card_id
 
     GROUP BY special_card_id, special_card_name, player_id

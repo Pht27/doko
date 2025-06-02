@@ -1,8 +1,9 @@
 <div class="tabs-wrapper">
+  <div class="tabs-title">In-Game Statistiken</div>
   <div class="tabs">
     <input
       type="radio"
-      name="tab-control"
+      name="lower-tab-control"
       id="tab-game-modes"
       checked
       onchange="updateTabContent()"
@@ -11,36 +12,19 @@
 
     <input
       type="radio"
-      name="tab-control"
+      name="lower-tab-control"
       id="tab-special-cards"
-      checked
       onchange="updateTabContent()"
     />
     <label for="tab-special-cards" class="tab-label">Sonderkarten</label>
 
     <input
       type="radio"
-      name="tab-control"
+      name="lower-tab-control"
       id="tab-extra-points"
       onchange="updateTabContent()"
     />
     <label for="tab-extra-points" class="tab-label">Extrapunkte</label>
-
-    <input
-      type="radio"
-      name="tab-control"
-      id="tab-team-partners"
-      onchange="updateTabContent()"
-    />
-    <label for="tab-team-partners" class="tab-label">Teamstatistik</label>
-
-    <input
-      type="radio"
-      name="tab-control"
-      id="tab-stats-alone"
-      onchange="updateTabContent()"
-    />
-    <label for="tab-stats-alone" class="tab-label">Einzelstatistik</label>
   </div>
 
   <div class="tab-content show" id="content-game-mode">
@@ -55,7 +39,29 @@
     <div id="extraPointsTableContainer"></div>
     <table class="extra-points-table" id="extraPointsTable"></table>
   </div>
-  <div class="tab-content" id="content-team-partners">
+</div>
+
+<div class="tabs-wrapper">
+  <div class="tabs-title">Teamstatistiken</div>
+  <div class="tabs">
+    <input
+      type="radio"
+      name="upper-tab-control"
+      id="tab-team-partners"
+      onchange="updateTabContent()"
+    />
+    <label for="tab-team-partners" class="tab-label">Teamstatistik</label>
+
+    <input
+      type="radio"
+      name="upper-tab-control"
+      id="tab-stats-alone"
+      onchange="updateTabContent()"
+    />
+    <label for="tab-stats-alone" class="tab-label">Einzelstatistik</label>
+  </div>
+
+  <div class="tab-content show" id="content-team-partners">
     <div id="partnerTableContainer"></div>
     <table class="partner-table" id="partnerTable"></table>
   </div>

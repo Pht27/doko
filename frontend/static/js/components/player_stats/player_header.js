@@ -62,7 +62,7 @@ function initDeactivateButton(isActive) {
 function initPlayerBaseStats(baseStats) {
   let tableBody = document.getElementById("player-base-stats-table-body");
 
-  function addRow(label, value) {
+  function addRow(label, value, color = null) {
     const row = document.createElement("tr");
     const keyCell = document.createElement("td");
     const valueCell = document.createElement("td");
@@ -72,18 +72,40 @@ function initPlayerBaseStats(baseStats) {
     keyCell.textContent = label + ":";
     valueCell.textContent = value;
 
+    if (color) {
+      valueCell.style.color = color;
+    }
+
     row.appendChild(keyCell);
     row.appendChild(valueCell);
     tableBody.appendChild(row);
   }
 
-  addRow("Punkte", baseStats["Punkte"]);
+  addRow(
+    "Punkte",
+    baseStats["Punkte"],
+    (color = getColorForTotalPoints(parseFloat(baseStats["Punkte"])))
+  );
   addRow("Spiele Gespielt", baseStats["Spiele Gespielt"]);
-  addRow("Winrate", baseStats["Winrate"]);
-  addRow("Mittlere Punkte", baseStats["Mittlere Punkte"]);
+  addRow(
+    "Winrate",
+    baseStats["Winrate"],
+    (color = getColorForPercentage(parseFloat(baseStats["Winrate"])))
+  );
+  addRow(
+    "Mittlere Punkte",
+    baseStats["Mittlere Punkte"],
+    (color = getColorForMeanPoints(parseFloat(baseStats["Mittlere Punkte"])))
+  );
   addRow("Solos gespielt", baseStats["Solos gespielt"]);
   addRow("Solos gewonnen", baseStats["Solos gewonnen"]);
-  addRow("Mittlere Solo Punkte", baseStats["Mittlere Solo Punkte"]);
+  addRow(
+    "Mittlere Solo Punkte",
+    baseStats["Mittlere Solo Punkte"],
+    (color = getColorForMeanPoints(
+      parseFloat(baseStats["Mittlere Solo Punkte"])
+    ))
+  );
 }
 
 async function fetchPlayerInfo(playerId) {
@@ -124,4 +146,41 @@ function updateActivityStatus() {
     .catch((err) => {
       console.error("Error:", err);
     });
+}
+
+function getColorForPercentage(pct) {
+  const startColor = { r: 153, g: 0, b: 0 };
+  const midColor = { r: 153, g: 153, b: 0 };
+  const endColor = { r: 0, g: 153, b: 0 };
+
+  let color;
+  if (pct < 0.5) {
+    const factor = pct * 2;
+    color = {
+      r: Math.round(startColor.r + factor * (midColor.r - startColor.r)),
+      g: Math.round(startColor.g + factor * (midColor.g - startColor.g)),
+      b: Math.round(startColor.b + factor * (midColor.b - startColor.b)),
+    };
+  } else {
+    const factor = (pct - 0.5) * 2;
+    color = {
+      r: Math.round(midColor.r + factor * (endColor.r - midColor.r)),
+      g: Math.round(midColor.g + factor * (endColor.g - midColor.g)),
+      b: Math.round(midColor.b + factor * (endColor.b - midColor.b)),
+    };
+  }
+
+  return `rgb(${color.r}, ${color.g}, ${color.b})`;
+}
+
+function getColorForMeanPoints(meanPoints) {
+  const clamped = Math.max(-2, Math.min(2, meanPoints));
+  const pct = (clamped + 2) / 4;
+  return getColorForPercentage(pct);
+}
+
+function getColorForTotalPoints(totalPoints) {
+  const clamped = Math.max(-150, Math.min(150, meanPoints));
+  const pct = (clamped + 150) / 300;
+  return getColorForPercentage(pct);
 }

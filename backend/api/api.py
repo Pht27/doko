@@ -14,6 +14,8 @@ from backend.api.utils.insert_round_data import insert_round_data
 from backend.api.utils.set_activity_status import set_activity_status
 from backend.api.utils.serialize_timeseries import serialize_timeseries
 from backend.api.utils.rename_player_base_stats import rename_player_base_stats, rename_player_alone_stats
+from backend.api.utils.refactor_game_mode_data import refactor_game_mode_data
+
 
 api_bp = Blueprint(
     'api',                   # interner Name
@@ -106,6 +108,15 @@ def player_timeseries(player_id):
         'database/player/queries/get_time_series_for_player.sql', (player_id,))
     clean_data = serialize_timeseries(time_series)
     return jsonify(clean_data)
+
+
+@api_bp.route('/player_game_modes_stats/<int:player_id>', methods=['GET'])
+def player_game_modes_stats(player_id):
+    game_modes_stats = execute_query_with_placeholder_params(
+        'database/player/queries/get_player_game_modes_stats.sql', (player_id,))
+    transformed_data = refactor_game_mode_data(game_modes_stats)
+    print(transformed_data)
+    return jsonify(transformed_data)
 
 
 @api_bp.route('/player_special_cards_stats/<int:player_id>', methods=['GET'])
