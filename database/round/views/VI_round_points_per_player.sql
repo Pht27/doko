@@ -7,6 +7,7 @@ CREATE OR REPLACE VIEW VI_round_points_per_player AS
             r.points,
             r.time_stamp,
             rht.party,
+            rht.team_id,
             ts.player_count,
             gm.is_solo,
             gm.solo_party,
