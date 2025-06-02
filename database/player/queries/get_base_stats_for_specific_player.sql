@@ -1,0 +1,1 @@
+SELECT * FROM VI_player_base_stats WHERE player_id = %s;

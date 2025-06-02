@@ -1,9 +1,7 @@
 CREATE OR REPLACE VIEW VI_player_base_stats AS
     SELECT
             p.id AS player_id,
-            p.name AS player_name,
             p.start_points,
-            p.active AS player_is_active,
 
             COUNT(rppp.round_id) AS games_played,
             SUM(rppp.is_win) AS wins,

@@ -7,11 +7,12 @@
 -- Frank:   Rounds played 3, Points             = 2,5
 
 -- Fill player
+INSERT INTO player(name, start_points, picture_name) VALUES
+('Alice', 10, 'hD'),
+('Bob', -10, 'kK'),
+('Charlie', 0, 'krB'),
+('Diana', 0, 'krD');
 INSERT INTO player (name, start_points) VALUES
-('Alice', 10),
-('Bob', -10),
-('Charlie', 0),
-('Diana', 0),
 ('Eve', 0),
 ('Frank', 0),
 ('Gustav', 0);

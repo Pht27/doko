@@ -18,6 +18,7 @@ CREATE TABLE player (
     name            VARCHAR(50) NOT NULL,
     active          BOOLEAN DEFAULT TRUE,
     start_points    DECIMAL(10, 1) DEFAULT 0,
+    picture_name    TEXT DEFAULT NULL,
 
     PRIMARY KEY(id)
 );

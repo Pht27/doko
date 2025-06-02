@@ -1,0 +1,41 @@
+<div class="activity-bar">
+  <div class="left">
+    <div class="activity-title">Status:</div>
+  </div>
+
+  <div class="center">
+    <div class="activity-status" id="activityStatus"></div>
+  </div>
+
+  <div class="right">
+    <input
+      type="checkbox"
+      id="activityToggle"
+      class="mobileToggle"
+      onchange="updateActivityStatus()"
+    />
+    <label for="activityToggle"></label>
+  </div>
+</div>
+
+<div class="player-header">
+  <div class="player-header-wrapper">
+    <div class="player-name">{{info.name}}</div>
+    <div class="card-wrapper">
+      <div class="profile-card" id="profileCard"></div>
+    </div>
+  </div>
+  <div class="player-stats-wrapper">
+    <div class="player-base-stats">
+      <table id="player-base-stats-table">
+        <tbody id="player-base-stats-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/components/player_stats/player_header.js') }}"></script>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/components/player_stats/player_header.css') }}"
+/>

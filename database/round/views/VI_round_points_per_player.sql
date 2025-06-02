@@ -1,9 +1,11 @@
 CREATE OR REPLACE VIEW VI_round_points_per_player AS
     SELECT
             p.id AS player_id,
+            p.start_points,
             r.id AS round_id,
             r.winning_party,
             r.points,
+            r.time_stamp,
             rht.party,
             ts.player_count,
             gm.is_solo,

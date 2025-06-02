@@ -12,6 +12,8 @@ PLAYER
 - bei player stats ist gerade die durschnittl punkte die ohne die team größe einbezogen -> unterscheiden in bereinigt und spielwert
 - ab hier immer spielwert nehmen für punkte -> spielwert heißt mit multiplikator
 
+- Farben wieder einführen
+
 - punkte
 - winrate nach partner / allein
 - solo winrate / gespielte solos

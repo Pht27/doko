@@ -1,6 +1,9 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, send_from_directory, abort
+
+import os
 
 from backend.api.config_API import get_max_player_name_length
+from backend.api.config_API import get_profile_pics_directory
 
 from backend.api.database.db_API import execute_query_with_placeholder_params
 from backend.api.database.db_API import execute_defined_function_with_params
@@ -8,6 +11,8 @@ from backend.api.database.db_API import execute_stored_procedure_with_params
 from backend.api.database.db_API import get_db_connection
 
 from backend.api.utils.insert_round_data import insert_round_data
+from backend.api.utils.set_activity_status import set_activity_status
+from backend.api.utils.serialize_timeseries import serialize_timeseries
 
 api_bp = Blueprint(
     'api',                   # interner Name
@@ -51,6 +56,29 @@ def get_extra_points():
         'database/extra_point/queries/get_extra_points.sql', ())
 
     return jsonify(players)
+
+@api_bp.route('/get_card_by_name', methods=['GET'])
+def get_card_by_name():
+    CARDS_DIR = get_profile_pics_directory()
+
+    name = request.args.get('name')
+    if not name or not name.isalnum():
+        return abort(400, description="Invalid name")
+
+    filename = f"{name}.svg"
+    file_path = os.path.join(CARDS_DIR, filename)
+
+    if not os.path.exists(file_path):
+        return abort(404, description="Card not found")
+
+    return send_from_directory(CARDS_DIR, filename, mimetype='image/svg+xml')
+
+@api_bp.route('/player_timeseries/<int:player_id>', methods=['GET'])
+def player_timeseries(player_id):
+    time_series = execute_query_with_placeholder_params(
+        'database/player/queries/get_time_series_for_player.sql', (player_id,))  # however you fetch it
+    clean_data = serialize_timeseries(time_series)
+    return jsonify(clean_data)
 
 
 ###############################
@@ -108,3 +136,18 @@ def add_round():
     insert_round_data(data)
 
     return jsonify({"message": "Round added successfully"}), 200
+
+
+@api_bp.route('/set_activity_status', methods=['POST'])
+def activity_status():
+    data = request.get_json()
+    player_id = data['player_id']
+    active = data['active']
+
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+
+    set_activity_status(player_id, active)
+
+    return jsonify({"message": "Activity status set successfully"}), 200

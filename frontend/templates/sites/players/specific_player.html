@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+<!--  -->
+{% block extra_styles %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/sites/specific_player.css') }}"
+/>
+
+{% endblock %}
+<!--  -->
+
+<h1>{% block title %} Profil: {{info.name}} {% endblock %}</h1>
+
+{% block titlecard %} Profil {% endblock %}
+
+<!--  -->
+{% block content %}
+<!--  -->
+<div class="content">
+  {% include 'components/player_stats/player_header.html' %}
+  <!--  -->
+  {% include 'components/player_stats/player_timeseries.html' %}
+  <!--  -->
+</div>
+
+<!--  -->
+{% endblock %}
+
+<!--  -->
+{% block extra_scripts %}
+<script>
+  const playerInfo = {{ info|tojson|safe }};
+  const baseStats = {{ base_stats|tojson|safe }};
+</script>
+<script src="{{ url_for('static', filename='js/sites/specific_player.js') }}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% endblock %}
+<!--  -->

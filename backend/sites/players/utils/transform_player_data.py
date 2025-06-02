@@ -1,4 +1,5 @@
 from decimal import Decimal
+from datetime import date
 
 
 def transform_player_data(players):
@@ -16,3 +17,20 @@ def transform_player_data(players):
     sorted_players = sorted(
         players, key=lambda p: p['total_points'], reverse=True)
     return sorted_players
+
+def rename_stats(stats):
+    stats['Punkte'] = stats.pop('total_points')
+    stats['Spiele Gespielt'] = stats.pop('games_played')
+    stats['Siege'] = stats.pop('wins')
+    stats['Winrate'] = stats.pop('winrate')
+    stats['Mittlere Punkte'] = stats.pop('mean_points')
+    stats['Solos gespielt'] = stats.pop('solos_played')
+    stats['Solos gewonnen'] = stats.pop('solos_won')
+    stats['Mittlere Solo Punkte'] = stats.pop('solos_mean_points')
+
+    if stats['Winrate'] is not None:
+        stats['Winrate'] = str(round(stats['Winrate'] * 100, 2)) + "%"
+
+    return stats
+
+
