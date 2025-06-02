@@ -19,22 +19,18 @@ function renderPointsChart(data) {
     window.pointsChartInstance.destroy();
   }
 
-  // Format the labels as 'Mon YY'
-  const formattedLabels = data.map((entry) => {
-    const date = new Date(entry.Datum);
-    return date.toLocaleDateString("en-US", {
-      month: "short",
-      year: "2-digit",
-    });
-  });
+  // Convert data to time-based format
+  const chartData = data.map((entry) => ({
+    x: new Date(entry.Datum),
+    y: entry.Punkte,
+  }));
 
   window.pointsChartInstance = new Chart(ctx, {
     type: "line",
     data: {
-      labels: formattedLabels,
       datasets: [
         {
-          data: data.map((entry) => entry.Punkte),
+          data: chartData,
           borderColor: "#4b35d7",
           borderWidth: 2,
           pointRadius: 3,
@@ -51,9 +47,13 @@ function renderPointsChart(data) {
       },
       scales: {
         x: {
-          ticks: {
-            autoSkip: true,
-            maxTicksLimit: 10,
+          type: "time",
+          time: {
+            unit: "month",
+            tooltipFormat: "MMM yyyy",
+            displayFormats: {
+              month: "MMM yy",
+            },
           },
           grid: {
             display: true,
