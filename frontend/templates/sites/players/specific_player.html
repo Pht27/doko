@@ -7,7 +7,10 @@
   rel="stylesheet"
   href="{{ url_for('static', filename='css/sites/specific_player.css') }}"
 />
-
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/components/match_container.css') }}"
+/>
 {% endblock %}
 <!--  -->
 
@@ -25,6 +28,29 @@
   <!--  -->
   {% include 'components/player_stats/player_stats.html' %}
   <!--  -->
+  <div id="best-match-container">
+    <div id="best-match-title">Beste Runde</div>
+    {% for match in best_match %}
+    <!--  -->
+    {% include 'components/match_container.html' %}
+    <!--  -->
+    {% endfor %}
+    <div id="best-match-title">Schlechteste Runde</div>
+    {% for match in worst_match %}
+    <!--  -->
+    {% include 'components/match_container.html' %}
+    <!--  -->
+    {% endfor %}
+  </div>
+  <div id="match-history-container">
+    <div id="match-history-title">Letzte Runden</div>
+    {% for match in matches %}
+    <!--  -->
+    {% include 'components/match_container.html' %}
+    <!--  -->
+    {% endfor %}
+    <button id="load-more" class="load-more-btn">Mehr anzeigen</button>
+  </div>
 </div>
 
 <!--  -->
@@ -33,6 +59,7 @@
 <!--  -->
 {% block extra_scripts %}
 <script src="{{ url_for('static', filename='js/sites/specific_player.js') }}"></script>
+<script src="{{ url_for('static', filename='js/components/match_container.js') }}"></script>
 
 {% endblock %}
 <!--  -->

@@ -4,3 +4,46 @@
   background-color: white;
   padding: 5px 0px;
 }
+
+#match-history-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.2rem;
+}
+
+.load-more-btn {
+  width: 100%;
+  background-color: #fafafa;
+  color: #666666;
+  border: none;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  border: 2px solid #ccc;
+  border-radius: px;
+  text-decoration: none;
+}
+
+#best-match-container,
+#worst-match-container,
+#match-history-container {
+  border-radius: 10px;
+
+  margin: 6px 7px;
+  padding: 8px 4px;
+
+  background-color: rgb(255, 255, 255);
+  border: solid 1px rgb(162, 162, 162);
+
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#best-match-title,
+#worst-match-title,
+#match-history-title {
+  padding: 5px;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+}

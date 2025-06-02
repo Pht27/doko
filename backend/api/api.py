@@ -115,7 +115,6 @@ def player_game_modes_stats(player_id):
     game_modes_stats = execute_query_with_placeholder_params(
         'database/player/queries/get_player_game_modes_stats.sql', (player_id,))
     transformed_data = refactor_game_mode_data(game_modes_stats)
-    print(transformed_data)
     return jsonify(transformed_data)
 
 
