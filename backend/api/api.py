@@ -57,6 +57,7 @@ def get_extra_points():
 
     return jsonify(players)
 
+
 @api_bp.route('/get_card_by_name', methods=['GET'])
 def get_card_by_name():
     CARDS_DIR = get_profile_pics_directory()
@@ -73,17 +74,52 @@ def get_card_by_name():
 
     return send_from_directory(CARDS_DIR, filename, mimetype='image/svg+xml')
 
+
+###############################
+########## STATS ##############
+###############################
+
+
 @api_bp.route('/player_timeseries/<int:player_id>', methods=['GET'])
 def player_timeseries(player_id):
     time_series = execute_query_with_placeholder_params(
-        'database/player/queries/get_time_series_for_player.sql', (player_id,))  # however you fetch it
+        'database/player/queries/get_time_series_for_player.sql', (player_id,))
     clean_data = serialize_timeseries(time_series)
     return jsonify(clean_data)
+
+
+@api_bp.route('/player_special_cards_stats/<int:player_id>', methods=['GET'])
+def player_special_cards_stats(player_id):
+    special_cards_stats = execute_query_with_placeholder_params(
+        'database/player/queries/get_player_special_cards_stats.sql', (player_id,))
+    return jsonify(special_cards_stats)
+
+
+@api_bp.route('/player_extra_points_stats/<int:player_id>', methods=['GET'])
+def player_extra_points_stats(player_id):
+    extra_points_stats = execute_query_with_placeholder_params(
+        'database/player/queries/get_player_extra_points_stats.sql', (player_id,))
+    return jsonify(extra_points_stats)
+
+
+@api_bp.route('/player_partner_stats/<int:player_id>', methods=['GET'])
+def player_partner_stats(player_id):
+    player_partner_stats = execute_query_with_placeholder_params(
+        'database/player/queries/get_player_partner_stats.sql', (player_id,))
+    return jsonify(player_partner_stats)
+
+
+@api_bp.route('/player_alone_stats/<int:player_id>', methods=['GET'])
+def player_alone_stats(player_id):
+    player_alone_stats = execute_query_with_placeholder_params(
+        'database/player/queries/get_player_alone_stats.sql', (player_id,))
+    return jsonify(player_alone_stats)
 
 
 ###############################
 ########## POSTERS ############
 ###############################
+
 
 @api_bp.route('/add_comment', methods=['POST'])
 def add_comment():
@@ -146,7 +182,6 @@ def activity_status():
 
     if not data:
         return jsonify({"error": "No data received"}), 400
-
 
     set_activity_status(player_id, active)
 
