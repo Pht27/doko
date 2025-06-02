@@ -13,7 +13,7 @@ from backend.api.database.db_API import get_db_connection
 from backend.api.utils.insert_round_data import insert_round_data
 from backend.api.utils.set_activity_status import set_activity_status
 from backend.api.utils.serialize_timeseries import serialize_timeseries
-from backend.api.utils.rename_player_base_stats import rename_player_base_stats
+from backend.api.utils.rename_player_base_stats import rename_player_base_stats, rename_player_alone_stats
 
 api_bp = Blueprint(
     'api',                   # interner Name
@@ -132,7 +132,8 @@ def player_partner_stats(player_id):
 @api_bp.route('/player_alone_stats/<int:player_id>', methods=['GET'])
 def player_alone_stats(player_id):
     player_alone_stats = execute_query_with_placeholder_params(
-        'database/player/queries/get_player_alone_stats.sql', (player_id,))
+        'database/player/queries/get_player_alone_stats.sql', (player_id,))[0]
+    player_alone_stats = rename_player_alone_stats(player_alone_stats)
     return jsonify(player_alone_stats)
 
 

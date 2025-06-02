@@ -42,7 +42,7 @@
   font-size: 15px;
 }
 
-label[for="tab-special-cards"] {
+label[for="tab-game-modes"] {
   border-top-left-radius: inherit;
   border-bottom-left-radius: inherit;
 }
@@ -56,6 +56,7 @@ label[for="tab-stats-alone"] {
   background-color: #f5f5f5;
 }
 
+#tab-game-modes:checked + label[for="tab-game-modes"],
 #tab-special-cards:checked + label[for="tab-special-cards"],
 #tab-extra-points:checked + label[for="tab-extra-points"],
 #tab-team-partners:checked + label[for="tab-team-partners"],
@@ -77,6 +78,31 @@ label[for="tab-stats-alone"] {
   padding: 10px;
 }
 
+/* === GAME MODES TABLE === */
+
+.game-modes-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.game-modes-table th,
+.game-modes-table td {
+  padding: 6px 3px;
+  border-bottom: solid 1px lightgray;
+  text-align: center;
+}
+
+.game-modes-table td:first-child,
+.game-modes-table th:first-child {
+  text-align: left;
+  max-width: 25vw;
+  word-wrap: break-word;
+}
+.game-modes-table th {
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
 /* === SPECIAL CARDS TABLE === */
 
 .special-cards-table {
@@ -86,13 +112,20 @@ label[for="tab-stats-alone"] {
 
 .special-cards-table th,
 .special-cards-table td {
-  padding: 7px 4px;
+  padding: 6px 3px;
   border-bottom: solid 1px lightgray;
+  text-align: center;
 }
 
+.special-cards-table td:first-child,
+.special-cards-table th:first-child {
+  text-align: left;
+  max-width: 25vw;
+  word-wrap: break-word;
+}
 .special-cards-table th {
   font-weight: bold;
-  text-align: left;
+  word-wrap: break-word;
 }
 
 /* === EXTRA POINTS TABLE === */
@@ -104,11 +137,55 @@ label[for="tab-stats-alone"] {
 
 .extra-points-table th,
 .extra-points-table td {
+  padding: 6px 3px;
+  border-bottom: solid 1px lightgray;
+  text-align: center;
+}
+
+.extra-points-table td:first-child,
+.extra-points-table th:first-child {
+  text-align: left;
+}
+.extra-points-table th {
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
+/* === PARTNER TABLE === */
+
+.partner-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.partner-table th,
+.partner-table td {
+  padding: 6px 3px;
+  border-bottom: solid 1px lightgray;
+  text-align: center;
+}
+
+.partner-table td:first-child,
+.partner-table th:first-child {
+  text-align: left;
+}
+.partner-table th {
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
+/* === ALONE TABLE === */
+
+#aloneTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#aloneTable td {
   padding: 7px 4px;
   border-bottom: solid 1px lightgray;
 }
 
-.extra-points-table th {
-  font-weight: bold;
-  text-align: left;
+#aloneTable td.stat {
+  font-weight: 600;
 }

@@ -77,8 +77,8 @@ function initPlayerBaseStats(baseStats) {
     tableBody.appendChild(row);
   }
 
+  addRow("Punkte", baseStats["Punkte"]);
   addRow("Spiele Gespielt", baseStats["Spiele Gespielt"]);
-  addRow("Siege", baseStats["Siege"]);
   addRow("Winrate", baseStats["Winrate"]);
   addRow("Mittlere Punkte", baseStats["Mittlere Punkte"]);
   addRow("Solos gespielt", baseStats["Solos gespielt"]);

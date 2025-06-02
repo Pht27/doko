@@ -27,5 +27,4 @@ def players():
 
 @players_bp.route('/<int:player_id>')
 def specific_player(player_id):
-
     return render_template('sites/players/specific_player.html', player_id=player_id)

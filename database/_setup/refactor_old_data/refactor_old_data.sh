@@ -41,3 +41,7 @@ for sql_file in "$SQL_DIR"/*.sql; do
     echo "🚀 Running $sql_name..."
     mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
 done
+
+# ---------- RUN add_profile_pictures.sql ----------
+echo "📸 Running add_profile_pictures.sql..."
+mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$SCRIPT_DIR/add_profile_pictures.sql"

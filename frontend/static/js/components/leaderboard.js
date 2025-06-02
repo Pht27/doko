@@ -1,12 +1,10 @@
 // Sort functionality
-const sortSelect = document.getElementById("sortSelect");
-const searchInput = document.getElementById("searchInput");
-const toggleInactive = document.getElementById("toggleInactive");
-const list = document.querySelector(".leaderboard__list");
-
-const originalCards = Array.from(list.children); // full list
-const addNewPlayerButton = originalCards[originalCards.length - 1];
-originalCards.splice(originalCards.length - 1, 1);
+let sortSelect;
+let searchInput;
+let toggleInactive;
+let list;
+let originalCards;
+let addNewPlayerButton;
 
 function sortAndFilter() {
   const sortKey = sortSelect.value;
@@ -39,6 +37,15 @@ function sortAndFilter() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  sortSelect = document.getElementById("sortSelect");
+  searchInput = document.getElementById("searchInput");
+  toggleInactive = document.getElementById("toggleInactive");
+  list = document.querySelector(".leaderboard__list");
+  originalCards = Array.from(list.children); // full list
+  addNewPlayerButton = originalCards[originalCards.length - 1];
+
+  originalCards.splice(originalCards.length - 1, 1);
+
   sortSelect.addEventListener("change", sortAndFilter);
   searchInput.addEventListener("input", sortAndFilter);
   toggleInactive.addEventListener("change", sortAndFilter);

@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initTabs();
 });
 
+// INITS
+
 async function initTabs() {
   const playerId = document.getElementById("content").dataset.playerId;
 
@@ -12,11 +14,17 @@ async function initTabs() {
 
   const extraPointsStats = await fetchExtraPointsStats(playerId);
   initExtraPointsStats(extraPointsStats);
+
+  const partnerStats = await fetchPartnerStats(playerId);
+  initPartnerStats(partnerStats);
+
+  const aloneStats = await fetchAloneStats(playerId);
+  initAloneStats(aloneStats);
 }
 
 function initTabContent() {
-  const specialCardsRadio = document.getElementById("tab-special-cards");
-  specialCardsRadio.checked = true;
+  const gameModeRadio = document.getElementById("tab-game-modes");
+  gameModeRadio.checked = true;
 }
 
 function initSpecialCardsStats(specialCardsStats) {
@@ -26,6 +34,17 @@ function initSpecialCardsStats(specialCardsStats) {
 function initExtraPointsStats(extraPointsStats) {
   renderExtraPointsTable(extraPointsStats);
 }
+
+function initPartnerStats(partnerStats) {
+  renderPartnerTable(partnerStats);
+}
+
+function initAloneStats(aloneStats) {
+  console.log(aloneStats);
+  renderAloneTable(aloneStats);
+}
+
+// VISUALS
 
 function updateTabContent() {
   // Hide all tab contents
@@ -120,6 +139,82 @@ function renderExtraPointsTable(data) {
     table.appendChild(row);
   });
 }
+function renderPartnerTable(data) {
+  // Sort by mean_game_value descending
+  data.sort(
+    (a, b) => parseFloat(b.mean_game_value) - parseFloat(a.mean_game_value)
+  );
+
+  const table = document.getElementById("partnerTable");
+
+  // Table Header
+  const thead = document.createElement("thead");
+  thead.innerHTML = `
+    <tr>
+      <th>Partner</th>
+      <th>Spiele</th>
+      <th>Winrate</th>
+      <th>Ø Spielwert</th>
+    </tr>
+  `;
+  table.appendChild(thead);
+
+  // Table Body
+  const tbody = document.createElement("tbody");
+  data.forEach((entry) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${entry.name}</td>
+      <td>${entry.games_played}</td>
+      <td>${(parseFloat(entry.winrate) * 100).toFixed(1)}%</td>
+      <td>${parseFloat(entry.mean_game_value).toFixed(2)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+}
+function renderAloneTable(data) {
+  const table = document.getElementById("aloneTable");
+
+  // Table Header
+  const thead = document.createElement("thead");
+  thead.innerHTML = `
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  `;
+  table.appendChild(thead);
+
+  // Table Body
+  const tableBody = document.createElement("tbody");
+
+  function addRow(label, value) {
+    const row = document.createElement("tr");
+    const keyCell = document.createElement("td");
+    const valueCell = document.createElement("td");
+
+    keyCell.classList.add("stat");
+
+    keyCell.textContent = label + ":";
+    valueCell.textContent = value;
+
+    row.appendChild(keyCell);
+    row.appendChild(valueCell);
+    tableBody.appendChild(row);
+  }
+
+  addRow("Spiele allein gespielt", data["Spiele Gespielt"]);
+  addRow("Winrate allein", data["Winrate"]);
+  addRow("Mittlerer Spielwert allein", data["Mittlerer Spielwert"]);
+  addRow("Solos allein gespielt", data["Solos gespielt"]);
+  addRow("Solos allein gewonnen", data["Solos gewonnen"]);
+  addRow("Mittlerer Solo Spielwert allein", data["Mittlerer Solo Spielwert"]);
+
+  table.appendChild(tableBody);
+}
+
+// API CALLS
 
 async function fetchSpecialCardsStats(playerId) {
   const res = await fetch(`/api/player_special_cards_stats/${playerId}`);
@@ -128,6 +223,16 @@ async function fetchSpecialCardsStats(playerId) {
 }
 async function fetchExtraPointsStats(playerId) {
   const res = await fetch(`/api/player_extra_points_stats/${playerId}`);
+  const data = await res.json();
+  return data;
+}
+async function fetchPartnerStats(playerId) {
+  const res = await fetch(`/api/player_partner_stats/${playerId}`);
+  const data = await res.json();
+  return data;
+}
+async function fetchAloneStats(playerId) {
+  const res = await fetch(`/api/player_alone_stats/${playerId}`);
   const data = await res.json();
   return data;
 }
