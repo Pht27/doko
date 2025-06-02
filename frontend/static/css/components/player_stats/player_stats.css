@@ -76,3 +76,39 @@ label[for="tab-stats-alone"] {
   display: flex;
   padding: 10px;
 }
+
+/* === SPECIAL CARDS TABLE === */
+
+.special-cards-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.special-cards-table th,
+.special-cards-table td {
+  padding: 7px 4px;
+  border-bottom: solid 1px lightgray;
+}
+
+.special-cards-table th {
+  font-weight: bold;
+  text-align: left;
+}
+
+/* === EXTRA POINTS TABLE === */
+
+.extra-points-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.extra-points-table th,
+.extra-points-table td {
+  padding: 7px 4px;
+  border-bottom: solid 1px lightgray;
+}
+
+.extra-points-table th {
+  font-weight: bold;
+  text-align: left;
+}

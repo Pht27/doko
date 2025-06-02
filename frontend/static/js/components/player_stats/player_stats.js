@@ -9,6 +9,9 @@ async function initTabs() {
 
   const specialCardsStats = await fetchSpecialCardsStats(playerId);
   initSpecialCardsStats(specialCardsStats);
+
+  const extraPointsStats = await fetchExtraPointsStats(playerId);
+  initExtraPointsStats(extraPointsStats);
 }
 
 function initTabContent() {
@@ -17,7 +20,11 @@ function initTabContent() {
 }
 
 function initSpecialCardsStats(specialCardsStats) {
-  console.log(specialCardsStats);
+  renderSpecialCardsTable(specialCardsStats);
+}
+
+function initExtraPointsStats(extraPointsStats) {
+  renderExtraPointsTable(extraPointsStats);
 }
 
 function updateTabContent() {
@@ -43,9 +50,84 @@ function updateTabContent() {
     document.getElementById("content-stats-alone").classList.add("show");
   }
 }
+function renderSpecialCardsTable(data) {
+  const table = document.getElementById("specialCardsTable");
+
+  // Create header
+  const headerRow = document.createElement("tr");
+  const headers = ["Karte", "Gespielt", "Winrate", "Ø Spielwert"];
+
+  headers.forEach((headerText) => {
+    const th = document.createElement("th");
+    th.textContent = headerText;
+    headerRow.appendChild(th);
+  });
+
+  table.appendChild(headerRow);
+
+  // Create rows
+  data.forEach((entry) => {
+    const row = document.createElement("tr");
+
+    const values = [
+      entry.special_card_name,
+      entry.games_with_special_card,
+      `${(parseFloat(entry.winrate) * 100).toFixed(1)}%`,
+      entry.mean_game_value,
+    ];
+
+    values.forEach((val) => {
+      const td = document.createElement("td");
+      td.textContent = val;
+      row.appendChild(td);
+    });
+
+    table.appendChild(row);
+  });
+}
+function renderExtraPointsTable(data) {
+  const table = document.getElementById("extraPointsTable");
+
+  // Create header
+  const headerRow = document.createElement("tr");
+  const headers = ["Punkt", "Anzahl", "Winrate", "Ø Spielwert"];
+
+  headers.forEach((headerText) => {
+    const th = document.createElement("th");
+    th.textContent = headerText;
+    headerRow.appendChild(th);
+  });
+
+  table.appendChild(headerRow);
+
+  // Create rows
+  data.forEach((entry) => {
+    const row = document.createElement("tr");
+
+    const values = [
+      entry.extra_point_name,
+      entry.extra_point_count,
+      `${(parseFloat(entry.winrate) * 100).toFixed(1)}%`,
+      entry.mean_game_value,
+    ];
+
+    values.forEach((val) => {
+      const td = document.createElement("td");
+      td.textContent = val;
+      row.appendChild(td);
+    });
+
+    table.appendChild(row);
+  });
+}
 
 async function fetchSpecialCardsStats(playerId) {
   const res = await fetch(`/api/player_special_cards_stats/${playerId}`);
+  const data = await res.json();
+  return data;
+}
+async function fetchExtraPointsStats(playerId) {
+  const res = await fetch(`/api/player_extra_points_stats/${playerId}`);
   const data = await res.json();
   return data;
 }
