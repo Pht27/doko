@@ -79,7 +79,7 @@ def get_card_by_name():
 
 
 ###############################
-########## STATS ##############
+####### PLAYER STATS ##########
 ###############################
 
 @api_bp.route('/player_info/<int:player_id>', methods=['GET'])
@@ -146,6 +146,31 @@ def player_alone_stats(player_id):
     player_alone_stats = rename_player_alone_stats(player_alone_stats)
     return jsonify(player_alone_stats)
 
+
+###############################
+########## STATS ##############
+###############################
+
+
+@api_bp.route('/special_card_stats', methods=['GET'])
+def special_card_stats():
+    special_card_stats = execute_query_with_placeholder_params(
+        'database/special_card/queries/get_special_card_stats.sql', ())
+    return jsonify(special_card_stats)
+
+
+@api_bp.route('/extra_point_stats', methods=['GET'])
+def extra_point_stats():
+    extra_point_stats = execute_query_with_placeholder_params(
+        'database/extra_point/queries/get_extra_point_stats.sql', ())
+    return jsonify(extra_point_stats)
+
+
+@api_bp.route('/game_mode_stats', methods=['GET'])
+def game_mode_stats():
+    game_mode_stats = execute_query_with_placeholder_params(
+        'database/game_mode/queries/get_game_mode_stats.sql', ())
+    return jsonify(game_mode_stats)
 
 ###############################
 ########## POSTERS ############

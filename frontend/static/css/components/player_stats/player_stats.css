@@ -169,6 +169,7 @@ label[for="tab-extra-points"] {
 .extra-points-table td:first-child,
 .extra-points-table th:first-child {
   text-align: left;
+  max-width: 25vw;
 }
 .extra-points-table th {
   font-weight: bold;

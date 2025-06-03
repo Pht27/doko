@@ -1,3 +1,5 @@
+- match history: spielzahl mitnehmen für jede runde (einfach id nehmen)
+
 - kommentieren knopf fixen (kein prompt bitte)
 - add player kein prompt sondern popup
 - stats total page -> karten winrates, ep winrates. team winrates. besondere matches (meiste pkt, meiste ep, meiste sonderkarten oder so)
@@ -7,15 +9,7 @@
 - über all in match history etc gamemode id mitnehmen für eind.
 - auth.
 
-STATS:
-PLAYER
-- bei player stats ist gerade die durschnittl punkte die ohne die team größe einbezogen -> unterscheiden in bereinigt und spielwert
-- ab hier immer spielwert nehmen für punkte -> spielwert heißt mit multiplikator
 
-- winrate in den letzten 20 spielen
-- bestes / schlechtestes Spiel
-
-TOTAL
-- winrate / punkte / anzahl nach spielmodus als re
-- winrate / punkte / anzahl nach extrapunkt als re / kontra
-- winrate / punkte / anzahl nach sonderkarte
+FÜR PC:
+- navbar
+- neues spiel seitenswap

@@ -158,6 +158,8 @@ function renderGameModeStatsTable(data) {
 
     table.appendChild(tr);
   });
+
+  makeTableSortable(table);
 }
 function renderSpecialCardsTable(data) {
   const table = document.getElementById("specialCardsTable");
@@ -202,6 +204,8 @@ function renderSpecialCardsTable(data) {
 
     table.appendChild(tr);
   });
+
+  makeTableSortable(table);
 }
 function renderExtraPointsTable(data) {
   const table = document.getElementById("extraPointsTable");
@@ -246,6 +250,8 @@ function renderExtraPointsTable(data) {
 
     table.appendChild(tr);
   });
+
+  makeTableSortable(table);
 }
 function renderPartnerTable(data) {
   const table = document.getElementById("partnerTable");
@@ -297,6 +303,8 @@ function renderPartnerTable(data) {
 
     table.appendChild(tr);
   });
+
+  makeTableSortable(table);
 }
 
 function renderAloneTable(data) {
@@ -422,4 +430,33 @@ function getColorForTotalPoints(totalPoints) {
   const clamped = Math.max(-150, Math.min(150, totalPoints));
   const pct = (clamped + 150) / 300;
   return getColorForPercentage(pct);
+}
+
+function makeTableSortable(table) {
+  const headers = table.querySelectorAll("th");
+
+  headers.forEach((header, index) => {
+    header.style.cursor = "pointer";
+
+    let ascending = true;
+
+    header.addEventListener("click", () => {
+      const rows = Array.from(table.querySelectorAll("tr:nth-child(n+2)")); // Skip header
+      rows.sort((a, b) => {
+        const cellA = a.children[index].textContent.trim();
+        const cellB = b.children[index].textContent.trim();
+
+        const valA = parseFloat(cellA.replace(",", ".")) || cellA.toLowerCase();
+        const valB = parseFloat(cellB.replace(",", ".")) || cellB.toLowerCase();
+
+        if (valA < valB) return ascending ? -1 : 1;
+        if (valA > valB) return ascending ? 1 : -1;
+        return 0;
+      });
+
+      ascending = !ascending;
+
+      rows.forEach((row) => table.appendChild(row)); // Re-append in new order
+    });
+  });
 }

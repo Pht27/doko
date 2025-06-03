@@ -12,5 +12,7 @@ CREATE OR REPLACE VIEW VI_player_partner_stats AS
     ON rppp.team_id = ts.team_id
     LEFT JOIN team_has_member thm
     ON rppp.team_id = thm.team_id
-    WHERE ts.player_count = 2 AND rppp.player_id != thm.player_id
+    LEFT JOIN player p
+    ON thm.player_id = p.id
+    WHERE ts.player_count = 2 AND rppp.player_id != thm.player_id AND p.active = 1
     GROUP BY rppp.player_id, thm.player_id;

@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+<!--  -->
+{% block extra_styles %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/sites/stats.css') }}"
+/>
+{% endblock %}
+<!--  -->
+
+<h1>{% block title %} Statistiken {% endblock %}</h1>
+
+{% block titlecard %} Statistiken {% endblock %}
+
+<!--  -->
+{% block content %}
+<div class="stats-container">
+  <div class="stats-title">Spielmodi</div>
+  <div class="table-container">
+    <table class="game-mode-table" id="gameModeTable"></table>
+  </div>
+</div>
+
+<div class="stats-container">
+  <div class="stats-title">Extrapunkte</div>
+  <div class="table-container">
+    <table class="extra-points-table" id="extraPointsTable"></table>
+  </div>
+</div>
+
+<div class="stats-container">
+  <div class="stats-title">Sonderkarten</div>
+  <div class="table-container">
+    <table class="special-card-table" id="specialCardsTable"></table>
+  </div>
+</div>
+{% endblock %}
+<!--  -->
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/sites/stats.js') }}"></script>
+{% endblock %}
+<!--  -->

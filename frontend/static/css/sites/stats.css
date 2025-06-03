@@ -1,0 +1,94 @@
+.stats-container {
+  display: flex;
+  flex-direction: column;
+
+  margin: 4px 7px;
+
+  background-color: rgb(255, 255, 255);
+  border: solid 1px rgb(162, 162, 162);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.stats-title {
+  padding: 0px 0px 8px;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+}
+
+/* === GAME MODES TABLE === */
+
+.game-mode-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.game-mode-table th,
+.game-mode-table td {
+  padding: 6px 3px;
+  border-bottom: solid 1px lightgray;
+  text-align: center;
+}
+
+.game-mode-table td:first-child,
+.game-mode-table th:first-child {
+  text-align: left;
+  max-width: 25vw;
+  word-wrap: break-word;
+}
+.game-mode-table th {
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
+/* === SPECIAL CARDS TABLE === */
+
+.special-card-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.special-card-table th,
+.special-card-table td {
+  padding: 6px 3px;
+  border-bottom: solid 1px lightgray;
+  text-align: center;
+}
+
+.special-card-table td:first-child,
+.special-card-table th:first-child {
+  text-align: left;
+  max-width: 25vw;
+  word-wrap: break-word;
+}
+.special-card-table th {
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
+/* === EXTRA POINTS TABLE === */
+
+.extra-points-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.extra-points-table th,
+.extra-points-table td {
+  padding: 6px 3px;
+  border-bottom: solid 1px lightgray;
+  text-align: center;
+}
+
+.extra-points-table td:first-child,
+.extra-points-table th:first-child {
+  text-align: left;
+  max-width: 25vw;
+}
+.extra-points-table th {
+  font-weight: bold;
+  word-wrap: break-word;
+}
