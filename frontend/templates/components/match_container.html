@@ -1,118 +1,126 @@
 <div class="match-container">
-  <div class="match-header">
-    <div class="match-header-left">
-      {{ match.time_stamp.strftime("%a, %d %b %Y") }}
-    </div>
-    <div
-      class="match-header-center game-type {% if match.game_mode.is_solo %}solo-game-type{% endif %}"
-    >
-      {{ match.game_mode.game_mode_name }}
-    </div>
-    <div class="match-header-right">
-      {{ match.time_stamp.strftime("%H:%M") }}
-    </div>
-  </div>
-
-  <div class="match-meta-row">
-    <div class="party-title">Re</div>
-    <div class="points-title">Punkte</div>
-    <div class="party-title kontra">Kontra</div>
-  </div>
-
-  <div class="match-body">
-    <!-- Re Teams -->
-    <div class="party-column">
-      {% for position, team in match.teams.items() if team.party == 'Re' %}
-      <div
-        class="team-block {% if match.winning_party == 'Re' %}party-win{% elif match.winning_party == 'Kontra' %}party-lose{% endif %}"
-      >
-        <div class="team-name">{{ team.name }}</div>
-        {% if team.special_cards %}
-        <div class="team-special">
-          <strong>Sonderkarten:</strong><br />
-          {% for card in team.special_cards %}
-          <span>{{ card }}</span><br />
-          {% endfor %}
-        </div>
-        {% endif %} {% if team.extra_points %}
-        <div class="team-extra">
-          <strong>Extrapunkte:</strong><br />
-          {% for name, count in team.extra_points.items() %}
-          <span>{{ name }} ({{ count }})</span><br />
-          {% endfor %}
-        </div>
-        {% endif %}
+  <div class="match-title">Runde {{match.round_id}}</div>
+  <div class="match-content-wrapper">
+    <div class="match-header">
+      <div class="match-header-left">
+        {{ match.time_stamp.strftime("%a, %d %b %Y") }}
       </div>
+      <div
+        class="match-header-center game-type {% if match.game_mode.is_solo %}solo-game-type{% endif %}"
+      >
+        {{ match.game_mode.game_mode_name }}
+      </div>
+      <div class="match-header-right">
+        {{ match.time_stamp.strftime("%H:%M") }}
+        <!-- <div class="day-continer">
+        {{ match.time_stamp.strftime("%a, %d %b %Y") }}
+      </div>
+      <div class="time-continer">{{ match.time_stamp.strftime("%H:%M") }}</div> -->
+      </div>
+    </div>
+
+    <div class="match-meta-row">
+      <div class="party-title">Re</div>
+      <div class="points-title">Punkte</div>
+      <div class="party-title kontra">Kontra</div>
+    </div>
+
+    <div class="match-body">
+      <!-- Re Teams -->
+      <div class="party-column">
+        {% for position, team in match.teams.items() if team.party == 'Re' %}
+        <div
+          class="team-block {% if match.winning_party == 'Re' %}party-win{% elif match.winning_party == 'Kontra' %}party-lose{% endif %}"
+        >
+          <div class="team-name">{{ team.name }}</div>
+          {% if team.special_cards %}
+          <div class="team-special">
+            <strong>Sonderkarten:</strong><br />
+            {% for card in team.special_cards %}
+            <span>{{ card }}</span><br />
+            {% endfor %}
+          </div>
+          {% endif %} {% if team.extra_points %}
+          <div class="team-extra">
+            <strong>Extrapunkte:</strong><br />
+            {% for name, count in team.extra_points.items() %}
+            <span>{{ name }} ({{ count }})</span><br />
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Points Column -->
+      <div class="points-column">
+        <div class="points-box">{{ match.points }}</div>
+      </div>
+
+      <!-- Kontra Teams -->
+      <div class="party-column kontra">
+        {% for position, team in match.teams.items() if team.party == 'Kontra'
+        %}
+        <div
+          class="team-block {% if match.winning_party == 'Kontra' %}party-win{% elif match.winning_party == 'Re' %}party-lose{% endif %}"
+        >
+          <div class="team-name">{{ team.name }}</div>
+          {% if team.special_cards %} {% if team.special_cards %}
+          <div class="team-special">
+            <strong>Sonderkarten:</strong><br />
+            {% for card in team.special_cards %}
+            <span>{{ card }}</span><br />
+            {% endfor %}
+          </div>
+          {% endif %} {% if team.extra_points %}
+          <div class="team-extra">
+            <strong>Extrapunkte:</strong><br />
+            {% for name, count in team.extra_points.items() %}
+            <span>{{ name }} ({{ count }})</span><br />
+            {% endfor %}
+          </div>
+          {% endif %} {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="comment-section">
+      {% for comment in match.comments %}
+      <div class="comment">{{ comment.text }}</div>
       {% endfor %}
     </div>
 
-    <!-- Points Column -->
-    <div class="points-column">
-      <div class="points-box">{{ match.points }}</div>
-    </div>
-
-    <!-- Kontra Teams -->
-    <div class="party-column kontra">
-      {% for position, team in match.teams.items() if team.party == 'Kontra' %}
-      <div
-        class="team-block {% if match.winning_party == 'Kontra' %}party-win{% elif match.winning_party == 'Re' %}party-lose{% endif %}"
+    <div class="match-controls">
+      <span
+        class="match-controls-button left"
+        onclick="addComment(this)"
+        data-round-id="{{ match.round_id }}"
       >
-        <div class="team-name">{{ team.name }}</div>
-        {% if team.special_cards %} {% if team.special_cards %}
-        <div class="team-special">
-          <strong>Sonderkarten:</strong><br />
-          {% for card in team.special_cards %}
-          <span>{{ card }}</span><br />
-          {% endfor %}
-        </div>
-        {% endif %} {% if team.extra_points %}
-        <div class="team-extra">
-          <strong>Extrapunkte:</strong><br />
-          {% for name, count in team.extra_points.items() %}
-          <span>{{ name }} ({{ count }})</span><br />
-          {% endfor %}
-        </div>
-        {% endif %} {% endif %}
-      </div>
-      {% endfor %}
-    </div>
-  </div>
+        Kommentieren
+      </span>
 
-  <div class="comment-section">
-    {% for comment in match.comments %}
-    <div class="comment">{{ comment.text }}</div>
-    {% endfor %}
-  </div>
+      <button class="expand-toggle" type="button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          class="arrow-icon-container"
+        >
+          <path
+            fill="currentColor"
+            fill-rule="nonzero"
+            d="M12 13.2 16.5 9l1.5 1.4-6 5.6-6-5.6L7.5 9z"
+          ></path>
+        </svg>
+      </button>
 
-  <div class="match-controls">
-    <span
-      class="match-controls-button left"
-      onclick="addComment(this)"
-      data-round-id="{{ match.round_id }}"
-    >
-      Kommentieren
-    </span>
-
-    <button class="expand-toggle" type="button">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        class="arrow-icon-container"
+      <span
+        class="match-controls-button right"
+        onclick="goToEditMatch({{ match.round_id }})"
+        >Bearbeiten</span
       >
-        <path
-          fill="currentColor"
-          fill-rule="nonzero"
-          d="M12 13.2 16.5 9l1.5 1.4-6 5.6-6-5.6L7.5 9z"
-        ></path>
-      </svg>
-    </button>
-
-    <span
-      class="match-controls-button right"
-      onclick="goToEditMatch({{ match.round_id }})"
-      >Bearbeiten</span
-    >
+    </div>
   </div>
 </div>

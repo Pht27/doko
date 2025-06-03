@@ -9,17 +9,33 @@
   display: block;
   opacity: 1;
   background: white;
-  border: 2px solid #ccc;
+  border: 2px solid #434343;
   border-radius: 8px;
-  padding: 0.8rem 0.8rem 0.2rem;
-  padding-bottom: 0rem;
   transition: box-shadow 0.2s ease;
+}
+
+.match-content-wrapper {
+  padding: 0.8rem 0.8rem 0rem;
+}
+
+/* === MATCH TITLE === */
+
+.match-title {
+  background-color: #dae0f3;
+  color: #000000;
+  padding: 0.2rem 0.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 17px;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
 }
 
 /* === MATCH HEADER === */
 .match-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 0rem;
