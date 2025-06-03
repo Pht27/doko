@@ -1,0 +1,1 @@
+SELECT * FROM VI_extra_point_stats;

@@ -50,4 +50,5 @@ CREATE OR REPLACE VIEW VI_round_points_per_player AS
         JOIN player p ON p.id = thm.player_id
         JOIN VI_team_sizes ts ON ts.team_id = thm.team_id
         JOIN round_is_game_mode rigm ON rigm.round_id = r.id
-        JOIN game_mode gm ON gm.id = rigm.game_mode_id;
+        JOIN game_mode gm ON gm.id = rigm.game_mode_id
+;

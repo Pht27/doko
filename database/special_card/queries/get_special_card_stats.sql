@@ -1,0 +1,1 @@
+SELECT * FROM VI_special_card_stats;

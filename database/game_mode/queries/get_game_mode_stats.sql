@@ -1,0 +1,1 @@
+SELECT * FROM VI_game_mode_stats;

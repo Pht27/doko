@@ -184,8 +184,9 @@ team_round_map = teams_in_round_df.set_index('team_id')['round_id'].to_dict()
 
 # ===== NAMENSKORREKTUREN =====
 specials_df['special'] = specials_df['special'].replace({
-    'Klabautermann': 'Klabautermann gefangen',
-    'Kämmerich': 'Kemmerich'
+    'Klaubautermann': 'Klabautermann gefangen',
+    'Kämmerich': 'Kemmerich',
+    'Gans': 'Gans gefangen'
 })
 
 # ===== KATEGORIEN =====
