@@ -14,3 +14,5 @@ UPDATE player SET picture_name = "hK" WHERE id = 12;
 UPDATE player SET picture_name = "hB" WHERE id = 8;
 -- Sophie
 UPDATE player SET picture_name = "krA" WHERE id = 6;
+-- Anabelle
+UPDATE player SET picture_name = "hD" WHERE id = 13;
