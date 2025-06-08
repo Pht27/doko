@@ -22,7 +22,7 @@ if [ ! -f "$SQL_FILE" ]; then
 fi
 
 # ---------- SQL AUSFÜHREN ----------
-mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$SQL_FILE"
+mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$SQL_FILE"
 
 if [ $? -eq 0 ]; then
     echo "✅ Statische Tabellen erfolgreich in '$DB_NAME' gefüllt."

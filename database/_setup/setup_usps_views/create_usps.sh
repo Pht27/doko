@@ -21,7 +21,7 @@ find "$BASE_DIR" -type d -name "usps" | while read -r usps_dir; do
     for sql_file in "$usps_dir"/SP_*.sql; do
         if [ -f "$sql_file" ]; then
             echo "📄 Creating USP: $(basename "$sql_file")"
-            mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
+            mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
         fi
     done
 done

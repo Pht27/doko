@@ -21,7 +21,7 @@ find "$BASE_DIR" -type d -name "udfs" | while read -r udfs_dir; do
     for sql_file in "$udfs_dir"/DF_*.sql; do
         if [ -f "$sql_file" ]; then
             echo "📄 Creating UDF: $(basename "$sql_file")"
-            mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
+            mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
         fi
     done
 done

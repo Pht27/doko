@@ -26,7 +26,7 @@ rm -f "$SCRIPT_DIR/new_csvs/"*.csv
 rm -f "$SCRIPT_DIR/static_csvs/"*.csv
 
 # ---------- SQL AUSFÜHREN ----------
-echo -e "$SQL_COMMANDS" | mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD"
+echo -e "$SQL_COMMANDS" | mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD"
 
 # ---------- RUN PYTHON SCRIPTS ----------
 echo "❯ Activating Python venv and running Python scripts..."
@@ -39,9 +39,9 @@ echo "🗃️  Running SQL files from $SQL_DIR..."
 for sql_file in "$SQL_DIR"/*.sql; do
     sql_name=$(basename "$sql_file")
     echo "🚀 Running $sql_name..."
-    mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
+    mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
 done
 
 # ---------- RUN add_profile_pictures.sql ----------
 echo "📸 Running add_profile_pictures.sql..."
-mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$SCRIPT_DIR/add_profile_pictures.sql"
+mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$SCRIPT_DIR/add_profile_pictures.sql"

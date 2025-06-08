@@ -20,7 +20,7 @@ if [ ! -f "$SQL_FILE" ]; then
 fi
 
 # ---------- SQL AUSFÜHREN ----------
-mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$SQL_FILE"
+mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$SQL_FILE"
 
 if [ $? -eq 0 ]; then
     echo "✅ Tabellen in '$DB_NAME' erfolgreich mit Test Daten gefüllt."

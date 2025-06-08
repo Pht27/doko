@@ -19,7 +19,7 @@ SQL_COMMANDS+="DROP DATABASE IF EXISTS \`$DB_NAME\`;\n"
 SQL_COMMANDS+="CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;"
 
 # ---------- SQL AUSFÜHREN ----------
-echo -e "$SQL_COMMANDS" | mariadb -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD"
+echo -e "$SQL_COMMANDS" | mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD"
 
 if [ $? -eq 0 ]; then
     echo "✅ Datenbank '$DB_NAME' erfolgreich erstellt."

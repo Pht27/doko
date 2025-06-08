@@ -26,7 +26,7 @@ find "$BASE_DIR" -type f -path "*/usps/*.sql" | while read -r usp_file; do
         proc_name="${proc_name%.sql}"
 
         echo "⚙️ Running init USP: $usp_name"
-        mariadb -u "$DB_USER" -p"$DB_PASSWORD" -h "$DB_HOST" "$DB_NAME" -e "CALL $proc_name();"
+        mysql -u "$DB_USER" -p"$DB_PASSWORD" -h "$DB_HOST" "$DB_NAME" -e "CALL $proc_name();"
     fi
 done
 
