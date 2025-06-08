@@ -1,3 +1,4 @@
+-- priority 1
 CREATE OR REPLACE VIEW VI_round_points_per_team AS
     SELECT
             r.id AS round_id,

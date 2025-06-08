@@ -1,3 +1,4 @@
+-- priority 1
 CREATE OR REPLACE VIEW VI_team_sizes AS
     SELECT 
         team_id,

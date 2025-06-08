@@ -1,3 +1,4 @@
+-- priority 1
 CREATE OR REPLACE VIEW VI_team_stats AS
 SELECT
     t.id AS team_id,

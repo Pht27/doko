@@ -13,60 +13,44 @@ DB_USER=$(awk -F'=' '/^db_user/ {gsub(/ /, "", $2); print $2}' "$CONFIG_FILE")
 DB_PASSWORD=$(awk -F'=' '/^db_password/ {gsub(/ /, "", $2); print $2}' "$CONFIG_FILE")
 DB_HOST=$(awk -F'=' '/^db_host_address/ {gsub(/ /, "", $2); print $2}' "$CONFIG_FILE")
 
-# ---------- FUNCTION TO GENERATE PLACEHOLDER SQL ----------
-generate_placeholder_from_view_file() {
-    local sql_file="$1"
-    local view_name
-    view_name=$(basename "$sql_file" .sql)
-
-    # Extract column aliases
-    columns=$(awk '
-        BEGIN {in_select=0}
-        /SELECT/ {in_select=1; next}
-        in_select && /FROM/ {exit}
-        in_select {
-            gsub(/--.*/, "")
-            gsub(/,[[:space:]]*$/, "", $0)
-            if (NF > 0) {
-                if (tolower($0) ~ / as /) {
-                    split($0, parts, / as /); print parts[2];
-                } else {
-                    n=split($0, parts, " "); print parts[n];
-                }
-            }
-        }
-    ' "$sql_file" | tr '\n' ',' | sed 's/,$//')
-
-    if [ -z "$columns" ]; then
-        columns="dummy_column"
-    fi
-
-    echo "CREATE OR REPLACE VIEW \`$view_name\` AS SELECT $(echo "$columns" | sed 's/[^,]*/NULL AS &/g');"
-}
-
-# ---------- FIND ALL VIEW FILES ----------
+# ---------- SETUP ----------
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-VIEW_FILES=()
+declare -A PRIORITY_GROUPS
+NO_PRIORITY=()
 
+# ---------- FIND AND SORT VIEW FILES ----------
 while IFS= read -r -d '' file; do
-    VIEW_FILES+=("$file")
+    first_line=$(head -n 1 "$file")
+    if [[ "$first_line" =~ ^--[[:space:]]*priority[[:space:]]+([0-9]+) ]]; then
+        priority="${BASH_REMATCH[1]}"
+        PRIORITY_GROUPS["$priority"]+="$file"$'\n'
+    else
+        NO_PRIORITY+=("$file")
+    fi
 done < <(find "$BASE_DIR" -type f -name 'VI_*.sql' -print0)
 
-# ---------- PASS 1: PLACEHOLDER CREATION ----------
-echo "🧱 Creating placeholder views..."
-for sql_file in "${VIEW_FILES[@]}"; do
-    view_name=$(basename "$sql_file")
-    echo "📄 Creating placeholder: $view_name"
-    placeholder_sql=$(generate_placeholder_from_view_file "$sql_file")
-    echo "$placeholder_sql" | mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME"
+# ---------- EXECUTE IN ORDER ----------
+echo "🚀 Creating views based on priority..."
+
+# Sort and run by priority
+for priority in $(printf "%s\n" "${!PRIORITY_GROUPS[@]}" | sort -n); do
+    echo "🔢 Running priority $priority views..."
+    while IFS= read -r view_file; do
+        [ -z "$view_file" ] && continue
+        view_name=$(basename "$view_file")
+        echo "📄 Executing $view_name"
+        mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$view_file"
+    done <<< "${PRIORITY_GROUPS[$priority]}"
 done
 
-# ---------- PASS 2: REAL VIEW CREATION ----------
-echo "🚀 Creating real views..."
-for sql_file in "${VIEW_FILES[@]}"; do
-    view_name=$(basename "$sql_file")
-    echo "📄 Replacing view with logic: $view_name"
-    mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$sql_file"
-done
+# Then run views with no priority
+if [ ${#NO_PRIORITY[@]} -gt 0 ]; then
+    echo "🔻 Running views with no priority..."
+    for view_file in "${NO_PRIORITY[@]}"; do
+        view_name=$(basename "$view_file")
+        echo "📄 Executing $view_name"
+        mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < "$view_file"
+    done
+fi
 
 echo "✅ All views created."
