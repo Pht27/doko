@@ -27,10 +27,15 @@ for filename in sorted(os.listdir(input_dir)):
             insert_statements = []
 
             for row in reader:
-                values = ', '.join(
-                    f"'{value.replace('\'', '\\\'')}'" if value != '' else 'NULL'
-                    for value in row
-                )
+                escaped_values = []
+                for value in row:
+                    if value != '':
+                        escaped = value.replace("'", "\\'")
+                        escaped_values.append(f"'{escaped}'")
+                    else:
+                        escaped_values.append("NULL")
+
+                values = ', '.join(escaped_values)
                 stmt = f"INSERT INTO `{table_name}` ({columns}) VALUES ({values});"
                 insert_statements.append(stmt)
 
