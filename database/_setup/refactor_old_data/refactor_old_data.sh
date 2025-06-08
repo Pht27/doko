@@ -16,8 +16,14 @@ DB_HOST=$(awk -F'=' '/^db_host_address/ {gsub(/ /, "", $2); print $2}' "$CONFIG_
 # ---------- PATH SETUP ----------
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VENV_PATH="$SCRIPT_DIR/../../../venv"
-PYTHON="$VENV_PATH/bin/python"
+if [ -x "$VENV_PATH/bin/python" ]; then
+    PYTHON="$VENV_PATH/bin/python"
+else
+    echo "⚠️  Virtual environment not found at $VENV_PATH. Falling back to system 'python'."
+    PYTHON="python"
+fi
 SQL_DIR="$SCRIPT_DIR/sql_queries"
+
 
 # ---------- CLEARING DIRECTORIES ----------
 echo "✇ Clearing old SQL and CSV files..."
