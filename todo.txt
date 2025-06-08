@@ -1,4 +1,4 @@
-- match history: spielzahl mitnehmen für jede runde (einfach id nehmen)
+- match history spieler: win lose farben
 
 - kommentieren knopf fixen (kein prompt bitte)
 - add player kein prompt sondern popup
